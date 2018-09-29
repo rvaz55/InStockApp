@@ -1,16 +1,31 @@
 {
   "name": "instockapp",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start-dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\"",
+    "install": "cd client && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvaz55/InStockApp.git"
+  },
+  "author": "Raquel Azcue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvaz55/InStockApp/issues"
+  },
+  "homepage": "https://github.com/rvaz55/InStockApp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.39.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
   }
 }
