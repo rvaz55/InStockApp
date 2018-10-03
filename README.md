@@ -1,5 +1,5 @@
 # InStock App
-![App Layout](readme/InStockApp.pdf)
+[App Layout](readme/InStockApp.pdf)
 
 ## Members
 * Jocelyn Tse - Project Manager
