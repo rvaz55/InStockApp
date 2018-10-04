@@ -1,0 +1,27 @@
+/* FullPageIntroWithFixedTransparentNavbar.css */
+.navbar {
+  background-color: transparent;
+}
+.header {
+}
+
+.view {
+    background: url("https://mdbootstrap.com/img/Photos/Others/img(40).jpg)") no-repeat center center;
+    height: 100vh !important;
+    background-size: cover;
+}
+
+.top-nav-collapse {
+  background-color: #1C2331;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+      background-color: #1C2331;
+  }
+}
+
+
+.my-5 {
+  padding-bottom: 120px;
+  padding-top: 120px;
+}
