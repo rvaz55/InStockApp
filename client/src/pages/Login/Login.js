@@ -1,4 +1,5 @@
-import React, {Component} from "react"
+import React, {Component} from "react";
+import {Input, FormBtn } from "../../components/Form";
 
 class Login extends Component {
     state = {
@@ -18,7 +19,7 @@ class Login extends Component {
 
       handleFormSubmit = event => {
         event.preventDefault();
-        alert("Insert code to check database for user password combo");
+        // alert("Insert code to check database for user password combo");
       };
 
 
@@ -26,7 +27,7 @@ class Login extends Component {
         return (
             <form>
             <p>Enter your username</p>
-            <input
+            <Input
               type="text"
               placeholder="Username"
               name="username"
@@ -34,7 +35,7 @@ class Login extends Component {
               onChange={this.handleInputChange}
             />
             <p>Enter your password</p>
-            <input
+            <Input
               type="password"
               placeholder="Password"
               name="password"
@@ -42,7 +43,12 @@ class Login extends Component {
               onChange={this.handleInputChange}
             />
             <br></br>
-            <button onClick={this.handleFormSubmit}>Submit</button>
+            <FormBtn
+                disabled={!(this.state.username && this.state.password)}
+                onClick={this.handleFormSubmit}
+              >
+                Login to InStock
+              </FormBtn>
           </form>
         );
       }
