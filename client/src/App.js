@@ -4,6 +4,7 @@ import HomeNavbar from "./components/HomeNavbar";
 import SearchBar from "./components/SearchBar";
 import FooterPage from "./components/FooterPage";
 import Login from "./pages/Login";
+import SignUp from ".pages/SignUp";
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
              <Route exact path='/' component={SearchBar}/>
              <Route exact path="/login" component={Login}/>
+             <Route exact path="/signup" component={SignUp}/>
           </Switch>
 
           <FooterPage />
