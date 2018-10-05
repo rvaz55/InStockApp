@@ -3,13 +3,13 @@ import { Input, FormBtn } from "../../components/Form";
 
 class SignUp extends Component {
     state = {
-        store = "",
-        address = "",
-        zipcode = "",
-        phone = "",
-        username = "",
-        password = "",
-        email = ""        
+        store: "",
+        address: "",
+        zipcode: "",
+        phone: "",
+        username: "",
+        password: "",
+        email: ""        
     };
 
     handleInputChange = event => {
