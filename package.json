@@ -23,8 +23,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mdbreact": "^4.8.0",
     "if-env": "^1.0.4",
+    "mdbreact": "^4.8.0",
     "mongoose": "^5.0.17",
     "mongoose-auto-increment": "^5.0.1",
     "react-router-dom": "^4.3.1"

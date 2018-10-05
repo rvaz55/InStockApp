@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import AppNavbar from "./components/AppNavbar";
-//import SearchBar from "./components/SearchBar";
-import FooterPage from "./components/FooterPage";
 import { Switch, Route } from 'react-router-dom';
+import FooterPage from "./components/FooterPage";
 import Home from "./pages/Home";
 import ProfilePage from "./pages/Profile";
 import SignUp from "./pages/SignUp";
@@ -11,12 +10,10 @@ import SearchResults from "./pages/SearchResults";
 
 
 
-
-
-
 class App extends Component {
   render() {
     return (
+
       <div>
         <AppNavbar />
 
@@ -30,9 +27,7 @@ class App extends Component {
         </Switch>
 
         <FooterPage />
-      </div>
-
-
+      </div>       
 
     );
   }
