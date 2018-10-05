@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomeNavbar from "./components/HomeNavbar";
 import SearchBar from "./components/SearchBar";
 import FooterPage from "./components/FooterPage";
+import Login from "./pages/Login";
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
   
           <Switch>
              <Route exact path='/' component={SearchBar}/>
+             <Route exact path="/login" component={Login}/>
           </Switch>
 
           <FooterPage />
