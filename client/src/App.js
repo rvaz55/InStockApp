@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+//import { Switch, Route } from 'react-router-dom';
 import HomeNavbar from "./components/HomeNavbar";
-import SearchBar from "./components/SearchBar";
+import Main from "./components/Main"
+//import SearchBar from "./components/SearchBar";
 import FooterPage from "./components/FooterPage";
 
 
@@ -10,10 +11,8 @@ class App extends Component {
     return (
          <div> 
           <HomeNavbar />
-  
-          <Switch>
-             <Route exact path='/' component={SearchBar}/>
-          </Switch>
+          
+          <Main />
 
           <FooterPage />
           </div>

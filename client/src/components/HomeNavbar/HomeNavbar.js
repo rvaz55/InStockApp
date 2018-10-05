@@ -31,15 +31,19 @@ class HomeNavbar extends React.Component {
               {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}
               <Collapse isOpen={this.state.collapse} navbar>
                 <NavbarNav left>
+
                   <NavItem active>
                     <NavLink to="#">About</NavLink>
                   </NavItem>
+
                   <NavItem>
                     <NavLink to="#">Login</NavLink>
                   </NavItem>
+
                   <NavItem>
                     <NavLink to="#">Create Account</NavLink>
                   </NavItem>
+                  
                 </NavbarNav>
               </Collapse>
             </Navbar>
