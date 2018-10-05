@@ -1,0 +1,17 @@
+.active-purple-4 input[type=text]:focus:not([readonly]) {
+    border: 1px solid #1a237e;
+    box-shadow: 0 0 0 1px #1a237e;
+}
+
+.Search {
+    margin: auto;
+    width: 50%;
+    padding-bottom: 30px;
+}
+
+.SearchButton {
+    margin: 0 auto;
+    display: flex;
+    justify-content : center;
+
+}
