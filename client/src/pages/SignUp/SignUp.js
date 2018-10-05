@@ -1,10 +1,15 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import { Input, FormBtn } from "../../components/Form";
 
 class SignUp extends Component {
     state = {
-        username: "",
-        password: "",
-        email: "",
+        store = "",
+        address = "",
+        zipcode = "",
+        phone = "",
+        username = "",
+        password = "",
+        email = ""        
     };
 
     handleInputChange = event => {
@@ -26,7 +31,7 @@ class SignUp extends Component {
         return (
             <form>
                 <p>Store name</p>
-                <input
+                <Input
                     type="text"
                     placeholder="Store Name"
                     name="store"
@@ -34,7 +39,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>Store address</p>
-                <input
+                <Input
                     type="text"
                     placeholder="Address"
                     name="address"
@@ -42,7 +47,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>City, State</p>
-                <input
+                <Input
                     type="text"
                     placeholder="City, State"
                     name="city"
@@ -50,7 +55,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>ZIP Code</p>
-                <input
+                <Input
                     type="text"
                     placeholder="ZIP Code"
                     name="zipcode"
@@ -58,7 +63,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>Store Phone Number</p>
-                <input
+                <Input
                     type="text"
                     placeholder="Phone Number"
                     name="phone"
@@ -66,7 +71,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>Enter a username</p>
-                <input
+                <Input
                     type="text"
                     placeholder="Username"
                     name="username"
@@ -74,7 +79,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>Enter a password</p>
-                <input
+                <Input
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -82,7 +87,7 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <p>Enter an email address</p>
-                <input
+                <Input
                     type="text"
                     placeholder="Email"
                     name="email"
@@ -90,7 +95,19 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <br></br>
-                <button onClick={this.handleFormSubmit}>Submit</button>
+                <FormBtn
+                    disabled={!(this.state.store 
+                        && this.state.address 
+                        && this.state.city 
+                        && this.state.zipcode 
+                        && this.state.phone
+                        && this.state.username 
+                        && this.state.password 
+                        && this.state.email)}
+                    onClick={this.handleFormSubmit}
+                >
+                    Sign Up for InStock
+              </FormBtn>
             </form>
         );
     }
