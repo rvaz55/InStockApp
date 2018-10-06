@@ -3,19 +3,21 @@ import { Input, FormBtn } from "../../components/Form";
 
 class SignUp extends Component {
     state = {
-        store: "",
-        address: "",
-        zipcode: "",
-        phone: "",
+        storeName: "",
+        storeAddress: "",
+        storeCity: "",
+        storeState: "",
+        storeZip: "",
+        storePhone: "",
         username: "",
         password: "",
-        email: ""        
+        email: ""
     };
 
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
         const { name, value } = event.target;
-
+ 
         // Set the state for the appropriate input field
         this.setState({
             [name]: value
@@ -24,6 +26,29 @@ class SignUp extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        if (this.state.storeName
+            && this.state.storeAddress
+            && this.state.storeCity 
+            && this.state.storeState
+            && this.state.storeZip
+            && this.state.storePhone
+            && this.state.username
+            && this.state.password
+            && this.state.email) {
+            API.saveStore({
+                store: this.state.storeName,
+                address: this.state.storeAddress,
+                city: this.state.storeCity,
+                state: this.state.storeState,
+                zipcode: this.state.storeZip,
+                phone: this.state.storePhone,
+                username: this.state.username,
+                password: this.state.password,
+                email: this.state.email
+            })
+            //.then()
+        }
+
     };
 
 
@@ -34,40 +59,48 @@ class SignUp extends Component {
                 <Input
                     type="text"
                     placeholder="Store Name"
-                    name="store"
-                    value={this.state.store}
+                    name="storeName"
+                    value={this.state.storeName}
                     onChange={this.handleInputChange}
                 />
                 <p>Store address</p>
                 <Input
                     type="text"
                     placeholder="Address"
-                    name="address"
-                    value={this.state.address}
+                    name="storeAddress"
+                    value={this.state.storeAddress}
                     onChange={this.handleInputChange}
                 />
-                <p>City, State</p>
+                <p>City</p>
                 <Input
                     type="text"
-                    placeholder="City, State"
-                    name="city"
-                    value={this.state.city}
+                    placeholder="City"
+                    name="storeCity"
+                    value={this.state.storeCity}
+                    onChange={this.handleInputChange}
+                />
+                <p>State</p>
+                <Input
+                    type="text"
+                    placeholder="State"
+                    name="storeState"
+                    value={this.state.storeState}
                     onChange={this.handleInputChange}
                 />
                 <p>ZIP Code</p>
                 <Input
                     type="text"
                     placeholder="ZIP Code"
-                    name="zipcode"
-                    value={this.state.zipcode}
+                    name="storeZip"
+                    value={this.state.storeZip}
                     onChange={this.handleInputChange}
                 />
                 <p>Store Phone Number</p>
                 <Input
                     type="text"
                     placeholder="Phone Number"
-                    name="phone"
-                    value={this.state.phone}
+                    name="storePhone"
+                    value={this.state.storePhone}
                     onChange={this.handleInputChange}
                 />
                 <p>Enter a username</p>
@@ -96,11 +129,12 @@ class SignUp extends Component {
                 />
                 <br></br>
                 <FormBtn
-                    disabled={!(this.state.store 
-                        && this.state.address 
-                        && this.state.city 
-                        && this.state.zipcode 
-                        && this.state.phone
+                    disabled={!(this.state.storeName
+                        && this.state.storeAddress 
+                        && this.state.storeCity 
+                        && this.state.storeState 
+                        && this.state.storeZip 
+                        && this.state.storePhone 
                         && this.state.username 
                         && this.state.password 
                         && this.state.email)}
