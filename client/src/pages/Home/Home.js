@@ -1,4 +1,25 @@
-import React from 'react';
-import HomeNavbar from "../../components/HomeNavbar";
+import React, { Component } from 'react';
 import SearchBar from "../../components/SearchBar";
-import FooterPage from "../../components/FooterPage";
+import Header from "../../components/Header"
+
+
+
+class Home extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+
+        <SearchBar />
+
+
+      </div>
+
+
+
+    );
+  }
+}
+
+
+export default Home;
