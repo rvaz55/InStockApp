@@ -1,9 +1,9 @@
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Container, Mask, View } from 'mdbreact';
+import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
-import "./HomeNavbar.css";
+import "./AppNavbar.css";
 
-class HomeNavbar extends React.Component {
+class AppNavbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,25 +45,9 @@ class HomeNavbar extends React.Component {
             </Navbar>
           </Router>
 
-          <View>
-            <Mask overlay="purple-light" style={{ flexDirection: 'column' }} className="flex-center  text-white text-center">
-              <h2>InStock App</h2>
-              <h5>Some clever slogan here</h5>
-              <p>.....</p>
-            </Mask>
-          </View>
+         
         </header>
-        <Container className="text-center my-5">
-
-          <div className="row">
-            <div className="col-6">
-              Text about how to use website here 
-              </div>
-            <div className="col-6">
-            Text about how to use website here 
-              </div>
-          </div>
-        </Container>
+      
       </div>
 
 
@@ -71,7 +55,7 @@ class HomeNavbar extends React.Component {
   }
 }
 
-export default HomeNavbar;
+export default AppNavbar;
 
 
 

@@ -1,29 +1,34 @@
 import React, { Component } from 'react';
+import AppNavbar from "./components/AppNavbar";
 import { Switch, Route } from 'react-router-dom';
-import HomeNavbar from "./components/HomeNavbar";
-import SearchBar from "./components/SearchBar";
 import FooterPage from "./components/FooterPage";
+import Home from "./pages/Home";
+import ProfilePage from "./pages/Profile";
+import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import SignUp from ".pages/SignUp";
+import SearchResults from "./pages/SearchResults";
+
 
 
 class App extends Component {
   render() {
     return (
-         <div> 
-          <HomeNavbar />
-  
-          <Switch>
-             <Route exact path='/' component={SearchBar}/>
-             <Route exact path="/login" component={Login}/>
-             <Route exact path="/signup" component={SignUp}/>
-          </Switch>
 
-          <FooterPage />
-          </div>
-       
-       
-    
+      <div>
+        <AppNavbar />
+
+
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/search' component={SearchResults} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/profilepage' component={ProfilePage} />
+        </Switch>
+
+        <FooterPage />
+      </div>       
+
     );
   }
 }
