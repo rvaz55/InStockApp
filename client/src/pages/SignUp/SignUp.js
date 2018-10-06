@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
+import API from "../../utilsClient/routesClient"
 
 class SignUp extends Component {
     state = {
@@ -24,7 +25,7 @@ class SignUp extends Component {
         });
     };
 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event, data) => {
         event.preventDefault();
         if (this.state.storeName
             && this.state.storeAddress
@@ -35,18 +36,19 @@ class SignUp extends Component {
             && this.state.username
             && this.state.password
             && this.state.email) {
-            API.saveStore({
-                store: this.state.storeName,
-                address: this.state.storeAddress,
-                city: this.state.storeCity,
-                state: this.state.storeState,
-                zipcode: this.state.storeZip,
-                phone: this.state.storePhone,
-                username: this.state.username,
-                password: this.state.password,
-                email: this.state.email
-            })
-            //.then()
+            API.saveStore(
+                // store: this.state.storeName,
+                // address: this.state.storeAddress,
+                // city: this.state.storeCity,
+                // state: this.state.storeState,
+                // zipcode: this.state.storeZip,
+                // phone: this.state.storePhone,
+                // username: this.state.username,
+                // password: this.state.password,
+                // email: this.state.email
+            data)
+            .then(res => console.log(res))
+            
         }
 
     };
@@ -138,7 +140,7 @@ class SignUp extends Component {
                         && this.state.username 
                         && this.state.password 
                         && this.state.email)}
-                    onClick={this.handleFormSubmit}
+                    onClick={(e) => this.handleFormSubmit(e,this.state)}
                 >
                     Sign Up for InStock
               </FormBtn>

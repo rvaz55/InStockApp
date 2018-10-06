@@ -19,7 +19,7 @@ export default {
   },
   // Saves store sign up info
   saveStore: function(storeData) {
-    return axios.post("/api/stores", storeData);
+    return axios.post("/api/stores/", storeData);
   },
   //Gets vendor data for profile using id
   getStore: function(id) {

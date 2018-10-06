@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 autoIncrement = require('mongoose-auto-increment');
 
 const storeSchema = new Schema({
-  storeName: { type: String, required: true },
-  store_id: { type: String, required: true },
-  storeAddress: {type:String, required: true},
-  storeCity:{type: String, required: true},
-  storeState:{type:String, required: true},
-  storeZip: {type: Number, required:true},
-  storePhone: {type: Number, required: true},
+  storeName: { type: String, required: false },
+  storeid: { type: String, required: false },
+  storeAddress: {type:String, required: false},
+  storeCity:{type: String, required: false},
+  storeState:{type:String, required: false},
+  storeZip: {type: Number, required:false},
+  storePhone: {type: Number, required: false},
   stockedItems: {}
 });
 
