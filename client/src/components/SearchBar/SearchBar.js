@@ -1,32 +1,18 @@
-import React from "react";
+import React, { Component } from 'react';
 import "./SearchBar.css";
-import { Button } from 'mdbreact';
 
+class SearchBar extends Component {
+  
+    render() {
+        return (
 
-
-
-
-
-const SearchBar = props => (
-
-    <div className="Search">
-        <div className="active-purple-4 mb-3">
-            <input className="form-control" type="text" placeholder="What are you looking for?" aria-label="Search" />
-        </div>
-        <div className = "SearchButton">
-        <Button color="deep-purple">Search</Button>
-        </div>
-
-    </div>
-);
-
-
-
-
-
-
-
-
-
+            <div className="Search">
+                <div className="active-purple-4 mb-3">
+                    <input onChange = {this.props.onChange} className="form-control" type="text" placeholder="What are you looking for?" aria-label="Search" value={this.props.value} name="searchText" />
+                </div>
+            </div>
+        );
+    }
+}
 
 export default SearchBar;
