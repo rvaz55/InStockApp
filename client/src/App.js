@@ -23,7 +23,7 @@ class App extends Component {
           <Route path='/search' component={SearchResults} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignUp} />
-          <Route path='/profilepage' component={ProfilePage} />
+          <Route path='/profilepage/:storeid' component={ProfilePage} />
         </Switch>
 
         <FooterPage />
