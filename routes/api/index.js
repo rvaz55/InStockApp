@@ -4,6 +4,6 @@ const item = require("./itemRoutes")
 
 // Book routes
 router.use("/stores", store);
-router.use("/item", item);
+//TODO: router.use("/items", item);
 
 module.exports = router;

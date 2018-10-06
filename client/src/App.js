@@ -3,7 +3,7 @@ import AppNavbar from "./components/AppNavbar";
 import { Switch, Route } from 'react-router-dom';
 import FooterPage from "./components/FooterPage";
 import Home from "./pages/Home";
-import ProfilePage from "./pages/Profile";
+// import ProfilePage from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import SearchResults from "./pages/SearchResults";
@@ -23,7 +23,7 @@ class App extends Component {
           <Route path='/search' component={SearchResults} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignUp} />
-          <Route path='/profilepage/:storeid' component={ProfilePage} />
+          {/* <Route path='/profilepage/:storeid' component={ProfilePage} /> */}
         </Switch>
 
         <FooterPage />
