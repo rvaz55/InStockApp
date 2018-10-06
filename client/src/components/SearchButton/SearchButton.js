@@ -7,9 +7,7 @@ class SearchButton extends Component {
     render() {
     return (
 
-    <div className="SearchButton">
-        <Button onClick = {this.props.onClick} color="deep-purple">Search</Button>
-    </div>
+        <Button className = "SearchButton" onClick = {this.props.onClick} color="deep-purple">Search</Button>
 );
     }
 }

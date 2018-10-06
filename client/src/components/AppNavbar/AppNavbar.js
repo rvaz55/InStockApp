@@ -21,7 +21,7 @@ class AppNavbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="nav">
         <header>
           <Router>
             <Navbar color="transparent" dark expand="md" fixed="top" scrolling>
