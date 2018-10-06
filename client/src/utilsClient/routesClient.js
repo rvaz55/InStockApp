@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
   // Gets all items
-  getItems: function() {
-    return axios.get("/api/items");
-  },
+  // getItems: function() {
+  //   return axios.get("/api/items");
+  // },
   // Gets the item with the given id
   getItem: function(id) {
     return axios.get("/api/items/" + id);
@@ -17,12 +17,12 @@ export default {
   saveItem: function(itemData) {
     return axios.post("/api/items", itemData);
   },
-  // Saves vendor sign up info
-  saveVendor: function(vendorData) {
-    return axios.post("/api/vendors", vendorData);
+  // Saves store sign up info
+  saveStore: function(storeData) {
+    return axios.post("/api/stores", storeData);
   },
   //Gets vendor data for profile using id
-  getVendor: function(id) {
-      return axios.get("/api/items/" + id);
+  getStore: function(id) {
+      return axios.get("/api/stores/" + id);
   }
 };
