@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import SearchResultsTable from "./SearchResultsTable";
 import SearchBar from "../../components/SearchBar";
 import SearchButton from "../../components/SearchButton";
+import itemSeeds from "../../utilsClient/itemSeedDB";
+import { Container, Col, Row } from "../../components/Layout";
+import ColumnForResultCards from "../../components/Layout";
+import "./SearchResults.css";
+// import Fuse from 'fuse.js';
+// import Map from "./MapHolder";
+
 
 class SearchResultsMain extends Component {
   constructor() {
@@ -11,7 +18,7 @@ class SearchResultsMain extends Component {
       searchText: ""
     }
   }
-  
+
   handleInputChange = event => {
     let value = event.target.value;
     const name = event.target.name;
@@ -21,50 +28,74 @@ class SearchResultsMain extends Component {
     })
   };
 
-handleSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
-    if(!this.state.searchText){
-        alert("must enter search word");
-    } else {
-            console.log(this.state);
-        }
-    // console.log(this.name.searchBar.value);
-    // console.log('submitted')
-};
+    if (!this.state.searchText) {
+      alert("must enter search word");
+    }
+    else {
+      let tempResults = [];
+      
+      let options = {
+        keys: ['item']
+      };
+      
+      // for (var i=0; i<itemSeeds.length; i++) {
+      //   let fuse = new Fuse(itemSeeds, options)
+      //   if(fuse.search(this.state.searchText){
+          
+      //   }
 
-  componentDidMount(){
-    this.setState({ results: [
-      {
-        name: "name1",
-        price: "price1",
-        category: "category1",
-        store: "store1"
-      },
-      {
-        name: "name2",
-        price: "price2",
-        category: "category2",
-        store: "store2"
-      },
-      {
-        name: "name3",
-        price: "price3",
-        category: "category3",
-        store: "store3"
+      // }
+
+
+      for (var i = 0; i < itemSeeds.length; i++) {
+        if (itemSeeds[i].item.toLowerCase().indexOf(this.state.searchText) >= 0) {
+          tempResults.push(itemSeeds[i])
+        }
+        this.setState({
+          results: tempResults
+        })
       }
-    ]
-    })
-  }
+
+      console.log(this.state);
+      console.log(itemSeeds)
+      // console.log(this.name.searchBar.value);
+      // console.log('submitted')
+    }
+  };
+  
+
+  // componentDidMount(){
+  //   this.setState({ results: [
+  //   ]
+  //   })
+  // }
 
   render() {
     return (
-      <div className="App">
-        <SearchBar onChange={this.handleInputChange} value={this.state.searchText} />
-        <SearchButton onClick={this.handleSubmit} />
-        <SearchResultsTable results={this.state.results} />
+      <div>
+        <Row> 
+        <div className="input-group" id="searchHolder">
+          <SearchBar className="form-control" onChange={this.handleInputChange} value={this.state.searchText} />
+          <span>
+            <SearchButton onClick={this.handleSubmit} />
+          </span>
+          </div>
+          </Row>
+          <Row>
+            <Col size="sm-8">
+              <SearchResultsTable results={this.state.results} />
+            </Col>
+            <Col size="sm-4">
+              Map
+            </Col>
+          </Row>
       </div>
     );
   }
 }
 
 export default SearchResultsMain;
+
+
