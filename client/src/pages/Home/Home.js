@@ -12,7 +12,7 @@ class Home extends Component {
     super();
     this.state = {
       results: [],
-      searchText: ""
+      searchText: ''
     }
   }
 
@@ -36,9 +36,13 @@ class Home extends Component {
       let options = {
         keys: ['item']
       };
-      
 
       console.log(this.state);
+      console.log(item)
+      let item = JSON.stringify(this.state.searchText)
+      let path = `/search/${item.slice(1, -1)}`;
+      this.props.history.push(path);
+      console.log(item)
 
     }
   };
@@ -48,8 +52,6 @@ class Home extends Component {
     return (
       <div>
         <Header />
-
-
 
         <div className="input-group" id="searchHolder">
           <SearchBar className="form-control" onChange={this.handleInputChange} value={this.state.searchText} />
