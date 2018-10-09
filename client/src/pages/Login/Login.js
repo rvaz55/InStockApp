@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
+import "./Login.css"
 
 class Login extends Component {
     state = {
@@ -25,6 +26,7 @@ class Login extends Component {
 
     render() {
         return (
+          <div className="login-page page align-middle">
             <form>
             <p>Enter your username</p>
             <Input
@@ -50,7 +52,8 @@ class Login extends Component {
                 Login to InStock
               </FormBtn>
           </form>
-        );
+      </div>  
+      );
       }
 }
 

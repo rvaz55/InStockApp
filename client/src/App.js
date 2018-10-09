@@ -7,7 +7,7 @@ import ProfilePage from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import SearchResults from "./pages/SearchResults";
-
+import "./App.css";
 
 
 class App extends Component {
