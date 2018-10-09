@@ -32,21 +32,19 @@ class Home extends Component {
     }
     else {
       let tempResults = [];
-      
       let options = {
         keys: ['item']
       };
 
-      console.log(this.state);
-      console.log(item)
-      let item = JSON.stringify(this.state.searchText)
-      let path = `/search/${item.slice(1, -1)}`;
+      //Line below removes the quotes (") at the beginning and end of the term 
+      //it also stringifies the text and replaces spaces with a dash (-)
+      let item =((JSON.stringify(this.state.searchText)).slice(1, -1)).replace(/ /gi, '-');
+      let path = `/search/${item}`;
       this.props.history.push(path);
       console.log(item)
 
     }
-  };
-
+    };
 
   render() {
     return (

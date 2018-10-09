@@ -15,15 +15,15 @@ class App extends Component {
     return (
 
       <div>
-        <AppNavbar />
+       
 
-
-        <Switch>
-          <Route exact path='/' component={Home} />
+      <AppNavbar />
+        <Switch >
+          <Route  exact path='/' component={Home} />
           <Route path='/search' component={SearchResults} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignUp} />
-          {/* <Route path='/profilepage/:storeid' component={ProfilePage} /> */}
+      {/* <Route path='/profilepage/:storeid' component={ProfilePage} />  */}
         </Switch>
 
         <FooterPage />

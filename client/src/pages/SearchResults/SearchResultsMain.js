@@ -4,6 +4,7 @@ import SearchBar from "../../components/SearchBar";
 import SearchButton from "../../components/SearchButton";
 import itemSeeds from "../../utilsClient/itemSeedDB";
 import { Container, Col, Row } from "../../components/Layout";
+import { Link} from 'react-router-dom';
 import ColumnForResultCards from "../../components/Layout";
 import "./SearchResults.css";
 // import Fuse from 'fuse.js';
@@ -74,6 +75,7 @@ class SearchResultsMain extends Component {
 
   render() {
     return (
+      
       <div>
         <Row> 
         <div className="input-group" id="searchHolder">

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
 
+
 class Login extends Component {
     state = {
         username: "",
@@ -25,6 +26,7 @@ class Login extends Component {
 
     render() {
         return (
+
             <form>
             <p>Enter your username</p>
             <Input
