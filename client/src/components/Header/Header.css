@@ -3,3 +3,9 @@
     height: 100vh !important;
     background-size: cover;
 }
+
+#searchHolder {
+    margin-left:25%;
+    width:50%;
+    margin-right:25%
+}

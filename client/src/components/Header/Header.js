@@ -1,9 +1,8 @@
 import React from "react";
 import "./Header.css";
 import { Mask, View, Container } from 'mdbreact';
-
-
-
+import SearchBar from "../SearchBar";
+import SearchButton from "../SearchButton";
 
 const Header = props => (
   <div>
@@ -11,7 +10,9 @@ const Header = props => (
       <Mask overlay="purple-light" style={{ flexDirection: 'column' }} className="flex-center  text-white text-center">
         <h2>InStock App</h2>
         <h5>Some clever slogan here</h5>
-        <p>.....</p>
+        <div className="input-group" id="searchHolder">
+          <SearchBar/> <SearchButton/>
+        </div>
       </Mask>
     </View>
 
