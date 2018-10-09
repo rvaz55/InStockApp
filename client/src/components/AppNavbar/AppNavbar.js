@@ -40,7 +40,7 @@ class AppNavbar extends React.Component {
                           <NavItem >
                             <NavLink to="/about">About</NavLink>
                           </NavItem>
-          
+
                           <NavItem>
                             <NavLink to="/login">Login</NavLink>
                           </NavItem>
