@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 
 const itemSchema = new Schema({
-  item_id:{type:Number, unique:true},
+  item_id:{ type: Number, unique:true },
   itemName: { type: String, required: true },
-  price: { type: Number},
-  quantity: { type: Number},
-  weight: { type: String},
+  price: { type: Number },
+  quantity: { type: Number },
+  weight: { type: Number },
   weightMeasuredIn: { type: String },
-  carriedByStores: [{ type: Number}],
-  categories: [{ type: Number}],
+  carriedByStores: [{ type: Number }],
+  categories: [{ type: Number }],
   date: { type: Date, default: Date.now },
   
 });
