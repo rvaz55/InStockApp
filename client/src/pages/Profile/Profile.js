@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+import API from "../../utilsClient/routesClient";
 import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
@@ -67,7 +67,7 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <h1>{store.storeName} Inventory</h1>
+                {/* <h1>{store.storeName} Inventory</h1> */}
 
                 {/* // {this.state.items.length ? (
             //     {this.state.items.map(item => (
