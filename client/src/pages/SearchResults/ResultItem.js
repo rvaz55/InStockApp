@@ -8,15 +8,15 @@ class ResultItem extends Component {
       <Card>
         <CardImage className="img-fluid" src="" waves />
         <CardBody>
-            <CardTitle>
-              {this.props.result.item}
-              <p>Price:  {this.props.result.price}</p> 
+            <CardTitle className="text-center">
+              {this.props.itemName}
+              <p>Price:  {this.props.price}</p> 
             </CardTitle>
-            <CardText>
-              {this.props.result.store}
-              <p>{this.props.result.address}</p>
-              <p>{this.props.result.phone}</p>
-              <p>{this.props.result.category}</p>
+            <CardText className="text-center">
+              {this.props.store}
+              <p>{this.props.address}</p>
+              <p>{this.props.phone}</p>
+              <p>{this.props.category}</p>
             </CardText>
             <Button href="#">Button</Button>
         </CardBody>
