@@ -1,7 +1,27 @@
 #searchHolder {
     margin-left:25%;
     width:50%;
-    margin-right:25%;
-    height: 80vh;
+    margin-right:25%
 }
 
+.fade-enter {
+    opacity: 0.01;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms ease-in
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 1000ms ease-in;
+}
+
+#resultItem {
+    margin-top: 15px;
+}
