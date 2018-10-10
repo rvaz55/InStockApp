@@ -29,10 +29,10 @@ class Home extends Component {
       alert("must enter search word");
     }
     else {
-      let tempResults = [];
-      let options = {
-        keys: ['item']
-      };
+      //let tempResults = [];
+     // let options = {
+     //   keys: ['item']
+     // };
 
       //Line below removes the quotes (") at the beginning and end of the term 
       //it also stringifies the text and replaces spaces with a dash (-)

@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, CardText } from 'mdbreact';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Col, Row } from "../../components/Layout";
+import { Button, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 
 class ResultItem extends Component {
   render() {
     return ( 
       <Card>
-        <img className="card-img-top" alt='stock' src={this.props.photo} />
+        <CardImage className="img-fluid" src="" waves />
         <CardBody>
             <CardTitle>
-              {this.props.itemName}
-              <p>Price:  {this.props.price}</p> 
+              {this.props.result.item}
+              <p>Price:  {this.props.result.price}</p> 
             </CardTitle>
             <CardText>
-              {this.props.store}
-              <p>{this.props.address}</p>
-              <p>{this.props.phone}</p>
-              <p>{this.props.category}</p>
+              {this.props.result.store}
+              <p>{this.props.result.address}</p>
+              <p>{this.props.result.phone}</p>
+              <p>{this.props.result.category}</p>
             </CardText>
+            <Button href="#">Button</Button>
         </CardBody>
     </Card>
     );
