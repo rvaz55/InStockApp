@@ -131,10 +131,12 @@ const itemSeed = [
 }
 ];
 
-// itemSeed.forEach(each => {
-//     db.Item.create([ each ])
-//     .then(each => {
-//     console.log(data.result.n + " records inserted!")
-//   })
-//     .catch(err => console.log(err))
-// })
+db.Item.deleteMany({})
+
+itemSeed.forEach(each => {
+    db.Item.create([ each ])
+    .then(each => {
+    console.log(each.result.n + " records inserted!")
+  })
+    .catch(err => console.log(err))
+})

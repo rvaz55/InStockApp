@@ -8,11 +8,11 @@ class ResultItem extends Component {
       <Card>
         <img className="card-img-top" alt='stock' src={this.props.photo} />
         <CardBody>
-            <CardTitle>
+            <CardTitle className="text-center">
               {this.props.itemName}
               <p>Price:  {this.props.price}</p> 
             </CardTitle>
-            <CardText>
+            <CardText className="text-center">
               {this.props.store}
               <p>{this.props.address}</p>
               <p>{this.props.phone}</p>

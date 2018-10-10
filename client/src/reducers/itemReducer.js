@@ -21,12 +21,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 items: action.payload,
-                loading: false,
+                loading: false
             };
         case GET_ITEMS_BY_CATEGORY:
             return {
                 ...state,
-                items: state.items.filter(item => item.category === action.payload)
+                items: action.payload,
+                loading: false
             };
             case ITEMS_LOADING:
             return {

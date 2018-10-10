@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import API from "../../utilsClient/routesClient";
+import catOptions from "../SearchResults/categoryOptionsHolder";
 import SearchBar from "../../components/SearchBar";
 import SearchButton from "../../components/SearchButton";
 import ResultsColumn1 from "./ResultsColumn1";
 import ResultsColumn2 from "./ResultsColumn2";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Label, Input, FormGroup, Form } from 'reactstrap';
 import "./SearchResults.css";
 import { connect } from 'react-redux';
 import { getItemsBySearch, getItemsByCategory } from '../../actions/itemActions';
@@ -12,23 +14,48 @@ import PropTypes from 'prop-types';
 
 class SearchResultsMain extends Component {
   state = {
-    searchText: ""
+    searchText: "",
+    allItems: [],
+    category: ""
+  }
+
+  componentDidMount() {
+    this.getItems();
+  }
+
+  getItems = () => {
+    API.getAllItems()
+    .then(res => 
+      this.setState({allItems: res.data})
+    )
+    .catch(err=>console.log(err))
+    console.log(this.state.allItems)
   }
   
   // update search box to show what is being typed
-handleInputChange = (e) => {
+handleInputChangeOnBar = (e) => {
   this.setState({ [e.target.name]: e.target.value });
+}
+
+// update select to show what is being typed
+handleInputChangeOnSelect = (e) => {
+  this.setState({ [e.target.name]: e.target.value });
+  console.log(this.state.category)
 }
 
 // get the value that is typed in the box to use in the search 
 handleSubmit = e => {
   e.preventDefault();
-  console.log("search" + this.state.searchText)
 
   const newSearch = this.state.searchText;
+  const newCatSearch = this.state.category;
 
   //Search results array in db via action
-  this.props.getItemsBySearch(newSearch);
+  if(this.state.searchText) {
+    this.props.getItemsBySearch(newSearch);
+  } else if (this.state.category){
+    this.props.getItemsByCategory(newCatSearch);
+  }
 }
   
   render() {
@@ -36,16 +63,30 @@ handleSubmit = e => {
     // which was used when not using redux
     // use object destructuring to pull out the items array from item
     const item = this.props.item.items;
+    const allItem = this.state.allItems;
     return (
       <Container fluid className="text-center text-md-left">
-        <Row>
-          <div className="input-group" id="searchHolder">
-            <SearchBar onChange={this.handleInputChange} value={this.state.searchText} />
-            <span>
-              <SearchButton onClick={this.handleSubmit} />
-            </span>
-          </div>
-        </Row>
+        <Form>
+          <Row form>
+            <Col md={{ size: 5, offset: 1 }}>
+              <FormGroup>
+                <SearchBar onChange={this.handleInputChangeOnBar} value={this.state.searchText} />
+              </FormGroup>
+            </Col>
+            <Col md={2}>
+              <FormGroup> 
+                <SearchButton onClick={this.handleSubmit} />
+              </FormGroup>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                <Input type="select" onChange = {this.handleInputChangeOnSelect}>
+                  <catOptions allItem={allItem}/>
+                </Input>
+              </FormGroup>
+            </Col>
+          </Row>
+        </Form>
         <Container fluid className="text-center text-md-left">
           <Row>
             <Col size="sm-4">
@@ -72,7 +113,8 @@ handleSubmit = e => {
 SearchResultsMain.propTypes = {
   getItemsBySearch: PropTypes.func.isRequired,
   // item represents the state
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  getItemsByCategory: PropTypes.func.isRequired
 }
 
 // writing the mapStateToProps function
