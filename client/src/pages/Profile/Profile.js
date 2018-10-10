@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import API from "../../utilsClient/routesClient";
-import { Input, FormBtn } from "../../components/Form";
+//import API from "../../utilsClient/routesClient";
+//import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
     state = {
@@ -26,7 +26,7 @@ class Profile extends Component {
 
 
             <p>Welcome username</p>
-
+            </div>
         );
       }
 }

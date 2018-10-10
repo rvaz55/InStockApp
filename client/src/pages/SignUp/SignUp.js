@@ -11,8 +11,10 @@ class SignUp extends Component {
         storeZip: "",
         storePhone: "",
         username: "",
-        password: "",
-        email: ""
+        passwordOne: "",
+        passwordTwo:"",
+        email: "",
+        error: null
     };
 
     handleInputChange = event => {
@@ -27,16 +29,20 @@ class SignUp extends Component {
 
     handleFormSubmit = (event, data) => {
         event.preventDefault();
-        if (this.state.storeName
-            && this.state.storeAddress
-            && this.state.storeCity 
-            && this.state.storeState
-            && this.state.storeZip
-            && this.state.storePhone
-            && this.state.username
-            && this.state.password
-            && this.state.email) {
-            API.saveStore(
+
+         if (this.state.storeName
+             && this.state.storeAddress
+             && this.state.storeCity 
+             && this.state.storeState
+             && this.state.storeZip
+             && this.state.storePhone
+             && this.state.username
+             && this.state.passwordOne
+             && this.state.passwordTwo
+             && this.state.email) {
+
+                console.log("sjbveuiubsui ivw")
+            //API.saveStore(
                 // store: this.state.storeName,
                 // address: this.state.storeAddress,
                 // city: this.state.storeCity,
@@ -46,9 +52,8 @@ class SignUp extends Component {
                 // username: this.state.username,
                 // password: this.state.password,
                 // email: this.state.email
-            data)
-            .then(res => console.log(res))
-            
+            //data)
+            //.then(res => console.log(res))
         }
 
     };
@@ -117,8 +122,16 @@ class SignUp extends Component {
                 <Input
                     type="password"
                     placeholder="Password"
-                    name="password"
-                    value={this.state.password}
+                    name="passwordOne"
+                    value={this.state.passwordOne}
+                    onChange={this.handleInputChange}
+                />
+                <p>Confirm password</p>
+                <Input
+                    type="password"
+                    placeholder="Password"
+                    name="passwordTwo"
+                    value={this.state.passwordTwo}
                     onChange={this.handleInputChange}
                 />
                 <p>Enter an email address</p>
@@ -138,9 +151,11 @@ class SignUp extends Component {
                         && this.state.storeZip 
                         && this.state.storePhone 
                         && this.state.username 
-                        && this.state.password 
+                        && this.state.passwordOne
+                        && this.state.passwordTwo 
                         && this.state.email)}
-                    onClick={(e) => this.handleFormSubmit(e,this.state)}
+                        //onClick = {this.handleFormSubmit}
+                     onClick={(e) => this.handleFormSubmit(e,this.state)}
                 >
                     Sign Up for InStock
               </FormBtn>

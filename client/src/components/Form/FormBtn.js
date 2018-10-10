@@ -1,7 +1,11 @@
-import React from "react";
+import React, { Component } from 'react';
+import { Button } from 'mdbreact';
 
 export const FormBtn = props => (
-  <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
-    {props.children}
-  </button>
+
+  <Button onClick = {props.onClick} style={{ float: "right", marginBottom: 10, color:"deep-purple" }} className="btn btn-success">
+       Submit   
+  </Button>
 );
+
+
