@@ -6,7 +6,8 @@ import axios from 'axios';
 export const getItemsBySearch = (newSearch) => dispatch => {
     dispatch(setItemsLoading());
     return axios
-        .get(`/api/items/${newSearch}`)
+        .get(`/api/items/search/${search}`)
+
         .then(res => 
             dispatch({
                 type: GET_ITEMS_BY_SEARCH,
@@ -16,12 +17,18 @@ export const getItemsBySearch = (newSearch) => dispatch => {
         .catch(err => console.log(err))
     };
 
-export const getItemsByCategory = (category) => {
-    return {
-        type: GET_ITEMS_BY_CATEGORY,
-        payload: category
-    };
-};
+export const getItemsByCategory = (category) => dispatch => {
+    dispatch(setItemsLoading());
+    return axios
+        .get(`/api/items/category/${category}`)
+        .then(res =>
+            dispatch({
+                type: GET_ITEMS_BY_CATEGORY,
+                payload: res.data
+            })
+        )
+        .catch(err=> console.log(err))
+    }
 
 export const setItemsLoading = () => {
     return {

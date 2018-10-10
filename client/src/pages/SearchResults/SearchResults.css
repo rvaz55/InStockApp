@@ -4,6 +4,10 @@
     margin-right:25%
 }
 
+#select{
+    width:40%;
+}
+
 .fade-enter {
     opacity: 0.01;
 }
