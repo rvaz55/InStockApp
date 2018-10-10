@@ -29,17 +29,20 @@ class SignUp extends Component {
 
     handleFormSubmit = (event, data) => {
         event.preventDefault();
-        if (this.state.storeName
-            && this.state.storeAddress
-            && this.state.storeCity 
-            && this.state.storeState
-            && this.state.storeZip
-            && this.state.storePhone
-            && this.state.username
-            && this.state.passwordOne
-            && this.state.passwordTwo
-            && this.state.email) {
-            API.saveStore(
+
+         if (this.state.storeName
+             && this.state.storeAddress
+             && this.state.storeCity 
+             && this.state.storeState
+             && this.state.storeZip
+             && this.state.storePhone
+             && this.state.username
+             && this.state.passwordOne
+             && this.state.passwordTwo
+             && this.state.email) {
+
+                console.log("sjbveuiubsui ivw")
+            //API.saveStore(
                 // store: this.state.storeName,
                 // address: this.state.storeAddress,
                 // city: this.state.storeCity,
@@ -49,9 +52,8 @@ class SignUp extends Component {
                 // username: this.state.username,
                 // password: this.state.password,
                 // email: this.state.email
-            data)
-            .then(res => console.log(res))
-            
+            //data)
+            //.then(res => console.log(res))
         }
 
     };
@@ -149,9 +151,11 @@ class SignUp extends Component {
                         && this.state.storeZip 
                         && this.state.storePhone 
                         && this.state.username 
-                        && this.state.password 
+                        && this.state.passwordOne
+                        && this.state.passwordTwo 
                         && this.state.email)}
-                    onClick={(e) => this.handleFormSubmit(e,this.state)}
+                        //onClick = {this.handleFormSubmit}
+                     onClick={(e) => this.handleFormSubmit(e,this.state)}
                 >
                     Sign Up for InStock
               </FormBtn>
