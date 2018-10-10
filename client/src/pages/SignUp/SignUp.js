@@ -57,6 +57,8 @@ class SignUp extends Component {
                   console.log("this is the data")
                   console.log(this.state)
                   console.log(authUser)
+                  let path = `/login`;
+                  this.props.history.push(path);
                 })
                 .catch(error => {
                     console.log("this is an error")

@@ -40,7 +40,7 @@ class Home extends Component {
       let item =((JSON.stringify(this.state.searchText)).slice(1, -1)).replace(/ /gi, '+');
       let path = `/search/${item}`;
       this.props.history.push(path);
-      console.log(this.props)
+      console.log(this.props) 
 
     }
     };
