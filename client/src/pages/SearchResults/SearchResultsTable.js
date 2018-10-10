@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ResultItem from "./ResultItem";
-import ColumnForResultCards from "../../components/Layout";
+//import ColumnForResultCards from "../../components/Layout";
 
 class SearchResults extends Component {
     

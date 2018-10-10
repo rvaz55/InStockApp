@@ -2,14 +2,10 @@ import { auth } from './firebase';
 //This file contains all the authentication functions
 
 //Sign-Up Func
-export const doCreateUserWithEmailAndPassword = (email, password) => {
-    auth.createUserWithEmailAndPassword(email, password);
-  };
+export const doCreateUserWithEmailAndPassword = (email, password) => auth.createUserWithEmailAndPassword(email, password);
 
 //Sign-In Func
-export const doSignInWithEmailAndPassword = (email, password) =>{
-    auth.signInWithEmailAndPassword(email, password);
-  };
+export const doSignInWithEmailAndPassword = (email, password) => auth.signInWithEmailAndPassword(email, password);
 
 //Sign-Out Func
 //Arguments don't need to be passed into this func

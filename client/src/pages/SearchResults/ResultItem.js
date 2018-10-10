@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Row } from "../../components/Layout";
+//import { Container, Col, Row } from "../../components/Layout";
 import { Button, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 
 class ResultItem extends Component {
