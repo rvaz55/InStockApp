@@ -1,16 +1,11 @@
-const router = require("express").Router();
+const express = require('express');
+const router = express.Router();
 const itemController = require("../../controllers/itemController");
 
-// Matches with "api/store/:storeid"
-router.route("/")
-  .get(itemController.findById)
-  .post(itemController.create);
-
-// Matches with "api/profilepage/:storeid"
+// GET route to api/items
+// Gets all items from db
 router
-  .route("/profilepage/:storeid")
-  .get(itemController.findById)
-  .put(itemController.update)
-  .delete(itemController.remove);
+    .route('/:search')
+    .get(itemController.findBySearch);
 
 module.exports = router;
