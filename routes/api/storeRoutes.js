@@ -4,7 +4,7 @@ const storesController = require("../../controllers/storesController");
 
 // Matches with "api/store/signup"
 router
-.route("/signup")
+.route("/")
 // .get(storesController.findById)
 .post(storesController.create);
 
