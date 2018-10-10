@@ -8,9 +8,9 @@ import ResultsColumn2 from "./ResultsColumn2";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Label, Input, FormGroup, Form } from 'reactstrap';
 import "./SearchResults.css";
-import { connect } from 'react-redux';
-import { getItemsBySearch, getItemsByCategory } from '../../actions/itemActions';
-import PropTypes from 'prop-types';
+// import Fuse from 'fuse.js';
+// import Map from "./MapHolder";
+
 
 class SearchResultsMain extends Component {
   state = {
@@ -58,6 +58,13 @@ handleSubmit = e => {
   }
 }
   
+
+  // componentDidMount(){
+  //   this.setState({ results: [
+  //   ]
+  //   })
+  // }
+
   render() {
     // this.props.item is the same as writing this.state
     // which was used when not using redux
@@ -89,18 +96,15 @@ handleSubmit = e => {
         </Form>
         <Container fluid className="text-center text-md-left">
           <Row>
-            <Col size="sm-4">
-              <ResultsColumn1 items={item} />
-            </Col>
-            <Col size="sm-4">
-              <ResultsColumn2 items={item} />
+            <Col size="sm-8">
+              <SearchResultsTable results={this.state.results} />
             </Col>
             <Col size="sm-4">
               Map
-              </Col>
+            </Col>
           </Row>
-        </Container>
       </Container>
+    </Container>
     );
   }
 }

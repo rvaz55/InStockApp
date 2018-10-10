@@ -1,15 +1,15 @@
-// reducer is where the actual state goes
-// responses get sent here
-// and then can add this to the component
+// // reducer is where the actual state goes
+// // responses get sent here
+// // and then can add this to the component
 
-// bring the type of actions into here
-import { GET_ITEMS_BY_SEARCH, GET_ITEMS_BY_CATEGORY, ITEMS_LOADING } from "../actions/types";
+// // bring the type of actions into here
+// import { GET_ITEMS_BY_SEARCH, GET_ITEMS_BY_CATEGORY, ITEMS_LOADING } from "../actions/types";
 
-// set initial state for searchresultsmain 
-const initialState = {
-    items: [],
-    loading: false
-};
+// // set initial state for searchresultsmain 
+// const initialState = {
+//     items: [],
+//     loading: false
+// };
 
 //export the state listed above
 export default function (state = initialState, action) {

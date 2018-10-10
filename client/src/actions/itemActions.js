@@ -3,7 +3,7 @@
 import {GET_ITEMS_BY_SEARCH, GET_ITEMS_BY_CATEGORY, ITEMS_LOADING } from "./types";
 import axios from 'axios';
 
-export const getItemsBySearch = (search) => dispatch => {
+export const getItemsBySearch = (newSearch) => dispatch => {
     dispatch(setItemsLoading());
     return axios
         .get(`/api/items/search/${search}`)
