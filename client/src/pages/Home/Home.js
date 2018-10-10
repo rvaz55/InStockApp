@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Header from "../../components/Header"
 import SearchBar from "../../components/SearchBar";
 import SearchButton from "../../components/SearchButton";
-import "./Home.css";
+
 
 class Home extends Component {
-
 
   constructor() {
     super();
@@ -49,7 +48,7 @@ class Home extends Component {
   render() {
     return (
 
-        <div className="home-page page">
+        <div>
             <Header />
               <div className="input-group" id="searchHolder">
                   <SearchBar className="form-control" onChange={this.handleInputChange} value={this.state.searchText} />

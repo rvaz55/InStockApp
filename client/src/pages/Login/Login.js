@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
-import "./Login.css"
 import Profile from ".././Profile";
 
 
@@ -49,7 +48,7 @@ class Login extends Component {
     render() {
         return (
 
-          <div className="login-page page align-middle">
+          <div>
           { this.state.authenticated 
             //If authenticated is true display items below
             ? 
@@ -57,7 +56,6 @@ class Login extends Component {
               
             //If authenticated is false display items below
             : 
-
             <form>
             <p>Enter your username</p>
             <Input
@@ -83,13 +81,11 @@ class Login extends Component {
                 Login to InStock
               </FormBtn>
           </form>
-
       
           }
         </div>
       );
            
-
       }
 }
 
