@@ -77,7 +77,7 @@ class SearchResultsMain extends Component {
     return (
       
       <div>
-        <Row> 
+        <Row className="searchbarRow"> 
         <div className="input-group" id="searchHolder">
           <SearchBar className="form-control" onChange={this.handleInputChange} value={this.state.searchText} />
           <span>
