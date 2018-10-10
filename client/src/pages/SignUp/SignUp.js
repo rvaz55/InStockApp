@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utilsClient/routesClient"
+import "./SignUp.css";
 
 class SignUp extends Component {
     state = {
@@ -56,6 +57,7 @@ class SignUp extends Component {
 
     render() {
         return (
+            <div className= "signup-page">
             <form>
                 <p>Store name</p>
                 <Input
@@ -145,6 +147,7 @@ class SignUp extends Component {
                     Sign Up for InStock
               </FormBtn>
             </form>
+            </div>
         );
     }
 }
