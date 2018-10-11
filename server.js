@@ -18,7 +18,7 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instock_devDB");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instock_devDB", { useNewUrlParser: true });
 //Initializes the autoIncrement NPM package
 const connection = mongoose.createConnection(process.env.MONGODB_URI|| "mongodb://localhost/instock_devDB");
 autoIncrement.initialize(connection);

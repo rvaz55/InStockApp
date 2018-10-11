@@ -13,6 +13,7 @@ class SearchResultsMain extends Component {
   state = {
     searchText: "",
     items:[],
+    categoryItems:[],
     selectedCategory: ""
   }
 
@@ -43,10 +44,10 @@ class SearchResultsMain extends Component {
     getCategoryResults = (category) => {
       API.getItemsByCategory(category)
       .then(res => 
-      this.setState({ items: res.data })
+      this.setState({ categoryItems: res.data })
     )
     .catch(err=>console.log(err))
-    console.log((this.state.items))
+    console.log((this.state.categoryItems))
     }
   
   // update search box to show what is being typed
@@ -84,7 +85,7 @@ handleCategorySubmit = e => {
   //Search results array in db via action
   if(this.state.selectedCategory) {
     this.getCategoryResults(newCatSearch);
-    console.log(newCatSearch + this.state.items)
+    console.log(newCatSearch + this.state.categoryItems)
    } 
 }
   

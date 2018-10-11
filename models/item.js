@@ -7,16 +7,16 @@ const autoIncrement = require('mongoose-auto-increment');
 const itemSchema = new Schema({
   // item_id:{type:Number, unique:true},
   itemName: { type: String, required: true },
-  price: { type: Number},
-  quantity: { type: Number},
-  weight: { type: String},
-  weightMeasuredIn: { type: String },
-  carriedByStores: [{ type: Number}],
-  category: {type: String},
-  categories: [{ type: Number}],
-  date: { type: Date, default: Date.now },
-  store: { type: String },
-  address: { type: String }
+  price: { type: Number, required: false},
+  quantity: { type: Number, required: false},
+  weight: { type: String, required: false},
+  weightMeasuredIn: { type: String, required: false },
+  carriedByStores: [{ type: Number, required: false}],
+  category: {type: String, required: false},
+  categories: [{ type: Number, required: false}],
+  date: { type: Date, default: Date.now, required: false },
+  store: { type: String, required: false },
+  address: { type: String, required: false }
 });
 
 //autoIncrement.initialize(mongoose.connection);
