@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import API from "../../utilsClient/routesClient";
-import catOptionsHolder from "../SearchResults/categoryOptionsHolder";
 import SearchBar from "../../components/SearchBar";
+import Dropdown from "../../components/CategoryOptions";
 import SearchButton from "../../components/SearchButton";
 import ResultsColumn1 from "./ResultsColumn1";
 import ResultsColumn2 from "./ResultsColumn2";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Label, Input, FormGroup, Form } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import "./SearchResults.css";
 import { connect } from 'react-redux';
 import { getItemsBySearch, getItemsByCategory } from '../../actions/itemActions';
@@ -15,45 +14,48 @@ import PropTypes from 'prop-types';
 class SearchResultsMain extends Component {
   state = {
     searchText: "",
-    allItems: [],
-    category: ""
+    // allItems: [],
+    selectedCategory: "",
   }
 
-  componentDidMount() {
-    this.getItems();
-  }
+  // componentDidMount() {
+  //   this.getItems();
+  // }
 
-  getItems = () => {
-    API.getAllItems()
-    .then(res => 
-      this.setState({allItems: res.data})
-    )
-    .catch(err=>console.log(err))
-    console.log(this.state.allItems)
-  }
+  // getItems = () => {
+  //   API.getAllItems()
+  //   .then(res => 
+  //     this.setState({allItems: res.data})
+  //   )
+  //   .catch(err=>console.log(err))
+  //   console.log(this.state.allItems)
+  // }
   
   // update search box to show what is being typed
 handleInputChangeOnBar = (e) => {
+  this.handleInputChangeOnBar.bind(this);
   this.setState({ [e.target.name]: e.target.value });
 }
 
 // update select to show what is being typed
 handleInputChangeOnSelect = (e) => {
-  this.setState({ [e.target.name]: e.target.value });
-  console.log(this.state.category)
+  this.handleInputChangeOnSelect.bind(this);
+  this.setState({ [e.target.value]: e.target.value });
+  console.log(this.state.selectedCategory)
 }
 
 // get the value that is typed in the box to use in the search 
 handleSubmit = e => {
   e.preventDefault();
+  this.handleSubmit.bind(this)
 
   const newSearch = this.state.searchText;
-  const newCatSearch = this.state.category;
+  const newCatSearch = this.state.selectedCategory;
 
   //Search results array in db via action
   if(this.state.searchText) {
     this.props.getItemsBySearch(newSearch);
-  } else if (this.state.category){
+  } else if (this.state.selectedCategory){
     this.props.getItemsByCategory(newCatSearch);
   }
 }
@@ -63,7 +65,7 @@ handleSubmit = e => {
     // which was used when not using redux
     // use object destructuring to pull out the items array from item
     const item = this.props.item.items;
-    const allItem = this.state.allItems;
+    // const allItem = this.state.allItems;
     return (
       <Container fluid className="text-center text-md-left">
         <Form>
@@ -80,9 +82,7 @@ handleSubmit = e => {
             </Col>
             <Col md={3}>
               <FormGroup>
-                <Input type="select" onChange = {this.handleInputChangeOnSelect}>
-                  <catOptionsHolder/>
-                </Input>
+                  <Dropdown />
               </FormGroup>
             </Col>
           </Row>

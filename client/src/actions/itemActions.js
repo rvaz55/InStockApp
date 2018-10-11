@@ -3,11 +3,10 @@
 import {GET_ITEMS_BY_SEARCH, GET_ITEMS_BY_CATEGORY, ITEMS_LOADING } from "./types";
 import axios from 'axios';
 
-export const getItemsBySearch = (newSearch) => dispatch => {
+export const getItemsBySearch = (search) => dispatch => {
     dispatch(setItemsLoading());
     return axios
-        .get(`/api/items/search/${newSearch}`)
-
+        .get(`/api/items/search/${search}`)
         .then(res => 
             dispatch({
                 type: GET_ITEMS_BY_SEARCH,
