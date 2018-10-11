@@ -3,7 +3,7 @@
 // import itemReducer from './itemReducer';
 // // add storeReducer here when make it
 
-// export default combineReducers({
-//     item: itemReducer,
-//     //add storeReducer here 
-// })
+export default combineReducers({
+    item: itemReducer
+    //add storeReducer here 
+})
