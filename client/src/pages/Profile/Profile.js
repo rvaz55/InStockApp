@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import API from "../../utilsClient/routesClient";
+import API from "../../utilsClient/routesClient";
 //import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
@@ -8,6 +8,9 @@ class Profile extends Component {
         password: ""
     };
     
+
+    // when user clicks submit button on modal, the item info gets added to the Items collection
+    // API.saveItem
 
 
     render() {
