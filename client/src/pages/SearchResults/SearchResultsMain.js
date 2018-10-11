@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utilsClient/routesClient";
-import catOptions from "../SearchResults/categoryOptionsHolder";
+import CategoryOptions from "../../components/CategoryOptions";
 import SearchBar from "../../components/SearchBar";
 import SearchButton from "../../components/SearchButton";
 import ResultsColumn1 from "./ResultsColumn1";
@@ -88,7 +88,7 @@ handleSubmit = e => {
             <Col md={3}>
               <FormGroup>
                 <Input type="select" onChange = {this.handleInputChangeOnSelect}>
-                  <catOptions allItem={allItem}/>
+                  <CategoryOptions/>
                 </Input>
               </FormGroup>
             </Col>
