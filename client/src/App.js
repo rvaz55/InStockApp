@@ -7,15 +7,12 @@ import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import SearchResults from "./pages/SearchResults";
-import { Provider } from 'react-redux';
-import store from "./store";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
         <div>
         
 
@@ -30,8 +27,7 @@ class App extends Component {
 
           <FooterPage />
         </div>       
-      </Provider>
-
+      
     );
   }
 }
