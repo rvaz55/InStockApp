@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utilsClient/routesClient";
 import AddItemModal from "../../components/addItemModal";
+import StoreItemsTable from "./storeItemsTable";
+import { Table, Col } from 'reactstrap';
 //import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
@@ -9,7 +11,13 @@ class Profile extends Component {
         password: "",
         storeName: "Indian Groceries & Spices Inc" ,
         modal: false,
-        itemToAdd: "",
+        itemInfo: {
+            itemToAdd: "",
+            price: 0,
+            category: "",
+            store: "",
+            address: ""
+        },
         storeItems: []
     };
 
@@ -17,11 +25,10 @@ class Profile extends Component {
   getStoreItems = (storeId) => {
     API.getStoreItems(storeId)
     .then(res => 
-    this.setState({ storeItems: res.data })
-  )
-  .catch(err=>console.log(err))
-  console.log((this.state.storeItems))
-  }
+        this.setState({ storeItems: res.data })
+    )
+    .catch(err=>console.log(err))
+}
 
 componentDidMount(){
     this.getStoreItems(this.state.storeName)
@@ -34,12 +41,18 @@ componentDidMount(){
     };
 
     onChange = e => {
-        this.setState({ itemToAdd: e.target.value });
+        this.setState({ itemInfo: e.target.value });
     };
 
     // method for saving items to db 
-    saveNewItem = (newItem) => {
-        API.saveItem(newItem)
+    saveNewItem = () => {
+        API.saveItem({
+            itemName: this.state.itemInfo.itemToAdd,
+            price: this.state.itemInfo.price,
+            category: this.state.itemInfo.category,
+            store: this.state.itemInfo.store,
+            address: this.state.itemInfo.address
+          })
         .then(res =>
             console.log(res)            )
             .catch(err => console.log(err))
@@ -53,6 +66,7 @@ componentDidMount(){
         this.toggle();
     }
     render() {
+        const thisStoresItems = this.state.storeItems;
         return (
             <div>
                 {/* <h1>{store.storeName} Inventory</h1> */}
@@ -62,7 +76,13 @@ componentDidMount(){
 
             //     ))}
             // )} */}
-                <AddItemModal onClick={this.toggle} isOpen={this.state.modal} onChange={this.onChange} onSubmit={this.onSubmit} toggle={this.toggle} />
+                <AddItemModal 
+                    onClick={this.toggle} 
+                    isOpen={this.state.modal} 
+                    onChange={this.onChange} 
+                    onSubmit={this.onSubmit} 
+                    toggle={this.toggle}
+                     />
 
                 {/* <h1>Add items to inventory.</h1> */}
 
@@ -70,19 +90,24 @@ componentDidMount(){
 
                 <p>Welcome {this.state.storeName}</p>
 
+            <Col md={{ size: 8, offset: 2 }}>
                 {this.state.storeItems.length ? (
-              <ul>
-                {this.state.storeItems.map(each => (
-                  <li key={each._id}>
-                      {each.itemName}
-                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
-                  </li>
-                ))}
-              </ul>
-            ) : (
+                    <Table striped>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Store</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <StoreItemsTable storeItems={thisStoresItems}/>
+                    </Table>
+                          ) : (
               <h3>No Results to Display</h3>
             )}
-
+            </Col>
             </div>
         );
     }
