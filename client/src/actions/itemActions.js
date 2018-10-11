@@ -6,7 +6,7 @@ import axios from 'axios';
 export const getItemsBySearch = (newSearch) => dispatch => {
     dispatch(setItemsLoading());
     return axios
-        .get(`/api/items/search/${search}`)
+        .get(`/api/items/search/${newSearch}`)
 
         .then(res => 
             dispatch({
