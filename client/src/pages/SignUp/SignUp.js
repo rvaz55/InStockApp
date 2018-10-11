@@ -16,8 +16,7 @@ class SignUp extends Component {
         username: "",
         passwordOne: "",
         passwordTwo:"",
-        email: "",
-        error: null
+        email: ""
 
     };
 
@@ -61,9 +60,8 @@ class SignUp extends Component {
                   this.props.history.push(path);
                 })
                 .catch(error => {
-                    console.log("this is an error")
-                  this.setState({error});
-                  console.log(data)
+                  alert(error.message)
+                  //console.log(error)
                 });
 
 
