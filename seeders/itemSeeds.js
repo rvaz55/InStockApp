@@ -42,7 +42,7 @@ const itemSeed = [
     phone: "713-694-8649"
   },
   {
-    "itemName": "Badia Cinnamon Sticks Mexican",
+    "itemName": "Chicken Legs",
     price: 3.4,
     category: "spice",
     store: "La Michoacana Meat Market",
@@ -50,7 +50,7 @@ const itemSeed = [
     phone: "713-694-8649"
  },
 {
-    itemName: "Badia Cinnamon Sticks Mexican",
+    itemName: "Chamomille Tea (loose)",
     price: 4.5,
     category: "spice",
     store: "La Michoacana Meat Market",
@@ -58,7 +58,7 @@ const itemSeed = [
     phone: "281-807-0981"
 },
 {
-    itemName: "Badia Cinnamon Sticks Mexican",
+    itemName: "Cinnamon Sticks",
     price: 5.6,
     category: "spice",
     store: "La Michoacana Meat Market",
@@ -66,7 +66,7 @@ const itemSeed = [
     phone: "281-893-0694"
 },
 {
-    itemName: "El Yucateco Paste Achiote",
+    itemName: "Guajillo Chiles",
     price: 8,
     category: "spice",
     store: "La Michoacana Meat Market",
@@ -74,7 +74,7 @@ const itemSeed = [
     phone: "713-223-3837"
 },
 {
-    itemName: "El Yucateco Paste Achiote",
+    itemName: "Achiote Paste",
     price: 9,
     category: "spice",
     store: "La Michoacana Meat Market",
@@ -82,7 +82,7 @@ const itemSeed = [
     phone: "281-974-2632"
 },
 {
-    itemName: "El Yucateco green habanero",
+    itemName: "Japanese Peanuts",
     price: 3.4,
     category: "condiment",
     store: "La Michoacana Meat Market",
@@ -90,7 +90,7 @@ const itemSeed = [
     phone: "713-694-8649"
 },
 {
-    itemName: "El Yucateco green habanero",
+    itemName: "Salvadorean Fresh Cheese",
     price: 4.5,
     category: "condiment",
     store: "La Michoacana Meat Market",
@@ -98,7 +98,7 @@ const itemSeed = [
     phone: "281-807-0981"
 },
 {
-    itemName: "El Yucateco green habanero",
+    itemName: "Hibiscus",
     price: 5.6,
     category: "condiment",
     store: "La Michoacana Meat Market",
@@ -106,7 +106,7 @@ const itemSeed = [
     phone: "281-893-0694"
 },
 {
-    itemName: "El Yucateco green habanero",
+    itemName: "Naan",
     price: 8,
     category: "condiment",
     store: "La Michoacana Meat Market",

@@ -1,14 +1,15 @@
 import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
 import Profile from ".././Profile";
-
+import  { auth, firebase }  from "../../firebase";
 
 class Login extends Component {
     state = {
-        username: "",
+        email: "",
         password: "",
         authenticated: false,
-        storeID: ''
+        storeID: '',
+        error: null
     };
     
     handleInputChange = event => {
@@ -21,9 +22,20 @@ class Login extends Component {
           });
       };
 
-      handleFormSubmit = event => {
+      handleFormSubmit = (event, data) => {
         event.preventDefault();
-        // alert("Insert code to check database for user password combo");
+        console.log(data)
+
+        auth.doSignInWithEmailAndPassword(data.email, data.password)
+        .then((data) => {
+          console.log(data)
+          //this.setState({ ...INITIAL_STATE });
+          //history.push(routes.HOME);
+          alert('you are signed in!')
+        })
+        .catch(error => {
+          alert(error.message);
+        });
       };
 
   // componentWillMount() {
@@ -57,12 +69,12 @@ class Login extends Component {
             //If authenticated is false display items below
             : 
             <form>
-            <p>Enter your username</p>
+            <p>Enter your email</p>
             <Input
               type="text"
-              placeholder="Username"
-              name="username"
-              value={this.state.username}
+              placeholder="Email"
+              name="email"
+              value={this.state.email}
               onChange={this.handleInputChange}
             />
             <p>Enter your password</p>
@@ -75,8 +87,8 @@ class Login extends Component {
             />
             <br></br>
             <FormBtn
-                disabled={!(this.state.username && this.state.password)}
-                onClick={this.handleFormSubmit}
+                disabled={!(this.state.email && this.state.password)}
+                onClick={(e) => this.handleFormSubmit(e,this.state)}
               >
                 Login to InStock
               </FormBtn>
