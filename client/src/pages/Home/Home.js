@@ -29,10 +29,10 @@ class Home extends Component {
       alert("must enter search word");
     }
     else {
-      let tempResults = [];
-      let options = {
-        keys: ['item']
-      };
+      //let tempResults = [];
+     // let options = {
+     //   keys: ['item']
+     // };
 
       //Line below removes the quotes (") at the beginning and end of the term 
       //it also stringifies the text and replaces spaces with a dash (-)
@@ -40,7 +40,7 @@ class Home extends Component {
       let item =((JSON.stringify(this.state.searchText)).slice(1, -1)).replace(/ /gi, '+');
       let path = `/search/${item}`;
       this.props.history.push(path);
-      console.log(this.props)
+      console.log(this.props) 
 
     }
     };

@@ -5,9 +5,16 @@ export default {
   // getItems: function() {
   //   return axios.get("/api/items");
   // },
-  // Gets the item with the given id
-  getItem: function(id) {
-    return axios.get("/api/items/" + id);
+  getAllItems: function() {
+    return axios.get("/api/items/")
+  },
+  // Gets the item with the given search term
+  getItemsBySearch: function(search) {
+    return axios.get(`/api/items/search/${search}`);
+  },
+  // Gets the item with the given category selection
+  getItemsByCategory: function(category) {
+    return axios.get(`/api/items/category/${category}`);
   },
   // Deletes the item with the given id
   deleteItem: function(id) {

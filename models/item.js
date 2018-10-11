@@ -12,6 +12,7 @@ const itemSchema = new Schema({
   weight: { type: String},
   weightMeasuredIn: { type: String },
   carriedByStores: [{ type: Number}],
+  category: {type: String},
   categories: [{ type: Number}],
   date: { type: Date, default: Date.now },
   store: { type: String },
