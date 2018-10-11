@@ -7,6 +7,10 @@ export const getItemsBySearch = (newSearch) => dispatch => {
     dispatch(setItemsLoading());
     return axios
         .get(`/api/items/search/${search}`)
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb96d82da99a4b2f0ffd1ef6632ca4faeba70ab2
         .then(res => 
             dispatch({
                 type: GET_ITEMS_BY_SEARCH,

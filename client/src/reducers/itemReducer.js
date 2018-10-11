@@ -38,4 +38,8 @@ export default function (state = initialState, action) {
         default:
             return state;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bb96d82da99a4b2f0ffd1ef6632ca4faeba70ab2
