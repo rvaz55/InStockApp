@@ -21,8 +21,8 @@ export default {
     return axios.delete("/api/items/" + id);
   },
   // Saves a item to the database
-  saveItem: function(itemName) {
-    return axios.post(`/api/items/additem/${itemName}`);
+  saveItem: function(itemData) {
+    return axios.post(`/api/items/additem/`, itemData);
   },
   // Get items for store when sigend on from items db
   getStoreItems: function(storename) {
