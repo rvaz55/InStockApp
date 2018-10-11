@@ -16,8 +16,7 @@ class SignUp extends Component {
         username: "",
         passwordOne: "",
         passwordTwo:"",
-        email: "",
-        error: null
+        email: ""
 
     };
 
@@ -55,15 +54,14 @@ class SignUp extends Component {
                 .then(authUser => {
                   //this.setState({ ...data });
                   console.log("this is the data")
-                  console.log(this.state)
-                  console.log(authUser)
+                //   console.log(this.state)
+                //   console.log(authUser)
                   let path = `/login`;
                   this.props.history.push(path);
                 })
                 .catch(error => {
-                    console.log("this is an error")
-                  this.setState({error});
-                  console.log(data)
+                  alert(error.message)
+                  //console.log(error)
                 });
 
 
