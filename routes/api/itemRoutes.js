@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const itemController = require("../../controllers/itemController");
+const itemController = require("../../controllers/itemController"); 
 
 // GET route to /api/items that gets all items currently stored in db
 // POST route to /api/items that adds a new item to the items db

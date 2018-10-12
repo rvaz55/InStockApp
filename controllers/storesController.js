@@ -1,6 +1,6 @@
 const db = require("../models");
 
-module.exports = {
+module.exports = { 
     findById: function(req, res) {
       db.Store
         .findById(req.params.storeid)

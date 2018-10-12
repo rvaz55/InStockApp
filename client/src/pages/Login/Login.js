@@ -25,14 +25,21 @@ class Login extends Component {
 
       handleFormSubmit = (event, data) => {
         event.preventDefault();
-        console.log(data)
+        console.log(data) 
 
         auth.doSignInWithEmailAndPassword(data.email, data.password)
         .then((data) => {
-          console.log(data)
+          console.log(data.email)
           //this.setState({ ...INITIAL_STATE });
           //history.push(routes.HOME);
           alert('you are signed in!')
+
+            // API.getStore(mongoData)
+            // .then(res => 
+            //   {let path = `/login`;
+            //   this.props.history.push(path)
+            //   this.setState({ items: res.data })})
+            // .catch(err=>console.log(err))
         })
         .catch(error => {
           alert(error.message);
