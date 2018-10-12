@@ -18,7 +18,7 @@ export default {
   },
   // Deletes the item with the given id
   deleteItem: function(id) {
-    return axios.delete("/api/items/" + id);
+    return axios.delete(`/api/items/` + id);
   },
   // Saves a item to the database
   saveItem: function(itemData) {

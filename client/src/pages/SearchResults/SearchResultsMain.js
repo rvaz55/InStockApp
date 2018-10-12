@@ -37,13 +37,11 @@ class SearchResultsMain extends Component {
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
     .then(res => {
-      let result = res.data
-      let result2 = result.toLowerCase()
-      this.setState({ items: result2 })
+      console.log((this.state.items))
+      this.setState({ items: res.data })
     }
   )
   .catch(err=>console.log(err))
-  console.log((this.state.items))
   }
 
 // method for getting items from db using category search
@@ -51,10 +49,10 @@ class SearchResultsMain extends Component {
     API.getItemsByCategory(category)
       .then(res => {
         console.log(res);
-        this.setState({ categoryItems: res.data })
+        this.setState({ items: res.data })
       })
       .catch(err => console.log(err))
-    console.log((this.state.categoryItems))
+    console.log((this.state.items))
   }
   
   // update search box to show what is being typed
@@ -94,12 +92,8 @@ handleCategorySubmit = e => {
 }
   
   render() {
-    let item;
-    if(this.state.items){
-      item = this.state.items;
-    } else if(this.state.selectedCategory){
-      item = this.state.selectedCategory
-    }
+    let item=this.state.items;
+    
     // const allItem = this.state.allItems;
     return (
       <div className = "results">
@@ -116,13 +110,15 @@ handleCategorySubmit = e => {
                 <SearchButton onClick={this.handleSearchBarSubmit} />
               </FormGroup>
             </Col>
-            <Col md={3}>
+            <Col md={4}>
+            <div className="searchHolder">
               <FormGroup>
                   <DropdownInput onChange={this.handleInputChangeOnSelect} value={this.state.selectedCategory} />
               </FormGroup>
               <FormGroup> 
                 <SearchButton onClick={this.handleCategorySubmit} />
               </FormGroup>
+            </div>
             </Col>
           </Row>
         </Form>

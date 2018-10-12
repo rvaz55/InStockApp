@@ -64,6 +64,7 @@ class App extends Component {
         <FooterPage />
       </div>
 
+
     );
   }
 }
