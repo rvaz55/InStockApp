@@ -4,15 +4,10 @@ import { Switch ,  Link } from 'react-router-dom';
 import "./AppNavbar.css";
 
 class AppNavbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       collapse: false,
       isWideEnough: false,
-    };
-    this.onClick = this.onClick.bind(this);
-    this.onClickLogout = this.onClickLogout.bind(this);
-  }
+    }
 
   onClick() {
     this.setState({
@@ -20,7 +15,7 @@ class AppNavbar extends React.Component {
     });
   }
 
-  onClickLogout(e) {
+  onClickLogout = (e) => {
     console.log(this.props);
     e.preventDefault();
     // console.log('')

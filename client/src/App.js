@@ -12,44 +12,59 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userLoggedIn: false,
-    }
-    this.setUserLoggedIn = this.setUserLoggedIn.bind(this);
+  state = {
+    userLoggedIn: false,
+    storeID: '',
+    email: ''
   }
 
-  setUserLoggedIn(loggedIn) {
+  setUserLoggedIn = (loggedIn) => {
     this.setState({
       userLoggedIn: loggedIn
     })
   }
 
+  setStoreID = (storeID) => {
+    this.setState({
+      storeID: storeID
+    })
+  }
+
+  setEmail = (email) => {
+    this.setState({
+      email : email 
+    })
+  }
 
   render() {
     return (
 
-        <div>
-        
+      <div>
+
 
         <AppNavbar
-          userLoggedIn={this.state.userLoggedIn} 
-          setUserLoggedIn={this.setUserLoggedIn}    
+          userLoggedIn={this.state.userLoggedIn}
+          setUserLoggedIn={this.setUserLoggedIn}
         />
-          <Switch >
-            <Route exact path='/' component={Home} />
-            <Route path='/search' component={SearchResults} />
-            <Route path='/search/:searchItem' component={SearchResults} />
-            <Route path='/login' component={Login} />
-            <Route path='/signup' component={SignUp} /> */}
-            <Route path='/profile' component={Profile} />
-            <Route component={NoMatch} />
-          </Switch>
+        <Switch >
+          <Route exact path='/' component={Home} />
+          <Route path='/search/:searchItem' component={SearchResults} />
+          <Route path='/login' render={(props) => (
+            <Login
+              setUserLoggedIn={this.setUserLoggedIn}
+              setStoreID={this.setStoreID}
+              setEmail={this.setEmail}
+            />
+          )} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/profile' component={Profile} />
+          <Route component={NoMatch} />
+        </Switch>
 
-          <FooterPage />
-        </div>       
-      
+        <FooterPage />
+      </div>
+
+
     );
   }
 }
