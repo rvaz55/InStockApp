@@ -69,7 +69,7 @@ class Profile extends Component {
     render() {
         const thisStoresItems = this.state.storeItems;
         return (
-            <div className="profile-content">
+            <div className ="profile-content" id="itemModal">
                 {/* <h1>{store.storeName} Inventory</h1> */}
 
                 {/* // {this.state.items.length ? (
@@ -78,10 +78,10 @@ class Profile extends Component {
             //     ))}
             // )} */}
                 <AddItemModal
-                    onClick={this.toggle}
-                    isOpen={this.state.modal}
-                    onChange={this.onChange}
-                    onSubmit={this.onSubmit}
+                    onClick={this.toggle} 
+                    isOpen={this.state.modal} 
+                    onChange={this.onChange} 
+                    onSubmit={this.onSubmit} 
                     toggle={this.toggle}
                 />
 

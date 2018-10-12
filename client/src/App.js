@@ -12,12 +12,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userLoggedIn: false,
+    }
+    this.setUserLoggedIn = this.setUserLoggedIn.bind(this);
+  }
+
+  setUserLoggedIn(loggedIn) {
+    this.setState({
+      userLoggedIn: loggedIn
+    })
+  }
+
+
   render() {
     return (
+
         <div>
         
 
-        <AppNavbar />
+        <AppNavbar
+          userLoggedIn={this.state.userLoggedIn} 
+          setUserLoggedIn={this.setUserLoggedIn}    
+        />
           <Switch >
             <Route  exact path='/' component={Home} />
             <Route path='/search/:searchItem' component={SearchResults} />
