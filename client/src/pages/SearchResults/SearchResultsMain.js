@@ -17,9 +17,12 @@ class SearchResultsMain extends Component {
     selectedCategory: ""
   }
 
-  // componentDidMount() {
-  //   this.getItems();
-  // }
+ componentDidMount() {
+   const item = (this.props.history.location.pathname.split("/search/")[1]).replace(/\+/g, ' ')
+
+   console.log(item)
+   this.getSearchResults(item);
+ }
 
   // getItems = () => {
   //   API.getAllItems()
