@@ -14,4 +14,8 @@ router
   .get(storesController.findById);
 
 
+router
+.route("/submit")
+.post(storesController.create);
+
 module.exports = router;
