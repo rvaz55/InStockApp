@@ -1,7 +1,14 @@
-#searchHolder {
+.searchHolder {
     margin-left:25%;
     width:50%;
     margin-right:25%
+}
+
+#SearchButton {
+    margin: 0 auto;
+    display: flex;
+    justify-content : center;
+
 }
 
 #select{
