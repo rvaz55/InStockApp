@@ -96,6 +96,7 @@ handleCategorySubmit = e => {
     const item = this.state.items;
     // const allItem = this.state.allItems;
     return (
+      <div className = "results">
       <Container fluid className="text-center text-md-left">
         <Form>
           <Row form>
@@ -133,6 +134,7 @@ handleCategorySubmit = e => {
           </Row>
         </Container>
       </Container>
+      </div>
     );
   }
 }
