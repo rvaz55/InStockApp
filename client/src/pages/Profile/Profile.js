@@ -4,7 +4,6 @@ import AddItemModal from "../../components/addItemModal";
 import StoreItemsTable from "./storeItemsTable";
 import { Table, Col } from 'reactstrap';
 import "./Profile.css";
-import DeleteBtn from "../../components/DeleteBtn";
 //import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
@@ -60,14 +59,6 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
-    //method for deleting items from db using item id
-    deleteItem = itemId => {
-        API.deleteItem(itemId)
-            .then(res => this.getStoreItems())
-            .catch(err => console.log(err));
-    };
-
-
     onSubmit = e => {
         e.preventDefault();
         this.saveNewItem(this.state.itemToAdd)
@@ -113,7 +104,6 @@ class Profile extends Component {
                                 </tr>
                             </thead>
                             <StoreItemsTable storeItems={thisStoresItems} />
-                            <DeleteBtn onClick={() => this.deleteItem(item._id)} />
                         </Table>
                     ) : (
                             <h3>No Results to Display</h3>
