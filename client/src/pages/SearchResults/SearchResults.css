@@ -29,3 +29,9 @@
 #resultItem {
     margin-top: 15px;
 }
+
+.results {
+    height: 100vh;
+    padding: 70px;
+    margin: 50px 20px;
+}

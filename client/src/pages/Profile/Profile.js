@@ -3,6 +3,7 @@ import API from "../../utilsClient/routesClient";
 import AddItemModal from "../../components/addItemModal";
 import StoreItemsTable from "./storeItemsTable";
 import { Table, Col } from 'reactstrap';
+import "./Profile.css";
 //import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
@@ -68,7 +69,7 @@ componentDidMount(){
     render() {
         const thisStoresItems = this.state.storeItems;
         return (
-            <div>
+            <div className ="profile-content">
                 {/* <h1>{store.storeName} Inventory</h1> */}
 
                 {/* // {this.state.items.length ? (
