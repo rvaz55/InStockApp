@@ -1,0 +1,10 @@
+.active-purple-4 input[type=text]:focus:not([readonly]) {
+    border: 1px solid #1a237e;
+    box-shadow: 0 0 0 1px #1a237e;
+}
+
+#selectOptions {
+    margin: auto;
+    width: 98%;
+    padding-bottom: 30px;
+}

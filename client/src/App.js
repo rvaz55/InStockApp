@@ -18,7 +18,8 @@ class App extends Component {
 
         <AppNavbar />
           <Switch >
-            <Route  exact path='/' component={Home} />
+            <Route exact path='/' component={Home} />
+            <Route path='/search' component={SearchResults} />
             <Route path='/search/:searchItem' component={SearchResults} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={SignUp} /> */}
