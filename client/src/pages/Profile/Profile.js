@@ -12,13 +12,11 @@ class Profile extends Component {
         password: "",
         storeName: "Indian Groceries & Spices Inc",
         modal: false,
-        itemInfo: {
-            itemToAdd: "",
-            price: 0,
-            category: "",
-            store: "",
-            address: ""
-        },
+        itemName: "",
+        price: 0,
+        category: "",
+        store: "",
+        address: "",
         storeItems: []
     };
 
@@ -42,18 +40,17 @@ class Profile extends Component {
     };
 
     onChange = e => {
-        this.setState({ itemInfo: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
     };
 
     // method for saving items to db 
-    saveNewItem = () => {
+    saveNewItem = (name, price, category, store, address) => {
         API.saveItem({
-            itemName: this.state.itemInfo.itemToAdd,
-            price: this.state.itemInfo.price,
-            category: this.state.itemInfo.category,
-            store: this.state.itemInfo.store,
-            address: this.state.itemInfo.address
-        })
+            itemName: name,
+            price: price,
+            category: category, 
+            store: store, 
+            address: address})
             .then(res =>
                 console.log(res))
             .catch(err => console.log(err))
@@ -61,22 +58,26 @@ class Profile extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        this.saveNewItem(this.state.itemToAdd)
+        this.saveNewItem(this.state.itemName, this.state.price, this.state.category, this.state.store, this.state.address)
+        this.getStoreItems(this.state.storeName)
 
         // Close modal
         this.toggle();
     }
+
+        //method for deleting items from db using item id
+     deleteItem = itemId => {
+            API.deleteItem(itemId)
+                .then(res => {
+                    console.log(res);
+                    this.getStoreItems(this.state.storeName)})
+                .catch(err => console.log(err));
+        };
+    
     render() {
         const thisStoresItems = this.state.storeItems;
         return (
             <div className ="profile-content" id="itemModal">
-                {/* <h1>{store.storeName} Inventory</h1> */}
-
-                {/* // {this.state.items.length ? (
-            //     {this.state.items.map(item => (
-
-            //     ))}
-            // )} */}
                 <AddItemModal
                     onClick={this.toggle} 
                     isOpen={this.state.modal} 
@@ -84,10 +85,6 @@ class Profile extends Component {
                     onSubmit={this.onSubmit} 
                     toggle={this.toggle}
                 />
-
-                {/* <h1>Add items to inventory.</h1> */}
-
-
 
                 <p>Welcome {this.state.storeName}</p>
 
@@ -103,7 +100,7 @@ class Profile extends Component {
                                     <th>Address</th>
                                 </tr>
                             </thead>
-                            <StoreItemsTable storeItems={thisStoresItems} />
+                            <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem}/>
                         </Table>
                     ) : (
                             <h3>No Results to Display</h3>

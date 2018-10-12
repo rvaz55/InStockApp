@@ -25,7 +25,7 @@ module.exports = {
     },
     addItem: function (req, res) {
         db.Item
-            .create({ itemName: req.params.add })
+            .create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

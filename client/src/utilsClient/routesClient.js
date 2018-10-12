@@ -18,11 +18,11 @@ export default {
   },
   // Deletes the item with the given id
   deleteItem: function(id) {
-    return axios.delete(`/api/items/` + id);
+    return axios.delete(`/api/items/deleteitem/${id}`);
   },
   // Saves a item to the database
   saveItem: function(itemData) {
-    return axios.post(`/api/items/additem/`, itemData);
+    return axios.post("/api/items/", itemData);
   },
   // Get items for store when sigend on from items db
   getStoreItems: function(storename) {
