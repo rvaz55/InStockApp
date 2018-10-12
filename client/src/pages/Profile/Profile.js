@@ -4,13 +4,14 @@ import AddItemModal from "../../components/addItemModal";
 import StoreItemsTable from "./storeItemsTable";
 import { Table, Col } from 'reactstrap';
 import "./Profile.css";
+import DeleteBtn from "../../components/DeleteBtn";
 //import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
     state = {
         username: "",
         password: "",
-        storeName: "Indian Groceries & Spices Inc" ,
+        storeName: "Indian Groceries & Spices Inc",
         modal: false,
         itemInfo: {
             itemToAdd: "",
@@ -22,18 +23,18 @@ class Profile extends Component {
         storeItems: []
     };
 
-  // method for getting items from db using using the store's id
-  getStoreItems = (storeId) => {
-    API.getStoreItems(storeId)
-    .then(res => 
-        this.setState({ storeItems: res.data })
-    )
-    .catch(err=>console.log(err))
-}
+    // method for getting items from db using using the store's id
+    getStoreItems = (storeId) => {
+        API.getStoreItems(storeId)
+            .then(res =>
+                this.setState({ storeItems: res.data })
+            )
+            .catch(err => console.log(err))
+    }
 
-componentDidMount(){
-    this.getStoreItems(this.state.storeName)
-};
+    componentDidMount() {
+        this.getStoreItems(this.state.storeName)
+    };
 
     toggle = () => {
         this.setState({
@@ -53,11 +54,19 @@ componentDidMount(){
             category: this.state.itemInfo.category,
             store: this.state.itemInfo.store,
             address: this.state.itemInfo.address
-          })
-        .then(res =>
-            console.log(res)            )
+        })
+            .then(res =>
+                console.log(res))
             .catch(err => console.log(err))
     }
+
+    //method for deleting items from db using item id
+    deleteItem = itemId => {
+        API.deleteItem(itemId)
+            .then(res => this.getStoreItems())
+            .catch(err => console.log(err));
+    };
+
 
     onSubmit = e => {
         e.preventDefault();
@@ -69,7 +78,7 @@ componentDidMount(){
     render() {
         const thisStoresItems = this.state.storeItems;
         return (
-            <div className ="profile-content">
+            <div className="profile-content">
                 {/* <h1>{store.storeName} Inventory</h1> */}
 
                 {/* // {this.state.items.length ? (
@@ -77,13 +86,13 @@ componentDidMount(){
 
             //     ))}
             // )} */}
-                <AddItemModal 
-                    onClick={this.toggle} 
-                    isOpen={this.state.modal} 
-                    onChange={this.onChange} 
-                    onSubmit={this.onSubmit} 
+                <AddItemModal
+                    onClick={this.toggle}
+                    isOpen={this.state.modal}
+                    onChange={this.onChange}
+                    onSubmit={this.onSubmit}
                     toggle={this.toggle}
-                     />
+                />
 
                 {/* <h1>Add items to inventory.</h1> */}
 
@@ -91,24 +100,25 @@ componentDidMount(){
 
                 <p>Welcome {this.state.storeName}</p>
 
-            <Col md={{ size: 8, offset: 2 }}>
-                {this.state.storeItems.length ? (
-                    <Table striped>
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Store</th>
-                                <th>Address</th>
-                            </tr>
-                        </thead>
-                        <StoreItemsTable storeItems={thisStoresItems}/>
-                    </Table>
-                          ) : (
-              <h3>No Results to Display</h3>
-            )}
-            </Col>
+                <Col md={{ size: 8, offset: 2 }}>
+                    {this.state.storeItems.length ? (
+                        <Table striped>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Store</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <StoreItemsTable storeItems={thisStoresItems} />
+                            <DeleteBtn onClick={() => this.deleteItem(item._id)} />
+                        </Table>
+                    ) : (
+                            <h3>No Results to Display</h3>
+                        )}
+                </Col>
             </div>
         );
     }
