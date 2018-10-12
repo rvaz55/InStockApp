@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import NoMatch from "./pages/NoMatch";
 import SearchResults from "./pages/SearchResults";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path='/login' component={Login} />
             <Route path='/signup' component={SignUp} /> */}
             <Route path='/profile' component={Profile} />
+            <Route component={NoMatch} />
           </Switch>
 
           <FooterPage />
