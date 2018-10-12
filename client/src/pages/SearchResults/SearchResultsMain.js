@@ -14,7 +14,7 @@ class SearchResultsMain extends Component {
     searchText: "",
     items:[],
     categoryItems:[],
-    selectedCategory: ""
+    selectedCategory: "condiments"
   }
 
  componentDidMount() {
@@ -24,34 +24,36 @@ class SearchResultsMain extends Component {
    this.getSearchResults(item);
  }
 
-  // getItems = () => {
-  //   API.getAllItems()
-  //   .then(res => 
-  //     this.setState({allItems: res.data})
-  //   )
-  //   .catch(err=>console.log(err))
-  //   console.log(this.state.allItems)
-  // }
+// getItems = () => {
+//   API.getAllItems()
+//   .then(res => 
+//     this.setState({allItems: res.data})
+//   )
+//   .catch(err=>console.log(err))
+//   console.log(this.state.allItems)
+// }
 
-  // method for getting items from db using using item search word
+// method for getting items from db using using item search word
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
-    .then(res => 
-    this.setState({ items: res.data })
+    .then(res => {
+      console.log((this.state.items))
+      this.setState({ items: res.data })
+    }
   )
   .catch(err=>console.log(err))
-  console.log((this.state.items))
   }
 
-    // method for getting items from db using category search
-    getCategoryResults = (category) => {
-      API.getItemsByCategory(category)
-      .then(res => 
-      this.setState({ categoryItems: res.data })
-    )
-    .catch(err=>console.log(err))
-    console.log((this.state.categoryItems))
-    }
+// method for getting items from db using category search
+  getCategoryResults = (category) => {
+    API.getItemsByCategory(category)
+      .then(res => {
+        console.log(res);
+        this.setState({ items: res.data })
+      })
+      .catch(err => console.log(err))
+    console.log((this.state.items))
+  }
   
   // update search box to show what is being typed
 handleInputChangeOnBar = (e) => {
@@ -63,8 +65,7 @@ handleInputChangeOnBar = (e) => {
 handleInputChangeOnSelect = (e) => {
   this.handleInputChangeOnSelect.bind(this);
   let selected = e.target.value;
-  this.setState({ selectedCategory: e.target.value});
-  console.log(this.state.selectedCategory)
+  this.setState({ selectedCategory: selected});
 }
 
 // get the value that is typed in the box to use in the search 
@@ -82,21 +83,17 @@ handleSearchBarSubmit = e => {
 // get the value that is typed in the box to use in the search 
 handleCategorySubmit = e => {
   e.preventDefault();
-  this.handleCategorySubmit.bind(this)
   const newCatSearch = this.state.selectedCategory;
 
   //Search results array in db via action
   if(this.state.selectedCategory) {
     this.getCategoryResults(newCatSearch);
-    console.log(newCatSearch + this.state.categoryItems)
    } 
 }
   
   render() {
-    // this.props.item is the same as writing this.state
-    // which was used when not using redux
-    // use object destructuring to pull out the items array from item
-    const item = this.state.items;
+    let item=this.state.items;
+    
     // const allItem = this.state.allItems;
     return (
       <div className = "results">
@@ -113,13 +110,15 @@ handleCategorySubmit = e => {
                 <SearchButton onClick={this.handleSearchBarSubmit} />
               </FormGroup>
             </Col>
-            <Col md={3}>
+            <Col md={4}>
+            <div className="searchHolder">
               <FormGroup>
-                  <DropdownInput onChange={this.state.handleInputChangeOnSelect} value={this.state.selectedCategory} />
+                  <DropdownInput onChange={this.handleInputChangeOnSelect} value={this.state.selectedCategory} />
               </FormGroup>
               <FormGroup> 
                 <SearchButton onClick={this.handleCategorySubmit} />
               </FormGroup>
+            </div>
             </Col>
           </Row>
         </Form>

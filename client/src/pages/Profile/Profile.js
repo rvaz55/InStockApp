@@ -10,7 +10,7 @@ class Profile extends Component {
     state = {
         username: "",
         password: "",
-        storeName: "Indian Groceries & Spices Inc" ,
+        storeName: "Indian Groceries & Spices Inc",
         modal: false,
         itemInfo: {
             itemToAdd: "",
@@ -22,18 +22,18 @@ class Profile extends Component {
         storeItems: []
     };
 
-  // method for getting items from db using using the store's id
-  getStoreItems = (storeId) => {
-    API.getStoreItems(storeId)
-    .then(res => 
-        this.setState({ storeItems: res.data })
-    )
-    .catch(err=>console.log(err))
-}
+    // method for getting items from db using using the store's id
+    getStoreItems = (storeId) => {
+        API.getStoreItems(storeId)
+            .then(res =>
+                this.setState({ storeItems: res.data })
+            )
+            .catch(err => console.log(err))
+    }
 
-componentDidMount(){
-    this.getStoreItems(this.state.storeName)
-};
+    componentDidMount() {
+        this.getStoreItems(this.state.storeName)
+    };
 
     toggle = () => {
         this.setState({
@@ -53,9 +53,9 @@ componentDidMount(){
             category: this.state.itemInfo.category,
             store: this.state.itemInfo.store,
             address: this.state.itemInfo.address
-          })
-        .then(res =>
-            console.log(res)            )
+        })
+            .then(res =>
+                console.log(res))
             .catch(err => console.log(err))
     }
 
@@ -69,7 +69,7 @@ componentDidMount(){
     render() {
         const thisStoresItems = this.state.storeItems;
         return (
-            <div className ="profile-content">
+            <div className ="profile-content" id="itemModal">
                 {/* <h1>{store.storeName} Inventory</h1> */}
 
                 {/* // {this.state.items.length ? (
@@ -77,13 +77,13 @@ componentDidMount(){
 
             //     ))}
             // )} */}
-                <AddItemModal 
+                <AddItemModal
                     onClick={this.toggle} 
                     isOpen={this.state.modal} 
                     onChange={this.onChange} 
                     onSubmit={this.onSubmit} 
                     toggle={this.toggle}
-                     />
+                />
 
                 {/* <h1>Add items to inventory.</h1> */}
 
@@ -91,24 +91,24 @@ componentDidMount(){
 
                 <p>Welcome {this.state.storeName}</p>
 
-            <Col md={{ size: 8, offset: 2 }}>
-                {this.state.storeItems.length ? (
-                    <Table striped>
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Store</th>
-                                <th>Address</th>
-                            </tr>
-                        </thead>
-                        <StoreItemsTable storeItems={thisStoresItems}/>
-                    </Table>
-                          ) : (
-              <h3>No Results to Display</h3>
-            )}
-            </Col>
+                <Col md={{ size: 8, offset: 2 }}>
+                    {this.state.storeItems.length ? (
+                        <Table striped>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Store</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <StoreItemsTable storeItems={thisStoresItems} />
+                        </Table>
+                    ) : (
+                            <h3>No Results to Display</h3>
+                        )}
+                </Col>
             </div>
         );
     }
