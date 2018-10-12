@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import NoMatch from "./pages/Nomatch";
+import NoMatch from "./pages/NoMatch";
 import SearchResults from "./pages/SearchResults";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
