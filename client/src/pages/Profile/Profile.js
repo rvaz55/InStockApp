@@ -69,7 +69,7 @@ componentDidMount(){
     render() {
         const thisStoresItems = this.state.storeItems;
         return (
-            <div className ="profile-content">
+            <div className ="profile-content" id="itemModal">
                 {/* <h1>{store.storeName} Inventory</h1> */}
 
                 {/* // {this.state.items.length ? (
@@ -77,7 +77,7 @@ componentDidMount(){
 
             //     ))}
             // )} */}
-                <AddItemModal 
+                <AddItemModal
                     onClick={this.toggle} 
                     isOpen={this.state.modal} 
                     onChange={this.onChange} 

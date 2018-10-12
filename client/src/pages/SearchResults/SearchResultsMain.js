@@ -36,8 +36,11 @@ class SearchResultsMain extends Component {
 // method for getting items from db using using item search word
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
-    .then(res => 
-    this.setState({ items: res.data })
+    .then(res => {
+      let result = res.data
+      let result2 = result.toLowerCase()
+      this.setState({ items: result2 })
+    }
   )
   .catch(err=>console.log(err))
   console.log((this.state.items))
