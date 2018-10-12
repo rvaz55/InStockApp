@@ -8,7 +8,7 @@ const  sortedCategories = categories.sort();
 
 const DropdownInput = (props) => {
   return (
-    <Input type="select" value={props.value} onChange={props.onChange}>
+    <Input id="bla" type="select" defaultValue="condiments" onChange={props.onChange}>
         <Dropdown categories={sortedCategories}/>  
     </Input>
   )

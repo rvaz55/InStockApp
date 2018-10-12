@@ -5,7 +5,7 @@ const itemController = require("../../controllers/itemController");
 // POST route to /api/items that adds a new item to the items db
 router
     .route('/')
-    .get(itemController.findAllItems)
+    .get(itemController.findAllItems) 
 
 router
     .route('/additem/:add')
