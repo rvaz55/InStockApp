@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
-import { Switch } from 'react-router-dom';
+import { Switch ,  Link } from 'react-router-dom';
 import "./AppNavbar.css";
 
 class AppNavbar extends React.Component {
@@ -11,6 +11,7 @@ class AppNavbar extends React.Component {
       isWideEnough: false,
     };
     this.onClick = this.onClick.bind(this);
+    this.onClickLogout = this.onClickLogout.bind(this);
   }
 
   onClick() {
@@ -19,12 +20,18 @@ class AppNavbar extends React.Component {
     });
   }
 
+  onClickLogout(e) {
+    console.log(this.props);
+    e.preventDefault();
+    // console.log('')
+    this.props.setUserLoggedIn(false)
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div id="nav">
-        <header>
-
-          <Switch >
+        <header>          
 
             <Navbar color="transparent" dark expand="md" fixed="top" scrolling>
               
@@ -42,8 +49,12 @@ class AppNavbar extends React.Component {
                           </NavItem>
 
                           <NavItem>
-                            <NavLink to="/login">Login</NavLink>
+                            {(this.props.userLoggedIn)
+                            ? <NavLink to="/login" onClick={this.onClickLogout}>Logout</NavLink>
+                            : <NavLink to="/login">Login</NavLink>} 
                           </NavItem>
+
+                          
       
                           <NavItem >
                             <NavLink to="/signup" >Create Account</NavLink>
@@ -55,7 +66,6 @@ class AppNavbar extends React.Component {
 
             </Navbar>
 
-          </Switch>
 
          
         </header>
