@@ -2,14 +2,21 @@ const router = require("express").Router();
 const itemController = require("../../controllers/itemController"); 
 
 // GET route to /api/items that gets all items currently stored in db
-// POST route to /api/items that adds a new item to the items db
 router
     .route('/')
     .get(itemController.findAllItems) 
-
-router
-    .route('/additem/:add')
     .post(itemController.addItem);
+
+// POST route to /api/items that adds a new item to the items db
+// router
+//     .route('/additem/')
+//     .post(itemController.addItem);
+
+// Delete route to /api/items/itemid to remove item from the db
+router
+    .route('/deleteitem/:id')
+    .delete(itemController.deleteItem);
+
 
 // GET route to api/items/storeid to get all items stored in db for particular store
 router
