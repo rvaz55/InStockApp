@@ -17,9 +17,12 @@ class SearchResultsMain extends Component {
     selectedCategory: "condiments"
   }
 
-// componentDidMount() {
-//   this.getItems();
-// }
+ componentDidMount() {
+   const item = (this.props.history.location.pathname.split("/search/")[1]).replace(/\+/g, ' ')
+
+   console.log(item)
+   this.getSearchResults(item);
+ }
 
 // getItems = () => {
 //   API.getAllItems()
@@ -96,6 +99,7 @@ handleCategorySubmit = e => {
     }
     // const allItem = this.state.allItems;
     return (
+      <div className = "results">
       <Container fluid className="text-center text-md-left">
         <Form>
           <Row form>
@@ -133,6 +137,7 @@ handleCategorySubmit = e => {
           </Row>
         </Container>
       </Container>
+      </div>
     );
   }
 }

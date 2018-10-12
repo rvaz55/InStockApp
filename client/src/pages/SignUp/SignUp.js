@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
 import  { auth, firebase }  from "../../firebase";
+import "./SignUp.css";
 //import * as auth from "../../firebase";
 
 import API from "../../utilsClient/routesClient"
@@ -88,6 +89,7 @@ class SignUp extends Component {
 
     render() {
         return (
+            <div className="signup-form"> 
             <form>
                 <p>Store name</p>
                 <Input
@@ -187,6 +189,8 @@ class SignUp extends Component {
                     Sign Up for InStock
               </FormBtn>
             </form>
+            
+            </div>
         );
     }
 }

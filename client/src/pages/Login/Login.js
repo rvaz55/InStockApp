@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
 import Profile from ".././Profile";
 import  { auth, firebase }  from "../../firebase";
+import "./Login.css";
 
 class Login extends Component {
     state = {
@@ -60,7 +61,7 @@ class Login extends Component {
     render() {
         return (
 
-          <div>
+          <div className="login-form">
           { this.state.authenticated 
             //If authenticated is true display items below
             ? 
@@ -68,6 +69,7 @@ class Login extends Component {
               
             //If authenticated is false display items below
             : 
+            
             <form>
             <p>Enter your email</p>
             <Input
