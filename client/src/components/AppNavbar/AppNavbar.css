@@ -1,6 +1,6 @@
 /* FullPageIntroWithFixedTransparentNavbar.css */
 .navbar {
-  background-color: transparent;
+  background-color: #1C2331;
 }
 
 
@@ -24,6 +24,3 @@
   padding-top: 120px;
 }
 
-#nav {
-  margin-bottom: 100px;
-}
