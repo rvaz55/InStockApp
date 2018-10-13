@@ -33,7 +33,7 @@ export default {
     return axios.post("/api/stores/", storeData);
   },
   //Gets vendor data for profile using id
-  getStore: function(id) {
-      return axios.get("/api/stores/" + id);
+  getStore: function(email) {
+      return axios.get("/api/stores/login", email);
   }
 };

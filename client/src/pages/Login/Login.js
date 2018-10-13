@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
 import Profile from ".././Profile";
 import  { auth, firebase }  from "../../firebase";
+import API from "../../utilsClient/routesClient";
 import "./Login.css";
 
 class Login extends Component {
@@ -28,21 +29,20 @@ class Login extends Component {
         console.log(data) 
 
         auth.doSignInWithEmailAndPassword(data.email, data.password)
-        .then((data) => {
+        .then((authUser) => {
+          console.log(authUser)
+          //console.log(data)
           console.log(data.email)
-          //this.setState({ ...INITIAL_STATE });
-          //history.push(routes.HOME);
-          alert('you are signed in!')
 
-            // API.getStore(mongoData)
-            // .then(res => 
-            //   {let path = `/login`;
-            //   this.props.history.push(path)
-            //   this.setState({ items: res.data })})
-            // .catch(err=>console.log(err))
+             API.getStore(data.email)
+             .then(res => 
+               
+               console.log( res ) )
+
+             .catch(err=>console.log(err))
         })
         .catch(error => {
-          alert(error.message);
+          console.log(error.message);
         });
       };
 

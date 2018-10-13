@@ -47,14 +47,13 @@ class SignUp extends Component {
               &&
               (this.state.passwordOne == this.state.passwordTwo)
              ) {
-
-                console.log(data)
+                //console.log(data)
                 auth.doCreateUserWithEmailAndPassword(data.email, data.passwordOne)
                 .then(authUser => {
                         console.log(authUser)
                         console.log(data)
                         API.saveStore(data)
-                        .then(console.log("Saved to the DB"))
+                        .then(console.log(data))
                         .catch(error => console.log(error))
                     let path = `/login`;
                     this.props.history.push(path)
@@ -63,13 +62,14 @@ class SignUp extends Component {
        
         } else {
                            
-                
-            console.log("error")
-        }
         //Here we need to put an else statemet that triggers 
         //some errors to tell the vendor:
         // A)The passwords don't match
         // B) The username and/or email already exists
+
+            console.log("error")
+        }
+
 
     };
 

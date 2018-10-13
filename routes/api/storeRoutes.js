@@ -13,9 +13,10 @@ router
   .route("/profilepage/:storeid")
   .get(storesController.findById);
 
-
+//This route find the account by the user's 'email'
+//Matches "api/stores/login"
 router
-.route("/submit")
-.post(storesController.create);
+.route("/login")
+.get(storesController.findByEmail);
 
 module.exports = router;
