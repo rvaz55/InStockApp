@@ -7,9 +7,8 @@ import "./Login.css";
 
 class Login extends Component {
     state = {
-        email: "",
-        password: "",
-        authenticated: false,
+        email: '',
+        password: '',
         storeID: '',
         error: null
     };
@@ -26,24 +25,28 @@ class Login extends Component {
 
       handleFormSubmit = (event, data) => {
         event.preventDefault();
-        console.log(data) 
+        //console.log(data) 
+        //console.log(this.props.history)
 
         auth.doSignInWithEmailAndPassword(data.email, data.password)
         .then((authUser) => {
-          console.log(authUser)
+          //console.log(authUser)
           //console.log(data)
-          console.log(data.email)
+          //console.log(data.email)
 
              API.getStore(data.email)
              .then(res => 
-               
-               console.log( res ) )
-
+                { //console.log( res )
+                  this.setState({
+                      userLoggedIn: true, 
+                      storeID: res.data._id, 
+                      email: res.data.email})
+                  let path = `/profilepage/${this.state.storeID}`;
+                  this.props.history.push(path)
+                })
              .catch(err=>console.log(err))
         })
-        .catch(error => {
-          console.log(error.message);
-        });
+        .catch(error => {console.log(error);});
       };
 
   // componentWillMount() {
@@ -66,16 +69,17 @@ class Login extends Component {
 
 
     render() {
+
         return (
 
           <div className="login-form">
-          { this.state.authenticated 
+          {/* { this.state.userLoggedIn 
             //If authenticated is true display items below
             ? 
-                <Profile storeID={this.state.storeID}>  </Profile>
+                <Profile history={this.props.history} storeID={this.state.storeID}> </Profile>
               
             //If authenticated is false display items below
-            : 
+            :  */}
             
             <form>
             <p>Enter your email</p>
@@ -103,7 +107,6 @@ class Login extends Component {
               </FormBtn>
           </form>
       
-          }
         </div>
       );
            

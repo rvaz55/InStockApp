@@ -8,6 +8,8 @@ class Home extends Component {
 
 
   render() {
+    console.log(this.props.history)
+    console.log(this.history)
     return (
 
         <div>
