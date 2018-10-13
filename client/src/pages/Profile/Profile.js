@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utilsClient/routesClient";
+import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal";
 import StoreItemsTable from "./storeItemsTable";
 import { Table, Col } from 'reactstrap';
@@ -27,8 +28,9 @@ class Profile extends Component {
                 this.setState({ storeItems: res.data })
             )
             .catch(err => console.log(err))
+            console.log(this.state.storeItems)
     }
-
+    
     componentDidMount() {
         this.getStoreItems(this.state.storeName)
     };
@@ -40,11 +42,14 @@ class Profile extends Component {
     };
 
     onChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value
+        });
+        console.log(this.state.price)
     };
 
     // method for saving items to db 
     saveNewItem = (name, price, category, store, address) => {
+   console.log('state: ' + this.state)
         API.saveItem({
             itemName: name,
             price: price,
@@ -56,7 +61,7 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
-    onSubmit = e => {
+    onClickSubmit = e => {
         e.preventDefault();
         this.saveNewItem(this.state.itemName, this.state.price, this.state.category, this.state.store, this.state.address)
         this.getStoreItems(this.state.storeName)
@@ -78,12 +83,12 @@ class Profile extends Component {
         const thisStoresItems = this.state.storeItems;
         return (
             <div className ="profile-content" id="itemModal">
+                <AddItemBtn onClick={this.toggle}/>
                 <AddItemModal
-                    onClick={this.toggle} 
-                    isOpen={this.state.modal} 
                     onChange={this.onChange} 
-                    onSubmit={this.onSubmit} 
+                    isOpen={this.state.modal} 
                     toggle={this.toggle}
+                    onClick={this.onClickSubmit}
                 />
 
                 <p>Welcome {this.state.storeName}</p>

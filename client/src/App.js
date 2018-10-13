@@ -49,6 +49,7 @@ class App extends Component {
         <Switch >
           <Route exact path='/' component={Home} />
           <Route path='/search/:searchItem' component={SearchResults} />
+          <Route path='/search' component={SearchResults}/>
           <Route path='/login' render={(props) => (
             <Login
               setUserLoggedIn={this.setUserLoggedIn}
