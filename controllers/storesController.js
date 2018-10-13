@@ -7,7 +7,7 @@ module.exports = {
     //The DB is returning all stores not just the one that matches the email specified......///
     ///////////////////////////////////////////////////////////////////////////////////////////
     db.Store
-      .find(req.body.email)
+      .findOne(req.body.email)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
