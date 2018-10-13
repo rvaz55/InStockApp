@@ -51,13 +51,24 @@ class App extends Component {
           <Route path='/search/:searchItem' component={SearchResults} />
           <Route path='/login' render={(props) => (
             <Login
+              history={props.history}
               setUserLoggedIn={this.setUserLoggedIn}
               setStoreID={this.setStoreID}
               setEmail={this.setEmail}
             />
           )} />
           <Route path='/signup' component={SignUp} />
-          <Route path='/profile' component={Profile} />
+          <Route path='/profilepage/:storeID' render={(props) => (
+            <Profile
+              history={props.history}
+              setUserLoggedIn={this.setUserLoggedIn}
+              setStoreID={this.setStoreID}
+              setEmail={this.setEmail}
+              storeID = {props.match.params.storeID}
+              userLoggedIn={this.state.userLoggedIn}/>
+              
+          )}  />
+
           <Route component={NoMatch} />
         </Switch>
 
