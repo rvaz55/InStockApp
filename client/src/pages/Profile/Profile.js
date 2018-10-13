@@ -4,6 +4,7 @@ import AddItemModal from "../../components/addItemModal";
 import StoreItemsTable from "./storeItemsTable";
 import { Table, Col } from 'reactstrap';
 import "./Profile.css";
+import Login from "../Login"
 //import { Input, FormBtn } from "../../components/Form";
 
 class Profile extends Component {
@@ -20,6 +21,22 @@ class Profile extends Component {
         storeItems: []
     };
 
+    // This method grabs the store DATA not just the store items
+    getStoreData = (storeId) => {
+        API.getStoreData(storeId)
+            .then(res =>
+                {
+                console.log(res.data)
+                const newState  = {
+                    ...this.state,
+                    ...res.data
+                }
+                this.setState(newState)
+                }
+            )
+            .catch(err => console.log(err))
+    }
+
     // method for getting items from db using using the store's id
     getStoreItems = (storeId) => {
         API.getStoreItems(storeId)
@@ -30,7 +47,9 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        this.getStoreItems(this.state.storeName)
+        console.log(this.props.storeID)
+        this.props.setUserLoggedIn(true)
+        this.getStoreData(this.props.storeID)
     };
 
     toggle = () => {
@@ -75,38 +94,53 @@ class Profile extends Component {
         };
     
     render() {
+        console.log(this.state)
+        console.log(this.props)
         const thisStoresItems = this.state.storeItems;
         return (
+
+        <div>   
+
+          { this.props.userLoggedIn 
+            //If authenticated is true display items below
+            ? 
             <div className ="profile-content" id="itemModal">
-                <AddItemModal
-                    onClick={this.toggle} 
-                    isOpen={this.state.modal} 
-                    onChange={this.onChange} 
-                    onSubmit={this.onSubmit} 
-                    toggle={this.toggle}
-                />
+            <AddItemModal
+                onClick={this.toggle} 
+                isOpen={this.state.modal} 
+                onChange={this.onChange} 
+                onSubmit={this.onSubmit} 
+                toggle={this.toggle}
+            />
 
-                <p>Welcome {this.state.storeName}</p>
+            <p>Welcome {this.state.storeName}</p>
 
-                <Col md={{ size: 8, offset: 2 }}>
-                    {this.state.storeItems.length ? (
-                        <Table striped>
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Price</th>
-                                    <th>Category</th>
-                                    <th>Store</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-                            <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem}/>
-                        </Table>
-                    ) : (
-                            <h3>No Results to Display</h3>
-                        )}
-                </Col>
-            </div>
+            <Col md={{ size: 8, offset: 2 }}>
+                {this.state.storeItems.length ? (
+                    <Table striped>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Store</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem}/>
+                    </Table>
+                ) : (
+                        <h3>No Results to Display</h3>
+                    )}
+            </Col>
+        </div>
+            //If authenticated is false display items below
+            :  <Login></Login>
+        }
+
+
+
+        </div> 
         );
     }
 }

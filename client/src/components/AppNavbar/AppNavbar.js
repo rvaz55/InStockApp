@@ -9,7 +9,7 @@ class AppNavbar extends React.Component {
       isWideEnough: false,
     }
 
-  onClick() {
+  onClick() { 
     this.setState({
       collapse: !this.state.collapse,
     });
