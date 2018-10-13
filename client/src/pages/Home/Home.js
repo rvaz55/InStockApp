@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from "../../components/Header"
+import Header from "../../components/Header";
+
 //import SearchBar from "../../components/SearchBar";
 //import SearchButton from "../../components/SearchButton";
 

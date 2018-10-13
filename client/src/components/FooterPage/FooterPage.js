@@ -1,6 +1,8 @@
 import "./FooterPage.css";
 import React from 'react';
 import { Col, Container, Row, Footer } from 'mdbreact';
+import ContactUsModal from "../../components/ContactUsModal";
+
 
 class FooterPage extends React.Component {
     render(){
@@ -9,9 +11,11 @@ class FooterPage extends React.Component {
                 <Container fluid className="text-center text-md-left">
                     <Row>
                     <Col sm="4">
-                        <h6 className="title">Contact Us</h6>
-                        <h6 className="title">FAQ</h6>
-
+                        <div className ="col-4">                  
+                            {/* <h6 className="title">Contact Us</h6> */}
+                            <ContactUsModal />
+                            <h6 className="title">FAQ</h6>
+                        </div>  
                     </Col>
                     <Col sm="4">
                     {/* empty column here*/}
