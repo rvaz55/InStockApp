@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
-import { Switch ,  Link } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import "./AppNavbar.css";
 
 class AppNavbar extends React.Component {
