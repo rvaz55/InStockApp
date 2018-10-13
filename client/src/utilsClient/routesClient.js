@@ -24,7 +24,7 @@ export default {
   saveItem: function(itemData) {
     return axios.post("/api/items/", itemData);
   },
-  // Get items for store when sigend on from items db
+  // Get items for store when sigend on from items db 
   getStoreItems: function(storename) {
     return axios.get(`/api/items/store/${storename}`);
   },
@@ -33,7 +33,7 @@ export default {
     return axios.post("/api/stores/", storeData);
   },
   //Gets vendor data for profile using id
-  getStore: function(id) {
-      return axios.get("/api/stores/" + id);
+  getStore: function(email) {
+      return axios.get("/api/stores/login", email);
   }
 };

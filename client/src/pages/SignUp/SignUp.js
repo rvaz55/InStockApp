@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
 import  { auth, firebase }  from "../../firebase";
 import "./SignUp.css";
-//import * as auth from "../../firebase";
-
-import API from "../../utilsClient/routesClient"
+import API from "../../utilsClient/routesClient";
 
 class SignUp extends Component {
     state = {
@@ -27,9 +25,10 @@ class SignUp extends Component {
  
         // Set the state for the appropriate input field
         this.setState({
-            [name]: value
+            [name]: value 
         });
     };
+
 
     handleFormSubmit = (event, data) => {
        event.preventDefault();
@@ -48,41 +47,29 @@ class SignUp extends Component {
               &&
               (this.state.passwordOne == this.state.passwordTwo)
              ) {
-
-                console.log(data)
-
+                //console.log(data)
                 auth.doCreateUserWithEmailAndPassword(data.email, data.passwordOne)
                 .then(authUser => {
-                  //this.setState({ ...data });
-                  console.log("this is the data")
-                //   console.log(this.state)
-                //   console.log(authUser)
-                  let path = `/login`;
-                  this.props.history.push(path);
-                })
-                .catch(error => {
-                  alert(error.message)
-                  //console.log(error)
-                });
-
-
-            //API.saveStore(
-                // store: this.state.storeName,
-                // address: this.state.storeAddress,
-                // city: this.state.storeCity,
-                // state: this.state.storeState,
-                // zipcode: this.state.storeZip,
-                // phone: this.state.storePhone,
-                // username: this.state.username,
-                // password: this.state.password,
-                // email: this.state.email
-            //data)
-            //.then(res => console.log(res))
-        } 
+                        console.log(authUser)
+                        console.log(data)
+                        API.saveStore(data)
+                        .then(console.log(data))
+                        .catch(error => console.log(error))
+                    let path = `/login`;
+                    this.props.history.push(path)
+                  })
+                .catch(error => {console.log(error)} )
+       
+        } else {
+                           
         //Here we need to put an else statemet that triggers 
         //some errors to tell the vendor:
         // A)The passwords don't match
         // B) The username and/or email already exists
+
+            console.log("error")
+        }
+
 
     };
 

@@ -4,6 +4,7 @@ autoIncrement = require('mongoose-auto-increment');
 
 const storeSchema = new Schema({
   storeName: { type: String, required: false },
+  email: {type: String, required: true, unique: true},
   storeid: { type: String, required: false },
   storeAddress: {type:String, required: false},
   storeCity:{type: String, required: false},

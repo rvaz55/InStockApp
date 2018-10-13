@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Input, FormBtn } from "../../components/Form";
 import Profile from ".././Profile";
 import  { auth, firebase }  from "../../firebase";
+import API from "../../utilsClient/routesClient";
 import "./Login.css";
 
 class Login extends Component {
@@ -25,17 +26,23 @@ class Login extends Component {
 
       handleFormSubmit = (event, data) => {
         event.preventDefault();
-        console.log(data)
+        console.log(data) 
 
         auth.doSignInWithEmailAndPassword(data.email, data.password)
-        .then((data) => {
-          console.log(data)
-          //this.setState({ ...INITIAL_STATE });
-          //history.push(routes.HOME);
-          alert('you are signed in!')
+        .then((authUser) => {
+          console.log(authUser)
+          //console.log(data)
+          console.log(data.email)
+
+             API.getStore(data.email)
+             .then(res => 
+               
+               console.log( res ) )
+
+             .catch(err=>console.log(err))
         })
         .catch(error => {
-          alert(error.message);
+          console.log(error.message);
         });
       };
 
