@@ -29,6 +29,7 @@ class SignUp extends Component {
         });
     };
 
+
     handleFormSubmit = (event, data) => {
        event.preventDefault();
         console.log(data)
@@ -48,23 +49,23 @@ class SignUp extends Component {
              ) {
 
                 console.log(data)
-
                 auth.doCreateUserWithEmailAndPassword(data.email, data.passwordOne)
                 .then(authUser => {
-                    API.saveStore(data)
-                    .then(res => 
-                      {let path = `/login`;
-                      this.props.history.push(path)
-                      //this.setState({ items: res.data })
-                      })
-                    .catch(error=>alert(error.message))
-                })
-                .catch(error => {
-                  alert(error.message)
-                  //console.log(error)
-                });
+                        console.log(authUser)
+                        console.log(data)
+                        API.saveStore(data)
+                        .then(console.log("Saved to the DB"))
+                        .catch(error => console.log(error))
+                    let path = `/login`;
+                    this.props.history.push(path)
+                  })
+                .catch(error => {console.log(error)} )
        
-        } 
+        } else {
+                           
+                
+            console.log("error")
+        }
         //Here we need to put an else statemet that triggers 
         //some errors to tell the vendor:
         // A)The passwords don't match

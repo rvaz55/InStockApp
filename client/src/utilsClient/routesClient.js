@@ -24,7 +24,7 @@ export default {
   saveItem: function(itemData) {
     return axios.post("/api/items/", itemData);
   },
-  // Get items for store when sigend on from items db
+  // Get items for store when sigend on from items db 
   getStoreItems: function(storename) {
     return axios.get(`/api/items/store/${storename}`);
   },

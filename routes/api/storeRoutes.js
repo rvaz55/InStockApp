@@ -2,8 +2,8 @@ const router = require("express").Router();
 const storesController = require("../../controllers/storesController");
 
 
-// Matches with "api/store/signup"
-router
+// Matches with "api/stores/"
+router 
 .route("/")
 // .get(storesController.findById)
 .post(storesController.create);
