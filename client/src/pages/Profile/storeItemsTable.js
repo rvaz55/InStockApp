@@ -18,7 +18,7 @@ const StoreItemsTable = props => {
         storeItemsTable = sortedItems.map(each => {
             return (
                 <tr key={each._id}>
-                    <th scope="row">{each.itemName}</th>
+                    <td scope="row">{each.itemName}</td>
                     <td>{each.price}</td>
                     <td>{each.category}</td>
                     <td>{each.store}</td>

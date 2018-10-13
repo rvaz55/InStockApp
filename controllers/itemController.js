@@ -24,7 +24,9 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     addItem: function (req, res) {
+         console.log(req.body)
         db.Item
+            // .create({itemName: req.params.itemData})
             .create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -37,6 +39,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     getStoreItems: function (req, res) {
+        console.log("res: " + res.data)
         db.Item
             .find({ store: req.params.storename })
             .sort({ itemName: 1 })

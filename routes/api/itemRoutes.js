@@ -4,13 +4,12 @@ const itemController = require("../../controllers/itemController");
 // GET route to /api/items that gets all items currently stored in db
 router
     .route('/')
-    .get(itemController.findAllItems) 
-    .post(itemController.addItem);
+    .get(itemController.findAllItems); 
 
 // POST route to /api/items that adds a new item to the items db
-// router
-//     .route('/additem/')
-//     .post(itemController.addItem);
+router
+    .route('/additem/')
+    .post(itemController.addItem);
 
 // Delete route to /api/items/itemid to remove item from the db
 router

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utilsClient/routesClient";
+import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal";
 import StoreItemsTable from "./storeItemsTable";
 import { Table, Col } from 'reactstrap';
@@ -44,8 +45,9 @@ class Profile extends Component {
                 this.setState({ storeItems: res.data })
             )
             .catch(err => console.log(err))
+            console.log(this.state.storeItems)
     }
-
+    
     componentDidMount() {
         console.log(this.props.storeID)
         this.props.setUserLoggedIn(true)
@@ -59,11 +61,14 @@ class Profile extends Component {
     };
 
     onChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value
+        });
+        console.log(this.state.price)
     };
 
     // method for saving items to db 
     saveNewItem = (name, price, category, store, address) => {
+   console.log('state: ' + this.state)
         API.saveItem({
             itemName: name,
             price: price,
@@ -75,7 +80,7 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
-    onSubmit = e => {
+    onClickSubmit = e => {
         e.preventDefault();
         this.saveNewItem(this.state.itemName, this.state.price, this.state.category, this.state.store, this.state.address)
         this.getStoreItems(this.state.storeName)
@@ -105,36 +110,36 @@ class Profile extends Component {
             //If authenticated is true display items below
             ? 
             <div className ="profile-content" id="itemModal">
-            <AddItemModal
-                onClick={this.toggle} 
-                isOpen={this.state.modal} 
-                onChange={this.onChange} 
-                onSubmit={this.onSubmit} 
-                toggle={this.toggle}
-            />
+                <AddItemBtn onClick={this.toggle}/>
+                <AddItemModal
+                    onChange={this.onChange} 
+                    isOpen={this.state.modal} 
+                    toggle={this.toggle}
+                    onClick={this.onClickSubmit}
+                />
 
-            <p>Welcome {this.state.storeName}</p>
+                <p>Welcome {this.state.storeName}</p>
 
-            <Col md={{ size: 8, offset: 2 }}>
-                {this.state.storeItems.length ? (
-                    <Table striped>
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Store</th>
-                                <th>Address</th>
-                            </tr>
-                        </thead>
-                        <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem}/>
-                    </Table>
-                ) : (
-                        <h3>No Results to Display</h3>
-                    )}
-            </Col>
-        </div>
-            //If authenticated is false display items below
+                <Col md={{ size: 8, offset: 2 }}>
+                    {this.state.storeItems.length ? (
+                        <Table striped>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Store</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem}/>
+                        </Table>
+                    ) : (
+                            <h3>No Results to Display</h3>
+                        )}
+                </Col>
+            </div>
+                      //If authenticated is false display items below
             :  <Login></Login>
         }
 

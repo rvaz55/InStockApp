@@ -22,7 +22,7 @@ export default {
   },
   // Saves a item to the database
   saveItem: function(itemData) {
-    return axios.post("/api/items/", itemData);
+    return axios.post("/api/items/additem/", itemData);
   },
   // Get items for store when sigend on from items db 
   getStoreItems: function(storename) {
