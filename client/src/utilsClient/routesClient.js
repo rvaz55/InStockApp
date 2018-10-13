@@ -32,8 +32,13 @@ export default {
   saveStore: function(storeData) {
     return axios.post("/api/stores/", storeData);
   },
-  //Gets vendor data for profile using id
+  //This route get triggerd BY the login and uses the vendor email to retrieve the storeID from mongoDB 
   getStore: function(email) {
       return axios.get("/api/stores/login", email);
-  }
+  },
+  //This route gets triggered AFTER being logged in and uses the store's ID (from the mongodDB) 
+  //to retrieve the store information (ei- store name, address, and inventory)
+  getStoreData: function(storeID) {
+    return axios.get(`/api/stores/profilepage/${storeID}`);
+}
 };
