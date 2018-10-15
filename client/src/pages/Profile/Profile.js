@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utilsClient/routesClient";
+import PhotoAPI from "../../utilsClient/PhotoAPI";
 import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
@@ -28,6 +29,7 @@ class Profile extends Component {
         category: "",
         store: "",
         address: "",
+        photo: "",
         storeItems: []
     };
 
@@ -82,16 +84,33 @@ class Profile extends Component {
         });
     };
 
+    getPic = (item) => {
+        PhotoAPI.getPhoto(item)
+        .then(res => {if (res.data.results) {return res.data.results[0].urls.regular}})
+        .catch(err => console.log(err))
+    }
+    
     onClickSubmit = (e) => {
         e.preventDefault();
-        const { itemName, price, category, storeName, storesid, storeAddress } = this.state;
+        PhotoAPI.getPhoto(this.state.itemName)
+        wait(10000)
+        .then(res => {if(res.data.results[0]) {this.setState({
+            ...this.state,
+            photo: res.data.results[0].urls.regular
+            })
+            }
+            }
+        );
+        const{ itemName, price, category, storeName, storesid, storeAddress, photo } = this.state;
         API.saveItem({
             itemName: itemName,
             price: price,
             category: category,
-            storeName: storeName,
-            storesid: storesid,
-            storeAddress: storeAddress
+
+            storeName: storeName, 
+            storesid: storesid, 
+            storeAddress: storeAddress,
+            photo: photo 
         })
             // wait(5000)
             .then(res => {

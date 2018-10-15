@@ -68,11 +68,19 @@ class SearchResultsMain extends Component {
     this.setState({ selectedCategory: selected });
   }
 
-  // get the value that is typed in the box to use in the search 
-  handleSearchBarSubmit = e => {
-    e.preventDefault();
-    this.handleSearchBarSubmit.bind(this)
-    const newSearch = this.state.searchText;
+
+// get the value that is typed in the box to use in the search 
+handleSearchBarSubmit = e => {
+  e.preventDefault();
+  this.handleSearchBarSubmit.bind(this)
+  const newSearch = this.state.searchText;
+ 
+  //Search results array in db via action
+  if(this.state.searchText) {
+    this.getSearchResults(newSearch);
+   }
+   console.log(this.state.items) 
+}
 
     //Search results array in db via action
     if (this.state.searchText) {

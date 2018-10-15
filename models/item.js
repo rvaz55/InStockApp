@@ -17,7 +17,8 @@ const itemSchema = new Schema({
   date: { type: Date, default: Date.now, required: false },
   storeName: { type: String, required: false },
   storesid: {type: String, required: false },
-  storeAddress: { type: String, required: false }
+  storeAddress: { type: String, required: false },
+  photo: { type: String, required: false}
 });
 
 //autoIncrement.initialize(mongoose.connection);

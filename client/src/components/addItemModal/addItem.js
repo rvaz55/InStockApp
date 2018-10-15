@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal,ModalHeader,ModalBody,Form,FormGroup,Label,Input,Button} from 'reactstrap';
 import "./additemModal.css";
+import DropdownInput from "../CategoryOptions";
 
 const AddItemModal = (props) => {
     const onClick = props.onClick;
@@ -8,7 +9,7 @@ const AddItemModal = (props) => {
     const toggle = props.toggle;
     return (
       <div>
-        <Modal isOpen={isOpen} toggle={toggle}>
+        <Modal isOpen={isOpen} toggle={toggle} >
           <ModalHeader toggle={toggle}>Add item to your store's stock</ModalHeader>
           <ModalBody>
             <Form>
@@ -30,13 +31,7 @@ const AddItemModal = (props) => {
                   onChange={props.onChange}
                 />
                 <Label for="category">Category</Label>
-                <Input
-                  type="text"
-                  name="category"
-                  id="category"
-                  placeholder="What category?"
-                  onChange={props.onChange}
-                />
+                <DropdownInput onChange={props.onChange}/>
                 <Button onClick={onClick} color="dark" style={{ marginTop: '2rem' }} block>
                   Add Item
                 </Button>
