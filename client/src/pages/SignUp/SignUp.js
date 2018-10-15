@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
 import  { auth, firebase }  from "../../firebase";
+import {Jumbotron, NavLink} from "mdbreact";
 import "./SignUp.css";
 import API from "../../utilsClient/routesClient";
 
@@ -77,8 +78,18 @@ class SignUp extends Component {
     render() {
         return (
             <div className="signup-form"> 
+             <div className="jumbotron-title">
+          <Jumbotron>
+            <h1 className="h1-responsive display-4">Sign In to InStock</h1>
+            <h5 className="h5-responsive">Share products from your local business</h5>
+            <hr className="my-4" />
+            <p className="lead">Already on InStock?<NavLink to="/login">Login</NavLink></p>
+
+
+          </Jumbotron>
+        </div>
             <form>
-                <p>Store name</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="Store Name"
@@ -86,7 +97,7 @@ class SignUp extends Component {
                     value={this.state.storeName}
                     onChange={this.handleInputChange}
                 />
-                <p>Store address</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="Address"
@@ -94,7 +105,7 @@ class SignUp extends Component {
                     value={this.state.storeAddress}
                     onChange={this.handleInputChange}
                 />
-                <p>City</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="City"
@@ -102,7 +113,7 @@ class SignUp extends Component {
                     value={this.state.storeCity}
                     onChange={this.handleInputChange}
                 />
-                <p>State</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="State"
@@ -110,7 +121,7 @@ class SignUp extends Component {
                     value={this.state.storeState}
                     onChange={this.handleInputChange}
                 />
-                <p>ZIP Code</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="ZIP Code"
@@ -118,7 +129,7 @@ class SignUp extends Component {
                     value={this.state.storeZip}
                     onChange={this.handleInputChange}
                 />
-                <p>Store Phone Number</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="Phone Number"
@@ -126,7 +137,7 @@ class SignUp extends Component {
                     value={this.state.storePhone}
                     onChange={this.handleInputChange}
                 />
-                <p>Enter a username</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="Username"
@@ -134,7 +145,7 @@ class SignUp extends Component {
                     value={this.state.username}
                     onChange={this.handleInputChange}
                 />
-                <p>Enter a password</p>
+                <p></p>
                 <Input
                     type="password"
                     placeholder="Password"
@@ -142,15 +153,15 @@ class SignUp extends Component {
                     value={this.state.passwordOne}
                     onChange={this.handleInputChange}
                 />
-                <p>Confirm password</p>
+                <p></p>
                 <Input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Confirm Password"
                     name="passwordTwo"
                     value={this.state.passwordTwo}
                     onChange={this.handleInputChange}
                 />
-                <p>Enter an email address</p>
+                <p></p>
                 <Input
                     type="text"
                     placeholder="Email"
@@ -159,7 +170,8 @@ class SignUp extends Component {
                     onChange={this.handleInputChange}
                 />
                 <br></br>
-                <FormBtn
+                <div className="signup-submit">
+                <FormBtn 
                     disabled={!(this.state.storeName
                         && this.state.storeAddress 
                         && this.state.storeCity 
@@ -175,6 +187,7 @@ class SignUp extends Component {
                 >
                     Sign Up for InStock
               </FormBtn>
+              </div>
             </form>
             
             </div>

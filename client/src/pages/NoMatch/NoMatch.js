@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NoMatch.css"
 
 
 const NoMatch = () => (
-  <div>
+  <div className="error">
     <h1>404 Page Not Found</h1>
-    <Link to={"/"} activeClassName="active"><button>Return to InStock</button></Link>
+    <Link to={"/"} activeClassName="active"><button className="btn btn-deep-purple">Return to InStock</button></Link>
   </div>
 );
 

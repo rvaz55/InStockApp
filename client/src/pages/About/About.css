@@ -1,0 +1,36 @@
+.view {
+    background-image: none;
+}
+
+.entire-deck {
+    margin:  20px 40px;
+    padding: 20px;
+
+}
+
+
+.first-row {
+    padding: 20px 70px;
+    margin: 50px;
+}
+
+.second-row {
+    padding: 70px;
+    margin: 50px; 
+
+}
+
+ 
+.jumbotronDiv {
+    box-shadow: none;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    margin-top: 80px;
+    padding-top: 20px;
+}
+
+
+
+

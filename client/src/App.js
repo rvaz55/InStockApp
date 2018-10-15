@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import FooterPage from "./components/FooterPage";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
@@ -57,6 +58,7 @@ class App extends Component {
             />
           )} />
           <Route path='/signup' component={SignUp} />
+          <Route path='/about' component={About} />
           <Route path='/profile' component={Profile} />
           <Route component={NoMatch} />
         </Switch>
