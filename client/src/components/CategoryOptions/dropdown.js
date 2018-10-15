@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Input } from 'reactstrap';
 
 const Dropdown = (props) => {
   let categories = props.categories;

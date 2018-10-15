@@ -12,8 +12,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
     findById: function(req, res) {
-      console.log(req.body)
-      console.log(req.params)
+      // console.log(req.body)
+      // console.log(req.params)
+      // console.log(res)
       db.Store
         .findById(req.params.storeid)
         .then(dbModel => res.json(dbModel))

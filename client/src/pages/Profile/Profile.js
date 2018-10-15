@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import API from "../../utilsClient/routesClient";
 import AddItemBtn from "../../components/addItemModal/addItemBtn";
-import AddItemModal from "../../components/addItemModal";
+import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
+import Login from "../Login"
 import { Table, Col } from 'reactstrap';
 import "./Profile.css";
-import Login from "../Login"
 //import { Input, FormBtn } from "../../components/Form";
+
+// Creating a promise wrapper for setTimeout
+function wait(delay = 0) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, delay);
+    });
+}
 
 class Profile extends Component {
     state = {
-        username: "",
-        password: "",
-        storeName: "Indian Groceries & Spices Inc",
+        // username: "",
+        // password: "",
+        storesid: "",
+        storeName: "",
+        storeAddress: "",
         modal: false,
         itemName: "",
         price: 0,
@@ -22,36 +31,43 @@ class Profile extends Component {
         storeItems: []
     };
 
-    // This method grabs the store DATA not just the store items
+    // This method grabs the store DATA from the store collection
     getStoreData = (storeId) => {
         API.getStoreData(storeId)
-            .then(res =>
-                {
-                console.log(res.data)
-                const newState  = {
-                    ...this.state,
-                    ...res.data
-                }
-                this.setState(newState)
-                }
-            )
+            .then(res => {
+                // console.log(res.data)
+                this.setState(state => (
+                    state.storeName = res.data.storeName,
+                    state.storeAddress = res.data.storeAddress,
+                    state.storesid = res.data._id, state
+                ))
+            })
+            // const newState  = {
+            //     ...this.state.currentStore,
+            //     ...res.data
+            // }
+            // this.setState(newState)
+            // }
+
             .catch(err => console.log(err))
     }
 
-    // method for getting items from db using using the store's id
+    // This method grabs the items DATA from the item collection using the storeID
     getStoreItems = (storeId) => {
         API.getStoreItems(storeId)
             .then(res =>
                 this.setState({ storeItems: res.data })
             )
             .catch(err => console.log(err))
-            console.log(this.state.storeItems)
+        console.log(this.state.storeItems)
     }
-    
+
     componentDidMount() {
         console.log(this.props.storeID)
         this.props.setUserLoggedIn(true)
         this.getStoreData(this.props.storeID)
+        this.getStoreItems(this.props.storeID)
+        // console.log(this.state)
     };
 
     toggle = () => {
@@ -61,59 +77,51 @@ class Profile extends Component {
     };
 
     onChange = e => {
-        this.setState({ [e.target.name]: e.target.value
+        this.setState({
+            [e.target.name]: e.target.value
         });
-        console.log(this.state.price)
     };
 
-    // method for saving items to db 
-    saveNewItem = (name, price, category, store, address) => {
-   console.log('state: ' + this.state)
-        API.saveItem({
-            itemName: name,
-            price: price,
-            category: category, 
-            store: store, 
-            address: address})
-            .then(res =>
-                console.log(res))
-            .catch(err => console.log(err))
-    }
-
-    onClickSubmit = e => {
+    onClickSubmit = (e) => {
         e.preventDefault();
-        this.saveNewItem(this.state.itemName, this.state.price, this.state.category, this.state.store, this.state.address)
-        this.getStoreItems(this.state.storeName)
-
-        // Close modal
-        this.toggle();
+        const { itemName, price, category, storeName, storesid, storeAddress } = this.state;
+        API.saveItem({
+            itemName: itemName,
+            price: price,
+            category: category,
+            storeName: storeName, 
+            storesid: storesid, 
+            storeAddress: storeAddress 
+        })
+        // wait(5000)
+            .then(res => {
+                console.log('res: ' + res)
+            })
+            .catch(err => console.log(err))
+            // Close modal
+            this.toggle();
+            console.log(this.state)
+            this.getStoreItems(this.state.storesid)
     }
 
-        //method for deleting items from db using item id
-     deleteItem = itemId => {
-            API.deleteItem(itemId)
-                .then(res => {
-                    console.log(res);
-                    this.getStoreItems(this.state.storeName)})
-                .catch(err => console.log(err));
-        };
-    
+    //method for deleting items from db using item id
+    deleteItem = itemId => {
+        API.deleteItem(itemId)
+            .then(res => {
+                console.log(res.data);
+                this.getStoreItems(this.state.storesid)
+            })
+            .catch(err => console.log(err));
+    };
+
     render() {
-        console.log(this.state)
-        console.log(this.props)
         const thisStoresItems = this.state.storeItems;
         return (
-
-        <div>   
-
-          { this.props.userLoggedIn 
-            //If authenticated is true display items below
-            ? 
-            <div className ="profile-content" id="itemModal">
-                <AddItemBtn onClick={this.toggle}/>
+            <div className="profile-content" id="itemModal">
+                <AddItemBtn onClick={this.toggle} />
                 <AddItemModal
-                    onChange={this.onChange} 
-                    isOpen={this.state.modal} 
+                    onChange={this.onChange}
+                    isOpen={this.state.modal}
                     toggle={this.toggle}
                     onClick={this.onClickSubmit}
                 />
@@ -132,20 +140,13 @@ class Profile extends Component {
                                     <th>Address</th>
                                 </tr>
                             </thead>
-                            <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem}/>
+                            <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem} />
                         </Table>
                     ) : (
                             <h3>No Results to Display</h3>
                         )}
                 </Col>
             </div>
-                      //If authenticated is false display items below
-            :  <Login></Login>
-        }
-
-
-
-        </div> 
         );
     }
 }

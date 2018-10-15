@@ -37,7 +37,7 @@ class SearchResultsMain extends Component {
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
     .then(res => {
-      console.log((this.state.items))
+      console.log((res))
       this.setState({ items: res.data })
     }
   )

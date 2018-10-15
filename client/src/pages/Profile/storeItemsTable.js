@@ -1,8 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import API from "../../utilsClient/routesClient";
 import DeleteBtn from "../../components/DeleteBtn";
-import { Table } from 'reactstrap';
 
 
 const StoreItemsTable = props => {
@@ -21,8 +19,8 @@ const StoreItemsTable = props => {
                     <td scope="row">{each.itemName}</td>
                     <td>{each.price}</td>
                     <td>{each.category}</td>
-                    <td>{each.store}</td>
-                    <td>{each.address}</td>
+                    <td>{each.storeName}</td>
+                    <td>{each.storeAddress}</td>
                     <td>
                         <DeleteBtn onClick={() => props.deleteItem(each._id)} key={each._id} />
                     </td>
@@ -38,6 +36,3 @@ const StoreItemsTable = props => {
 }
 
 export default StoreItemsTable;
-
-
-

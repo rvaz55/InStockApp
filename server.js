@@ -7,8 +7,8 @@ const mongoose = require("mongoose");
 const autoIncrement = require('mongoose-auto-increment');
 
 // Define middleware here
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
