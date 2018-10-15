@@ -1,15 +1,7 @@
 import React from 'react';
+import {Modal,ModalHeader,ModalBody,Form,FormGroup,Label,Input,Button} from 'reactstrap';
+import "./additemModal.css";
 import DropdownInput from "../CategoryOptions";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button
-} from 'reactstrap';
 
 const AddItemModal = (props) => {
     const onClick = props.onClick;

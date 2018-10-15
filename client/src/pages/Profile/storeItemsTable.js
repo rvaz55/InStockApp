@@ -1,10 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DeleteBtn from "../../components/DeleteBtn";
-
+import "./Profile.css";
 
 const StoreItemsTable = props => {
 
+    
     let storeItems = props.storeItems;
     let sortedItems = storeItems.sort();
     let storeItemsTable;

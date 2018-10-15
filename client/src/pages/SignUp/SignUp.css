@@ -1,6 +1,9 @@
 .signup-form{
     padding: 80px;
-    margin: 30 auto;
+    margin-top: 30;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
