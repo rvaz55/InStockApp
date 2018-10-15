@@ -19,7 +19,7 @@ router
 
 // GET route to api/items/storeid to get all items stored in db for particular store
 router
-    .route('/store/:storename')
+    .route('/store/:storeid')
     .get(itemController.getStoreItems);
 
 // GET route to api/items
@@ -35,4 +35,3 @@ router
     .get(itemController.findBySearch);
 
     module.exports = router;
-

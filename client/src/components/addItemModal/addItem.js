@@ -45,22 +45,6 @@ const AddItemModal = (props) => {
                   placeholder="What category?"
                   onChange={props.onChange}
                 />
-                <Label for="store">Store</Label>
-                <Input
-                  type="text"
-                  name="store"
-                  id="store"
-                  placeholder="Store"
-                  onChange={props.onChange}
-                />
-                <Label for="item">Address</Label>
-                <Input
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Address"
-                  onChange={props.onChange}
-                />
                 <Button onClick={onClick} color="dark" style={{ marginTop: '2rem' }} block>
                   Add Item
                 </Button>
@@ -71,5 +55,4 @@ const AddItemModal = (props) => {
       </div>
     );
   }
-
 export default AddItemModal;
