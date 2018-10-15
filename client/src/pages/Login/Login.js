@@ -86,7 +86,7 @@ class Login extends Component {
           <Jumbotron>
             <h1 className="h1-responsive display-4">Log In to InStock</h1>
             <hr className="my-4" />
-            <p className="lead">New to InStock?  <NavLink to="/signup">Sign Up</NavLink></p>
+            <p className="lead">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>
 
 
           </Jumbotron>
@@ -124,7 +124,7 @@ class Login extends Component {
             </form>
           </div>
 
-        }
+        
       </div>
     );
 

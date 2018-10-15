@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button
-} from 'reactstrap';
+import {Modal,ModalHeader,ModalBody,Form,FormGroup,Label,Input,Button} from 'reactstrap';
+import "./additemModal.css";
 
 const AddItemModal = (props) => {
     const onClick = props.onClick;

@@ -46,7 +46,7 @@ class AppNavbar extends React.Component {
                           <NavItem>
                             {(this.props.userLoggedIn)
                             ? <NavLink to="/login" onClick={this.onClickLogout}>Logout</NavLink>
-                            : <NavLink to="/login">Login</NavLink>} 
+                            : <NavLink to="/login">Vendor Login</NavLink>} 
                           </NavItem>
 
                           

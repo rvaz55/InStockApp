@@ -1,16 +1,18 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import "./additemModal.css";
+import { Button } from 'mdbreact';
+
 
 const AddItemBtn = (props) => {
     const onClick = props.onClick;
     return (
-      <div>
+      <div className="add-button">
         <Button
-          color="dark"
+          color="indigo darken-4"
           style={{ marginBottom: '2rem' }}
           onClick={onClick}
         >
-          Add Item
+          Add Products
         </Button>
       </div>
     );

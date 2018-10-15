@@ -1,15 +1,4 @@
-.searchHolder {
-    margin-left:25%;
-    width:50%;
-    margin-right:25%
-}
 
-#SearchButton {
-    margin: 0 auto;
-    display: flex;
-    justify-content : center;
-
-}
 
 #select{
     width:40%;
@@ -38,7 +27,18 @@
 }
 
 .results {
-    height: 100vh;
-    padding: 70px;
-    margin: 50px 20px;
+    padding: 30px;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
 }
+
+h4 {
+    padding: 10px;    
+}
+
+.my-4{
+    padding: 10px;
+}
+

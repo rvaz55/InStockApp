@@ -8,13 +8,13 @@ class FooterPage extends React.Component {
     render(){
         return(
             <Footer color="unique-color-dark" className="font-small pt-4 mt-4">
+            <div className="footer-container">
                 <Container fluid className="text-center text-md-left">
                     <Row>
                     <Col sm="4">
                         <div className ="col-4">                  
                             {/* <h6 className="title">Contact Us</h6> */}
                             <ContactUsModal />
-                            <h6 className="title">FAQ</h6>
                         </div>  
                     </Col>
                     <Col sm="4">
@@ -35,6 +35,8 @@ class FooterPage extends React.Component {
                     </Col>
                     </Row>
                 </Container>
+                
+                </div>
                 <div className="footer-copyright text-center py-3">
                     <Container fluid>
                         &copy; {(new Date().getFullYear())} Copyright: <a href="https://www.MDBootstrap.com"> InStock.com </a>
