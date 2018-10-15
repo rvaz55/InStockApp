@@ -50,8 +50,10 @@ class App extends Component {
         <Switch >
           <Route exact path='/' component={Home} />
           <Route path='/search/:searchItem' component={SearchResults} />
+          <Route path='/search' component={SearchResults}/>
           <Route path='/login' render={(props) => (
             <Login
+              history={props.history}
               setUserLoggedIn={this.setUserLoggedIn}
               setStoreID={this.setStoreID}
               setEmail={this.setEmail}
@@ -59,7 +61,18 @@ class App extends Component {
           )} />
           <Route path='/signup' component={SignUp} />
           <Route path='/about' component={About} />
-          <Route path='/profile' component={Profile} />
+
+          <Route path='/profilepage/:storeID' render={(props) => (
+            <Profile
+              history={props.history}
+              setUserLoggedIn={this.setUserLoggedIn}
+              setStoreID={this.setStoreID}
+              setEmail={this.setEmail}
+              storeID = {props.match.params.storeID}
+              userLoggedIn={this.state.userLoggedIn}/>
+              
+          )}  />
+
           <Route component={NoMatch} />
         </Switch>
 
