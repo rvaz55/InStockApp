@@ -20,7 +20,6 @@ class Profile extends Component {
     state = {
         // username: "",
         // password: "",
-        storesid: "",
         storeName: "",
         storeAddress: "",
         modal: false,
