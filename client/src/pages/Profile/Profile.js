@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import API from "../../utilsClient/photoAPI";
-import PhotoAPI from "../../utilsClient/photoAPI";
+import API from "../../utilsClient/routesClient";
+import PhotoAPI from "../../utilsClient/PhotoAPI";
 import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
@@ -20,7 +20,6 @@ class Profile extends Component {
     state = {
         // username: "",
         // password: "",
-        storesid: "",
         storeName: "",
         storeAddress: "",
         modal: false,
@@ -106,21 +105,20 @@ class Profile extends Component {
             itemName: itemName,
             price: price,
             category: category,
-
             storeName: storeName, 
             storesid: storesid, 
             storeAddress: storeAddress,
             photo: photo 
         })
-            // wait(5000)
+        // wait(5000)
             .then(res => {
                 console.log('res: ' + res)
             })
             .catch(err => console.log(err))
-        // Close modal
-        this.toggle();
-        console.log(this.state)
-        this.getStoreItems(this.state.storesid)
+            // Close modal
+            this.toggle();
+            console.log(this.state)
+            this.getStoreItems(this.state.storesid)
     }
 
     //method for deleting items from db using item id
@@ -137,8 +135,6 @@ class Profile extends Component {
         const thisStoresItems = this.state.storeItems;
         return (
             <div className="profile-content" id="itemModal">
-                <h2 className="display-4">Welcome {this.state.storeName}!</h2>
-                
                 <AddItemBtn onClick={this.toggle} />
                 <AddItemModal
                     onChange={this.onChange}
@@ -146,6 +142,9 @@ class Profile extends Component {
                     toggle={this.toggle}
                     onClick={this.onClickSubmit}
                 />
+
+                <p>Welcome {this.state.storeName}</p>
+
                 <Col md={{ size: 8, offset: 2 }}>
                     {this.state.storeItems.length ? (
                         <Table striped>
@@ -161,10 +160,8 @@ class Profile extends Component {
                             <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem} />
                         </Table>
                     ) : (
-                        <div className="empty-table-notification">
-                            <h3 className="h3-responsive">Uh Oh! No Items in your Database.</h3>
-                        </div>
-                    )}
+                            <h3>No Results to Display</h3>
+                        )}
                 </Col>
             </div>
         );

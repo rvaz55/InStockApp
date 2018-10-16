@@ -6,45 +6,45 @@ import ResultsColumn1 from "./ResultsColumn1";
 import ResultsColumn2 from "./ResultsColumn2";
 import API from "../../utilsClient/routesClient";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Form } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import "./SearchResults.css";
 
 class SearchResultsMain extends Component {
   state = {
     searchText: "",
-    items: [],
-    categoryItems: [],
+    items:[],
+    categoryItems:[],
     selectedCategory: "condiments"
   }
 
-  componentDidMount() {
-    const item = (this.props.history.location.pathname.split("/search/")[1]).replace(/\+/g, ' ')
+ componentDidMount() {
+   const item = (this.props.history.location.pathname.split("/search/")[1]).replace(/\+/g, ' ')
 
-    console.log(item)
-    this.getSearchResults(item);
-  }
+   console.log(item)
+   this.getSearchResults(item);
+ }
 
-  // getItems = () => {
-  //   API.getAllItems()
-  //   .then(res => 
-  //     this.setState({allItems: res.data})
-  //   )
-  //   .catch(err=>console.log(err))
-  //   console.log(this.state.allItems)
-  // }
+// getItems = () => {
+//   API.getAllItems()
+//   .then(res => 
+//     this.setState({allItems: res.data})
+//   )
+//   .catch(err=>console.log(err))
+//   console.log(this.state.allItems)
+// }
 
-  // method for getting items from db using using item search word
+// method for getting items from db using using item search word
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
-      .then(res => {
-        console.log((res))
-        this.setState({ items: res.data })
-      }
-      )
-      .catch(err => console.log(err))
+    .then(res => {
+      console.log((res))
+      this.setState({ items: res.data })
+    }
+  )
+  .catch(err=>console.log(err))
   }
 
-  // method for getting items from db using category search
+// method for getting items from db using category search
   getCategoryResults = (category) => {
     API.getItemsByCategory(category)
       .then(res => {
@@ -54,20 +54,19 @@ class SearchResultsMain extends Component {
       .catch(err => console.log(err))
     console.log((this.state.items))
   }
-
+  
   // update search box to show what is being typed
-  handleInputChangeOnBar = (e) => {
-    this.handleInputChangeOnBar.bind(this);
-    this.setState({ [e.target.name]: e.target.value });
-  }
+handleInputChangeOnBar = (e) => {
+  this.handleInputChangeOnBar.bind(this);
+  this.setState({ [e.target.name]: e.target.value });
+}
 
-  // update select to show what is being typed
-  handleInputChangeOnSelect = (e) => {
-    this.handleInputChangeOnSelect.bind(this);
-    let selected = e.target.value;
-    this.setState({ selectedCategory: selected });
-  }
-
+// update select to show what is being typed
+handleInputChangeOnSelect = (e) => {
+  this.handleInputChangeOnSelect.bind(this);
+  let selected = e.target.value;
+  this.setState({ selectedCategory: selected});
+}
 
 // get the value that is typed in the box to use in the search 
 handleSearchBarSubmit = e => {
@@ -82,68 +81,48 @@ handleSearchBarSubmit = e => {
    console.log(this.state.items) 
 }
 
+// get the value that is typed in the box to use in the search 
+handleCategorySubmit = e => {
+  e.preventDefault();
+  const newCatSearch = this.state.selectedCategory;
 
-  // get the value that is typed in the box to use in the search 
-  handleCategorySubmit = e => {
-    e.preventDefault();
-    const newCatSearch = this.state.selectedCategory;
-
-    //Search results array in db via action
-    if (this.state.selectedCategory) {
-      this.getCategoryResults(newCatSearch);
-    }
-  }
-
+  //Search results array in db via action
+  if(this.state.selectedCategory) {
+    this.getCategoryResults(newCatSearch);
+   } 
+}
+  
   render() {
-    let item = this.state.items;
-
+    let item=this.state.items;
+    
     // const allItem = this.state.allItems;
     return (
-
-      <div className="results">
-
-
-
-
-
-        <Container fluid className="text-center text-md-left">
-
-          <div className="search-form">
-            <Form>
-                <div className="row">
-                  <div className="col-10">
-                    <SearchBar onChange={this.handleInputChangeOnBar} value={this.state.searchText} />
-                  </div>
-               
-                
-                <div className="col-2">
-                    <SearchButton onClick={this.handleSearchBarSubmit} />
-                  </div>
-                </div>
-
-                 <h4 className="h4-responsive"> Search by Category</h4>
-
-
-
-              <div className="row">
-                  <div className="col-4">
-                    <DropdownInput onChange={this.handleInputChangeOnSelect} value={this.state.selectedCategory} />
-                    
-                  </div>
-                  <div className="col-8">
-                    <SearchButton onClick={this.handleCategorySubmit} />
-                  </div>
-                  
-              </div>
-            </Form>  
-           
+      <div className = "results">
+      <Container fluid className="text-center text-md-left">
+        <Form>
+          <Row form>
+            <Col md={{ size: 5, offset: 1 }}>
+              <FormGroup>
+                <SearchBar onChange={this.handleInputChangeOnBar} value={this.state.searchText} />
+              </FormGroup>
+            </Col>
+            <Col md={2}>
+              <FormGroup> 
+                <SearchButton onClick={this.handleSearchBarSubmit} />
+              </FormGroup>
+            </Col>
+            <Col md={4}>
+            <div className="searchHolder">
+              <FormGroup>
+                  <DropdownInput onChange={this.handleInputChangeOnSelect} value={this.state.selectedCategory} />
+              </FormGroup>
+              <FormGroup> 
+                <SearchButton onClick={this.handleCategorySubmit} />
+              </FormGroup>
             </div>
-
-          </Container>
-
-                 <hr className="my-4"/>
-
-      <div className="result-items">
+            </Col>
+          </Row>
+        </Form>
         <Container fluid className="text-center text-md-left">
           <Row>
             <Col size="sm-4">
@@ -157,9 +136,8 @@ handleSearchBarSubmit = e => {
               </Col>
           </Row>
         </Container>
+      </Container>
       </div>
-       
-      </div >
     );
   }
 }
@@ -170,5 +148,4 @@ handleSearchBarSubmit = e => {
 // the actions (getItemsBySearch) from redux is stored as a prop
 
 export default SearchResultsMain;
-
 
