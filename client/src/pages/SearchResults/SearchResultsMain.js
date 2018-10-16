@@ -82,11 +82,6 @@ handleSearchBarSubmit = e => {
    console.log(this.state.items) 
 }
 
-    //Search results array in db via action
-    if (this.state.searchText) {
-      this.getSearchResults(newSearch);
-    }
-  }
 
   // get the value that is typed in the box to use in the search 
   handleCategorySubmit = e => {
