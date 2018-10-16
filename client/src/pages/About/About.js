@@ -38,7 +38,7 @@ class About extends React.Component {
                                 <CardImage src={Melissa} alt="Card image cap" top hover overlay="white-slight" />
                                 <CardBody>
                                     <CardTitle tag="h5">Melissa Siddoway</CardTitle>
-                                    <CardText> Backend | Google Maps API</CardText>
+                                    <CardText> Backend </CardText>
                                     <Button className="btn btn-deep-purple" size="md">GitHub</Button>
                                 </CardBody>
                             </Card>
@@ -56,7 +56,7 @@ class About extends React.Component {
                                 <CardImage src={Jocelyn} alt="Card image cap" top hover overlay="white-slight" />
                                 <CardBody>
                                     <CardTitle tag="h5">Jocelyn Tse</CardTitle>
-                                    <CardText> Front End | Forms </CardText>
+                                    <CardText> Front End | Backend </CardText>
                                     <Button className="btn btn-deep-purple" size="md">GitHub</Button>
                                 </CardBody>
                             </Card>

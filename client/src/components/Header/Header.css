@@ -13,7 +13,7 @@
 .container-fluid-middle {
     height: 40vh; 
     background-color:#1a237e ;
-    padding: 20px;
+    padding: 50px 30px;
 }
 
 .center-first {
@@ -24,11 +24,31 @@
     color: white;
     padding: 30px 20px;
     vertical-align: middle;
+    text-align: center;
 }
 
 .bold-content {
     font-weight: bolder;
 }
 
+
+.instructions-row {
+    padding: 20px;
+}
+
+.col-sm {
+    margin: 10px;
+    text-align: left;
+}
+
+.vendor-title {
+padding-top: 50px;
+margin-top: 20px;
+text-align: center;
+}
+
+.instructions{
+padding: 40px;
+}
 
 
