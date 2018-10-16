@@ -20,25 +20,27 @@ export default {
   deleteItem: function(id) {
     return axios.delete(`/api/items/deleteitem/${id}`);
   },
-  // Saves a item to the database
-  saveItem: function(itemData) {
-    return axios.post("/api/items/", itemData);
+  // Get items from the items db using the store id of the user logged in
+  getStoreItems: function(storeid) {
+    return axios.get(`/api/items/store/${storeid}`);
   },
-  // Get items for store when sigend on from items db 
-  getStoreItems: function(storename) {
-    return axios.get(`/api/items/store/${storename}`);
+  // Saves a item to the database
+  saveItem: function(data) {
+    // return axios.post("/api/items/additem/", itemData)
+    return axios.post("/api/items/additem/",data);
   },
   // Saves store sign up info
   saveStore: function(storeData) {
     return axios.post("/api/stores/", storeData);
   },
-  //This route get triggerd BY the login and uses the vendor email to retrieve the storeID from mongoDB 
+  //Gets vendor data for profile using id
   getStore: function(email) {
       return axios.get("/api/stores/login", email);
   },
+  
   //This route gets triggered AFTER being logged in and uses the store's ID (from the mongodDB) 
   //to retrieve the store information (ei- store name, address, and inventory)
   getStoreData: function(storeID) {
     return axios.get(`/api/stores/profilepage/${storeID}`);
-}
+  }
 };

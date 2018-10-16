@@ -7,10 +7,23 @@
 }
 
 .btn-info {
-    background-color: transparent;
+    border-color: none;
 }
 
 .col{
     margin: auto;
+
+}
+
+.footer-container {
+    padding-bottom: 25px;
+}
+
+.primary-color {
+    background-color: #1C2331;
+}
+
+.btn-secondary {
+    background-color: #311b92;
 
 }

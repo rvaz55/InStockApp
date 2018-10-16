@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import FooterPage from "./components/FooterPage";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
@@ -49,6 +50,7 @@ class App extends Component {
         <Switch >
           <Route exact path='/' component={Home} />
           <Route path='/search/:searchItem' component={SearchResults} />
+          <Route path='/search' component={SearchResults}/>
           <Route path='/login' render={(props) => (
             <Login
               history={props.history}
@@ -58,6 +60,8 @@ class App extends Component {
             />
           )} />
           <Route path='/signup' component={SignUp} />
+          <Route path='/about' component={About} />
+
           <Route path='/profilepage/:storeID' render={(props) => (
             <Profile
               history={props.history}

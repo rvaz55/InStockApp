@@ -1,5 +1,18 @@
 .signup-form{
-    padding: 100px;
-    margin: auto;
+    padding: 80px;
+    margin-top: 30;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 
+}
+
+.btn-default {
+    margin: 0 auto;
+
+}
+
+.signup-submit {
+    display: flex;
+    margin: 0 auto;
 }

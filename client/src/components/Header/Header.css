@@ -9,3 +9,26 @@
     width:50%;
     margin-right:25%
 }
+
+.container-fluid-middle {
+    height: 40vh; 
+    background-color:#1a237e ;
+    padding: 20px;
+}
+
+.center-first {
+    padding: 50px 30px;;
+}
+
+.color-row {
+    color: white;
+    padding: 30px 20px;
+    vertical-align: middle;
+}
+
+.bold-content {
+    font-weight: bolder;
+}
+
+
+

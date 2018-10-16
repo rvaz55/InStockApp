@@ -1,11 +1,14 @@
-import React, {Component} from "react";
-import {Input, FormBtn } from "../../components/Form";
+import React, { Component } from "react";
+import { Input, FormBtn } from "../../components/Form";
 import Profile from ".././Profile";
-import  { auth, firebase }  from "../../firebase";
+import { auth, firebase } from "../../firebase";
 import API from "../../utilsClient/routesClient";
+import { Jumbotron, NavLink } from 'mdbreact';
+
 import "./Login.css";
 
 class Login extends Component {
+
     state = {
         email: '',
         password: '',
@@ -51,14 +54,14 @@ class Login extends Component {
 
   // componentWillMount() {
   //   this.confirmCredentials();
-   // }
+  // }
 
   //confirmCredentials = () => {
-    // API.confirmCredentials()
-    //   .then(res =>
-    //     this.setState({ storeID: res.data, authenticated: "true" })
-    //   )
-    //   .catch(err => console.log(err));
+  // API.confirmCredentials()
+  //   .then(res =>
+  //     this.setState({ storeID: res.data, authenticated: "true" })
+  //   )
+  //   .catch(err => console.log(err));
 
   //   console.log(this.props.history)
   //   let storeID =(JSON.stringify(this.state.storeID)).slice(1, -1);
@@ -68,49 +71,64 @@ class Login extends Component {
   // };
 
 
-    render() {
+  render() {
+    return (
 
-        return (
-
-          <div className="login-form">
-          {/* { this.state.userLoggedIn 
+      <div className="login-form">
+       {/* { this.state.userLoggedIn 
             //If authenticated is true display items below
             ? 
                 <Profile history={this.props.history} storeID={this.state.storeID}> </Profile>
               
             //If authenticated is false display items below
             :  */}
-            
-            <form>
-            <p>Enter your email</p>
-            <Input
-              type="text"
-              placeholder="Email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-            />
-            <p>Enter your password</p>
-            <Input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            />
-            <br></br>
-            <FormBtn
-                disabled={!(this.state.email && this.state.password)}
-                onClick={(e) => this.handleFormSubmit(e,this.state)}
-              >
-                Login to InStock
-              </FormBtn>
-          </form>
-      
+        <div className="jumbotron-title">
+          <Jumbotron>
+            <h1 className="h1-responsive display-4">Log In to InStock</h1>
+            <hr className="my-4" />
+            <p className="lead">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>
+
+
+          </Jumbotron>
         </div>
-      );
-           
-      }
+      
+          <div className="login">
+
+            <form>
+              <p></p>
+              <Input
+                type="text"
+                placeholder="Email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+              />
+              <p></p>
+              <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
+              <br></br>
+              <div className="submit-button">
+              <FormBtn
+              
+                disabled={!(this.state.email && this.state.password)}
+                onClick={(e) => this.handleFormSubmit(e, this.state)}
+              >
+            
+              </FormBtn>
+              </div>
+            </form>
+          </div>
+
+        
+      </div>
+    );
+
+  }
 }
 
 export default Login;
