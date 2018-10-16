@@ -6,11 +6,11 @@ class ResultItem extends Component {
   render() {
     return ( 
       <Card>
-        <img className="card-img-top" alt='stock' src={this.props.photo} />
+        {/* <img className="card-img-top" alt='stock' src={this.props.photo} /> */}
         <CardBody>
             <CardTitle>
               {this.props.itemName}
-              <p>Price:  {this.props.price}</p> 
+              <p>Price: ${this.props.price}</p> 
             </CardTitle>
             <CardText>
               {this.props.store}
