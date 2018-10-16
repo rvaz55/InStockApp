@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utilsClient/routesClient";
-import PhotoAPI from "../../utilsClient/PhotoAPI";
+import PhotoAPI from "../../utilsClient/photoAPI";
 import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
@@ -37,20 +37,20 @@ class Profile extends Component {
     getStoreData = (storeId) => {
         API.getStoreData(storeId)
             .then(res => {
-                // console.log(res.data)
-                this.setState(state => (
-                    state.storeName = res.data.storeName,
-                    state.storeAddress = res.data.storeAddress,
-                    state.storesid = res.data._id, state
-                ))
+                console.log(res.data)
+            //     this.setState(state => (
+            //         state.storeName = res.data.storeName,
+            //         state.storeAddress = res.data.storeAddress,
+            //         state.storesid = res.data._id, state
+            //     ))
+            // })
+                const newState  = {
+                    ...this.state.currentStore,
+                    ...res.data
+                }
+                this.setState(newState)
+                console.log(this.state)
             })
-            // const newState  = {
-            //     ...this.state.currentStore,
-            //     ...res.data
-            // }
-            // this.setState(newState)
-            // }
-
             .catch(err => console.log(err))
     }
 
