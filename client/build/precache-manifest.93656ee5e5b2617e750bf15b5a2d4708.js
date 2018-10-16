@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/static/css/main.c743f1d5.chunk.css"
   },
   {
-    "revision": "894a2ede85a483bf9bedefd4db45cdb9",
-    "url": "/static/media/Roboto-Medium.894a2ede.ttf"
+    "revision": "e31fcf1885e371e19f5786c2bdfeae1b",
+    "url": "/static/media/Roboto-Bold.e31fcf18.ttf"
   },
   {
     "revision": "99e527021bf123c66c9a",
@@ -132,8 +132,8 @@ self.__precacheManifest = [
     "url": "/static/media/Roboto-Regular.df7b648c.ttf"
   },
   {
-    "revision": "e31fcf1885e371e19f5786c2bdfeae1b",
-    "url": "/static/media/Roboto-Bold.e31fcf18.ttf"
+    "revision": "894a2ede85a483bf9bedefd4db45cdb9",
+    "url": "/static/media/Roboto-Medium.894a2ede.ttf"
   },
   {
     "revision": "99e527021bf123c66c9a",
