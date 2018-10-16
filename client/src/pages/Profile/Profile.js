@@ -20,6 +20,7 @@ class Profile extends Component {
     state = {
         // username: "",
         // password: "",
+        storesid: "",
         storeName: "",
         storeAddress: "",
         modal: false,
@@ -91,15 +92,15 @@ class Profile extends Component {
     
     onClickSubmit = (e) => {
         e.preventDefault();
-        PhotoAPI.getPhoto(this.state.itemName)
-        wait(10000)
-        .then(res => {if(res.data.results[0]) {this.setState({
-            ...this.state,
-            photo: res.data.results[0].urls.regular
-            })
-            }
-            }
-        );
+        // PhotoAPI.getPhoto(this.state.itemName)
+        // wait(10000)
+        // .then(res => {if(res.data.results[0]) {this.setState({
+        //     ...this.state,
+        //     photo: res.data.results[0].urls.regular
+        //     })
+        //     }
+        //     }
+        // );
         const{ itemName, price, category, storeName, storesid, storeAddress, photo } = this.state;
         API.saveItem({
             itemName: itemName,
