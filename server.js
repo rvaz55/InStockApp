@@ -4,7 +4,6 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const mongoose = require("mongoose");
-const autoIncrement = require('mongoose-auto-increment');
 
 // Define middleware here
 app.use(bodyParser.json());
@@ -19,9 +18,6 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instock_devDB", { useNewUrlParser: true });
-//Initializes the autoIncrement NPM package
-const connection = mongoose.createConnection(process.env.MONGODB_URI|| "mongodb://localhost/instock_devDB");
-autoIncrement.initialize(connection);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
