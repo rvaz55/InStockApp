@@ -19,7 +19,6 @@ class SearchResultsMain extends Component {
 
  componentDidMount() {
    const item = (this.props.history.location.pathname.split("/search/")[1]).replace(/\+/g, ' ')
-
    console.log(item)
    this.getSearchResults(item);
  }
@@ -37,8 +36,26 @@ class SearchResultsMain extends Component {
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
     .then(res => {
-      console.log((res))
-      this.setState({ items: res.data })
+      //If the item (aka 'res.data') is false (aka doesn't exist) 
+      //then create the item in the DB
+        if (res.data === false) {
+          console.log((res.data))
+          console.log("need to send this to the DB")
+          console.log(search)
+          API.saveItem(search)
+          .then(res => {
+            console.log(res.data)
+            alert("No store currently carry this item")
+          })
+          .catch(error => console.log(error))
+
+        } else {
+          //If the item has a carriedByStores array that is quivalent to zero
+          //then, the item isn't carried by any stores and the user must be alerted
+          console.log((res.data))
+          this.setState({ items: res.data })
+          console.log(this.state.items)
+        }
     }
   )
   .catch(err=>console.log(err))

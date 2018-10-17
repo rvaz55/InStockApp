@@ -8,7 +8,7 @@ router
 
 // POST route to /api/items that adds a new item to the items db
 router
-    .route('/additem/')
+    .route('/additem/:item')
     .post(itemController.addItem);
 
 // Delete route to /api/items/itemid to remove item from the db

@@ -16,7 +16,10 @@ class App extends Component {
   state = {
     userLoggedIn: false,
     storeID: '',
-    email: ''
+    email: '', 
+    stockedItems: [],
+    price: null,
+    category:''
   }
 
   setUserLoggedIn = (loggedIn) => {

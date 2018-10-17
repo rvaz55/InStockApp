@@ -11,9 +11,9 @@ class Login extends Component {
 
     state = {
         email: '',
-        password: '',
         storeID: '',
-        error: null
+        error: null,
+        stockedItems:[]
     };
     
     handleInputChange = event => {
@@ -33,21 +33,32 @@ class Login extends Component {
 
         auth.doSignInWithEmailAndPassword(data.email, data.password)
         .then((authUser) => {
-          //console.log(authUser)
-          //console.log(data)
-          //console.log(data.email)
+          console.log(authUser)
+          console.log(data)
+          console.log(data.email)
+          let email = data.email
 
-             API.getStore(data.email)
+             API.getStore(email)
              .then(res => 
-                { //console.log( res )
-                  this.setState({
-                      userLoggedIn: true, 
-                      storeID: res.data._id, 
-                      email: res.data.email})
-                  let path = `/profilepage/${this.state.storeID}`;
-                  this.props.history.push(path)
+                { console.log( res )
+                  // this.setState({
+                  //     userLoggedIn: true, 
+                  //     storeID: res.data._id, 
+                  //     email: res.data.email,
+                  //     stockedItems: res.data.stockedItems})
+                  const newState  = {
+                    ...this.state.currentStore,
+                    ...res.data
+                }
+                this.setState(newState)
+                console.log(this.state)
+                console.log(this.state.storeID)
+                console.log(this.state._id)
+                
+                let path = `/profilepage/${this.state._id}`;
+                this.props.history.push(path)
                 })
-             .catch(err=>console.log(err))
+             .catch(res=>console.log(res))
         })
         .catch(error => {console.log(error);});
       };
