@@ -52,13 +52,10 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        //console.log(this.props.storeID)
-        //console.log(this.props)
-        //console.log(this.state)
         this.props.setUserLoggedIn(true)
-        //this.props.storeID(this.props.storeID)
         this.getStoreData(this.props.storeID)
         this.getStoreItems(this.props.storeID)
+        //console.log(this.props
         //console.log(this.state)
     };
 
@@ -85,22 +82,22 @@ class Profile extends Component {
         //console.log(this.state)
     
         const{ itemName, price, category, _id } = this.state;
-        //console.log(this.state)
-        //console.log(this.state.storeID)
-        //console.log(this.state.price)
-        //console.log(this.state.itemName)
-        //console.log(itemName)
-        //console.log(_id)
-        //console(price)
-        //console.log(category)
 
-         API.saveItemToStoreInventory( _id,itemName, price, category )
-         .then(res => {console.log( res )})
+         API.saveItemToStoreInventory( _id, itemName, price, category)
+         .then(res =>  {
+             //Here the 'this.thetStoreData()' method is called to grab the recently added 'item'
+             //After grabbing the new array of 'items', the page redirects to the profile page
+             //which then re-renders the 'items table', *including* the new 'item'
+             this.getStoreData(_id)
+             //this.getStoreItems(_id)
+             let path = `/profilepage/${this.state._id}`;
+             return this.props.history.push(path)
+            })
          .catch(err => console.log(err))
-            // Close modal
-           this.toggle();
-           console.log(this.state)
-           this.getStoreItems(this.state._id)
+        
+         // Close modal
+        this.toggle();
+
     }
 
     //method for deleting items from db using item id

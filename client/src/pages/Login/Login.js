@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
-import Profile from ".././Profile";
-import { auth, firebase } from "../../firebase";
+import { auth } from "../../firebase";
 import API from "../../utilsClient/routesClient";
 import { Jumbotron, NavLink } from 'mdbreact';
 
