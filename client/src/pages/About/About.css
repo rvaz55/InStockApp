@@ -1,5 +1,4 @@
 
-
 .entire-deck {
     margin:  20px 40px;
     padding: 20px;
@@ -30,5 +29,7 @@
 }
 
 
-
+.deck-picture {
+    height: 700px;
+}
 

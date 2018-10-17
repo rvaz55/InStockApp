@@ -3,6 +3,7 @@ import "./Header.css";
 import { Mask, View, Container } from 'mdbreact';
 import SearchBar from "../SearchBar";
 import SearchButton from "../SearchButton";
+import Logo from "../../Instock.png"
 
 
 class Header extends Component {
@@ -42,8 +43,8 @@ class Header extends Component {
       <div>
         <View>
           <Mask overlay="purple-light" style={{ flexDirection: 'column' }} className="flex-center  text-white text-center">
-            <h2>InStock</h2>
-            <h5>Helping you find unique products</h5>
+            <img src={Logo} />
+            <h5>Helping you find unique pantry products in your area</h5>
             <div className="input-group" id="searchHolder">
               <SearchBar onChange={this.handleInputChange} value={this.state.searchText} /> <SearchButton onClick={this.handleSubmit} />
             </div>
@@ -54,44 +55,64 @@ class Header extends Component {
 
           <div className="row">
             <div className="col-1">
-              
-          </div>
+
+            </div>
             <div className="col-10">
-            <h3 className="display-4">Find products near you in minutes.</h3>
-            <h3 className="h4-responsive bold-content">No more searching all over town.</h3>
-          </div>
+              <h3 className="display-4">Find products near you in minutes.</h3>
+              <h3 className="h4-responsive bold-content">No more searching all over town.</h3>
+            </div>
             <div className="col-1">
-              
-          </div>
+
+            </div>
           </div>
 
         </Container>
+
 
         <div className="container-fluid-middle">
           <div className="row">
             <div className="col-1">
             </div>
-            <div className ="col-10">
-              <h3 className="display-4 color-row">InStock lets you find unique pantry products anywhere. </h3>
-          </div>
-          <div className="col-1">
+            <div className="col-10">
+              <h2 className="h2-responsive font-weight-normal color-row">Are you a local business interested in increasing your customer base? </h2>
+            </div>
+            <div className="col-1">
             </div>
 
           </div>
         </div>
 
-        <Container className="text-center my-5">
+
+        <div className=" container-fluid vendor-title">
+
+          <h1 className="display-4" >Using InStock is easy! </h1>
+
+        </div>
+
+        {/* <hr className="my-4" /> */}
+
+
+
+        <Container className="text-center my-5 instructions">
 
           <div className="row">
             <div className="col-sm">
-              col-sm
-              </div>
+              <i className="fa fa-2x fa-edit deep-purple-text"></i>
+              <h3 className="h3-responsive font-weight-bold">Sign Up</h3>
+              <h4 className="h4-responsive font-weight-normal">Create an account on InStock and add your store information</h4>
+            </div>
             <div className="col-sm">
-              col-sm
-              </div>
+              <i className="fa fa-2x fa-th-list deep-purple-text"></i>
+              <h3 className="h3-responsive font-weight-bold">Log In</h3>
+
+              <h4 className="h4-responsive font-weight-normal">Add the inventory of product(s) from your local business</h4>
+            </div>
             <div className="col-sm">
-              col-sm
-              </div>
+              <i className="fa fa-2x fa-search deep-purple-text"></i>
+              <h3 className="h3-responsive font-weight-bold">Search</h3>
+
+              <h4 className="h4-responsive font-weight-normal"> Consumers will be able to easily search and buy items from you! </h4>
+            </div>
           </div>
 
         </Container>
