@@ -26,7 +26,7 @@ class ContactUsModal extends React.Component  {
             <Modal isOpen={this.state.modal} toggle={this.toggle} className="cascading-modal">
               <div className="modal-header primary-color white-text">
                 <h4 className="title">
-                  <Fa className="fa fa-pencil" /> Contact Form</h4>
+                  <Fa className="fa fa-pencil"/>Contact Form</h4>
                 <button type="button" className="close" onClick={this.toggle}>
                   <span aria-hidden="true">×</span>
                 </button>
@@ -38,8 +38,8 @@ class ContactUsModal extends React.Component  {
                 <Input size="sm" type="textarea" rows="2" label="Your message" icon="pencil"/>
               </ModalBody>
               <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Close</Button>{' '}
-                <Button color="primary">Save changes</Button>
+                <Button color="red" onClick={this.toggle}>Close</Button>{' '}
+                <Button color="indigo">Save changes</Button>
               </ModalFooter>
             </Modal>
           </Col>

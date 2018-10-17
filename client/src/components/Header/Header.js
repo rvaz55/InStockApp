@@ -3,6 +3,7 @@ import "./Header.css";
 import { Mask, View, Container } from 'mdbreact';
 import SearchBar from "../SearchBar";
 import SearchButton from "../SearchButton";
+import Logo from "../../Instock.png"
 
 
 class Header extends Component {
@@ -42,7 +43,7 @@ class Header extends Component {
       <div>
         <View>
           <Mask overlay="purple-light" style={{ flexDirection: 'column' }} className="flex-center  text-white text-center">
-            <h2>InStock</h2>
+            <img src={Logo} />
             <h5>Helping you find unique pantry products in your area</h5>
             <div className="input-group" id="searchHolder">
               <SearchBar onChange={this.handleInputChange} value={this.state.searchText} /> <SearchButton onClick={this.handleSubmit} />
