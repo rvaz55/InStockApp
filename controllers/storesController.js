@@ -64,7 +64,7 @@ module.exports = {
                   .then(dbModel => res.json(dbModel)))
             } 
 
-            return res.json(dbModel)
+            return res.json(itemsModel)
           })
           .catch(err => res.status(422).json(err));
 
