@@ -33,14 +33,14 @@ class Login extends Component {
 
         auth.doSignInWithEmailAndPassword(data.email, data.password)
         .then((authUser) => {
-          console.log(authUser)
-          console.log(data)
-          console.log(data.email)
+          //console.log(authUser)
+          //console.log(data)
+          //console.log(data.email)
           let email = data.email
 
              API.getStore(email)
              .then(res => 
-                { console.log( res )
+                { //console.log( res )
                   // this.setState({
                   //     userLoggedIn: true, 
                   //     storeID: res.data._id, 
@@ -51,9 +51,9 @@ class Login extends Component {
                     ...res.data
                 }
                 this.setState(newState)
-                console.log(this.state)
-                console.log(this.state.storeID)
-                console.log(this.state._id)
+                //console.log(this.state)
+                //console.log(this.state.storeID)
+                //console.log(this.state._id)
                 
                 let path = `/profilepage/${this.state._id}`;
                 this.props.history.push(path)
@@ -62,24 +62,6 @@ class Login extends Component {
         })
         .catch(error => {console.log(error);});
       };
-
-  // componentWillMount() {
-  //   this.confirmCredentials();
-  // }
-
-  //confirmCredentials = () => {
-  // API.confirmCredentials()
-  //   .then(res =>
-  //     this.setState({ storeID: res.data, authenticated: "true" })
-  //   )
-  //   .catch(err => console.log(err));
-
-  //   console.log(this.props.history)
-  //   let storeID =(JSON.stringify(this.state.storeID)).slice(1, -1);
-  //   let path = `/profile/${storeID}`;
-  //   this.props.history.push(path);
-  //   console.log(this.props)
-  // };
 
 
   render() {
