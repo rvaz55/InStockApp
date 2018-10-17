@@ -30,14 +30,14 @@ class Profile extends Component {
     getStoreData = (storeId) => {
         API.getStoreData(storeId)
             .then(res => {
-                console.log(res.data)
+                //console.log(res.data)
                 const newState  = {
                     ...this.state.currentStore,
                     ...res.data,
                     userLoggedIn: true
                 }
                 this.setState(newState)
-                console.log(this.state.userLoggedIn)
+                //console.log(this.state.userLoggedIn)
             })
             .catch(err => console.log(err))
     }
@@ -53,13 +53,13 @@ class Profile extends Component {
 
     componentDidMount() {
         //console.log(this.props.storeID)
-        console.log(this.props)
+        //console.log(this.props)
         //console.log(this.state)
         this.props.setUserLoggedIn(true)
         //this.props.storeID(this.props.storeID)
         this.getStoreData(this.props.storeID)
         this.getStoreItems(this.props.storeID)
-        console.log(this.state)
+        //console.log(this.state)
     };
 
     toggle = () => {
@@ -114,8 +114,8 @@ class Profile extends Component {
     };
 
     render() {
-        console.log(this.state.stockedItems);
-        console.log(this.state)
+        //console.log(this.state.stockedItems);
+        //console.log(this.state)
         return (
             <div className="profile-content" id="itemModal">
                 <AddItemBtn onClick={this.toggle} />
