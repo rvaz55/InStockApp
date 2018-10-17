@@ -17,7 +17,8 @@ class SearchResultsMain extends Component {
     searchText: "",
     items: [],
     categoryItems: [],
-    selectedCategory: "condiments"
+    selectedCategory: "condiments",
+    resultsTitle: ''
   }
 
 componentDidMount() {
@@ -26,44 +27,33 @@ componentDidMount() {
    this.getSearchResults(item);
  }
 
-  // getItems = () => {
-  //   API.getAllItems()
-  //   .then(res => 
-  //     this.setState({allItems: res.data})
-  //   )
-  //   .catch(err=>console.log(err))
-  //   console.log(this.state.allItems)
-  // }
-
-  // method for getting items from db using using item search word
+  // method for getting the items and stores that carry that item from the 2
+  // collections in the db using using item search word
   getSearchResults = (search) => {
     API.getItemsBySearch(search)
     .then(res => {
       //If the item (aka 'res.data') is false (aka doesn't exist) 
       //then create the item in the DB
-        if (res.data === false) {
-          console.log((res.data))
-          console.log("need to send this to the DB")
-          console.log(search)
-          API.saveItem(search)
-          .then(res => {
-            console.log(res.data)
-            alert("No store currently carry this item")
+      console.log(res.data)
+      if (res.data.length === 0 ) {
+        this.setState({resultsTitle: "There are currently no matching items in stock"})
+        console.log(this.state.resultsTitle)
+        console.log(res.data)
+      } else {
+        //If the item does exist in the items collection then set the state of the
+        //result items to the response data
+        // console.log((res.data))
+        this.setState({ 
+          items: res.data,
+          resultsTitle: `Here are the stores that currently have ${this.state.searchText} in stock...` 
           })
-          .catch(error => console.log(error))
-
-        } else {
-          //If the item has a carriedByStores array that is quivalent to zero
-          //then, the item isn't carried by any stores and the user must be alerted
-          console.log((res.data))
-          this.setState({ items: res.data })
-          console.log(this.state.items)
         }
-    }
-  )
-  .catch(err=>console.log(err))
-  }
-
+      })
+        // console.log(this.state.items)
+    .catch(err => console.log(err))
+    console.log((this.state.items))
+        }
+  
   // method for getting items from db using category search
   getCategoryResults = (category) => {
     API.getItemsByCategory(category)
@@ -160,6 +150,7 @@ componentDidMount() {
 
         <Container fluid className="text-center text-md-left">
           <Row>
+            <h4 id="resultsTitle">{this.state.resultsTitle}</h4>
             <Col size="sm-4">
               <ResultsColumn1 items={item} />
             </Col>

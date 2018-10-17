@@ -19,7 +19,7 @@ const ResultsColumnTwo = props => {
                 return (
                     <CSSTransition key={each._id} timeout={500} classNames="fade">
                         <ListGroupItem id="resultItem">
-                            <ResultItem key={each._id} photo={each.photo} itemName={each.itemName} price={each.price} store={each.store} phone={each.phone} category={each.category}/>                             
+                            <ResultItem key={each._id}  storeName={each.storeName} storeAddress={each.storeAddress} storePhone={each.storePhone}/>       
                         </ListGroupItem>
                     </CSSTransition>
                 )

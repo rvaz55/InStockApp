@@ -9,14 +9,13 @@ class ResultItem extends Component {
         {/* <img className="card-img-top" alt='stock' src={this.props.photo} /> */}
         <CardBody>
             <CardTitle>
-              {this.props.itemName}
-              <p>Price: ${this.props.price}</p> 
+              {this.props.storeName}
+              {/* <p>Price: ${this.props.price}</p>  */}
             </CardTitle>
             <CardText>
-              {this.props.store}
-              <p>{this.props.address}</p>
-              <p>{this.props.phone}</p>
-              <p>{this.props.category}</p>
+              {this.props.storeAddress}
+              <p>{this.props.storePhone}</p>
+              {/* <p>{this.props.category}</p> */}
             </CardText>
         </CardBody>
     </Card>

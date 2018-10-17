@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
   // item_id:{type:Number, unique:true},
   itemName: { type: String, required: false },
+  brand: { type: String, required: false },
   //price: { type: Number, required: false},
   //quantity: { type: Number, required: false},
   //weight: { type: String, required: false},
