@@ -23,7 +23,7 @@ class About extends React.Component {
                 </Jumbotron>
                 <div className="entire-deck">
                     <div className="first-row">
-                        <CardGroup deck>
+                        <CardGroup className="deck-picture" deck>
 
                             <Card>
                                 <CardImage src={Sendy} alt="Card image cap" top hover overlay="white-slight" />
@@ -50,7 +50,7 @@ class About extends React.Component {
                     </div>
 
                     <div className="second-row">
-                        <CardGroup deck>
+                        <CardGroup className="deck-picture" deck>
 
                             <Card>
                                 <CardImage src={Jocelyn} alt="Card image cap" top hover overlay="white-slight" />
