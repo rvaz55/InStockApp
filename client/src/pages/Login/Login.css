@@ -2,7 +2,7 @@
     padding: 80px;
     padding: 80px;
     /* margin-top: 30px; */
-    width: 50%;
+    width: 100%;
     margin: auto;
 }   
 
@@ -40,6 +40,26 @@
 }
 
 
-[class*="col-"] {
-    width: 100%;
+/* 
+@media (min-width: 375px) {
+    .login-form {
+        width: 50%;
+    }
+
+} */
+ 
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    .login-form {
+        width: 50%;
+    }
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .login-form {
+        width: 50%;
+    }
 }
+
+

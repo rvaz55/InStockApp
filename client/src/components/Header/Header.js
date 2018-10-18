@@ -130,8 +130,13 @@ class Header extends Component {
 
                 <div className="col-lg-10 col-md-9 col-10">
                   <h3 className="h3-responsive font-weight-bold">Log In</h3>
-                  <p className="h4-responsive">Add products from your local business</p>
+                  <p className="h4-responsive extra-space">Add products from your local business</p>
                   <br></br>
+                  
+
+                  <p className="h4-responsive"></p>
+
+                  
                
                   <Link to={"/login"} activeClassName="active"><button className="btn btn-deep-purple">Log In</button></Link>
 
