@@ -5,7 +5,10 @@ import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
 import Login from "../Login"
+import Logo from "../../Instock.png";
+
 import { Table, Col } from 'reactstrap';
+
 import "./Profile.css";
 //import { Input, FormBtn } from "../../components/Form";
 
@@ -114,7 +117,15 @@ class Profile extends Component {
         //console.log(this.state.stockedItems);
         //console.log(this.state)
         return (
+        
+        
+
             <div className="profile-content" id="itemModal">
+
+                      <img className="profile-logo"src={Logo} />
+
+            
+            <h1 className="display-4">Welcome {this.state.storeName}!</h1>
                 <AddItemBtn onClick={this.toggle} />
                 <AddItemModal
                     onChange={this.onChange}
@@ -123,7 +134,7 @@ class Profile extends Component {
                     onClick={this.onClickSubmit}
                 />
 
-                <p>Welcome {this.state.storeName}</p>
+                
 
                 <Col md={{ size: 8, offset: 2 }}>
                     {this.state.stockedItems.length ? (
@@ -140,7 +151,8 @@ class Profile extends Component {
                             <StoreItemsTable storeItems={this.state.stockedItems} deleteItem={this.deleteItem} />
                         </Table>
                     ) : (
-                            <h3>No Results to Display</h3>
+                            <h3>No items in your account</h3>
+
                         )}
                 </Col>
             </div>

@@ -5,11 +5,14 @@ import "./AppNavbar.css";
 
 
 class AppNavbar extends React.Component {
-    state = {
-      collapse: false,
-      isWideEnough: false,
-    }
-
+  constructor(props) {
+    super(props);
+      this.state = {
+        collapse: false,
+        isWideEnough: false,
+      };
+  this.onClick = this.onClick.bind(this);
+}
   onClick() { 
     this.setState({
       collapse: !this.state.collapse,

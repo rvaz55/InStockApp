@@ -12,7 +12,7 @@
 }
 
 .second-row {
-    padding: 70px;
+    padding: 20px 70px;
     margin: 50px; 
 
 }
@@ -30,6 +30,26 @@
 
 
 .deck-picture {
-    height: 700px;
+    margin: auto;
+    display: flex;
 }
 
+/* 
+@media (max-width: 767px) {
+    .entire-deck {
+        width: 100%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .entire-deck {
+        width: 50%;
+    }
+    .entire-deck {
+        width: 100%;
+    }
+}
+@media (min-width: 992px) {
+    .deck-picture {
+        width: 33%;
+    }
+} */

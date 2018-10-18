@@ -1,7 +1,7 @@
 .view {
-    background: url("https://mdbootstrap.com/img/Photos/Others/img(40).jpg)") no-repeat center center;
+    /* background: url("https://mdbootstrap.com/img/Photos/Others/img(40).jpg)") no-repeat center center; */
     height: 100vh !important;
-    background-size: cover;
+    /* background-size: cover; */
 }
 
 #searchHolder {
@@ -36,8 +36,7 @@
     padding: 20px;
 }
 
-.col-sm {
-    margin: 10px;
+.col-10{
     text-align: left;
 }
 
@@ -51,4 +50,7 @@ text-align: center;
 padding: 40px;
 }
 
+.btn {
+    border-radius: none;
+}
 

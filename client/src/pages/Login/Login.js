@@ -3,7 +3,7 @@ import { Input, FormBtn } from "../../components/Form";
 import { auth } from "../../firebase";
 import API from "../../utilsClient/routesClient";
 import { Jumbotron, NavLink } from 'mdbreact';
-
+import Logo from "../../Instock.png";
 import "./Login.css";
 
 class Login extends Component {
@@ -76,9 +76,10 @@ class Login extends Component {
             :  */}
         <div className="jumbotron-title">
           <Jumbotron>
-            <h1 className="h1-responsive display-4">Log In to InStock</h1>
+          <img src={Logo} />
+            <h1 className="h1-responsive display-4">Log In</h1>
             <hr className="my-4" />
-            <p className="lead">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>
+            <p className="lead text-grey">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>
 
 
           </Jumbotron>
