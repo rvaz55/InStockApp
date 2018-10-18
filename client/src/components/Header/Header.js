@@ -76,7 +76,7 @@ class Header extends Component {
             <div className="col-1">
             </div>
             <div className="col-10">
-              <h1 className="h2-responsive font-weight-normal color-row">Connecting communities with local businesses </h1>
+              <h1 className="h2-responsive display-4 color-row">Connecting communities with local businesses </h1>
             </div>
             <div className="col-1">
             </div>
