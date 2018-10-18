@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
-import Profile from ".././Profile";
-import { auth, firebase } from "../../firebase";
+import { auth } from "../../firebase";
 import API from "../../utilsClient/routesClient";
 import { Jumbotron, NavLink } from 'mdbreact';
-
+import Logo from "../../Instock.png";
 import "./Login.css";
 
 class Login extends Component {
 
     state = {
         email: '',
-        password: '',
         storeID: '',
-        error: null
+        error: null,
+        stockedItems:[]
     };
     
     handleInputChange = event => {
@@ -36,39 +35,32 @@ class Login extends Component {
           //console.log(authUser)
           //console.log(data)
           //console.log(data.email)
+          let email = data.email
 
-             API.getStore(data.email)
+             API.getStore(email)
              .then(res => 
                 { //console.log( res )
-                  this.setState({
-                      userLoggedIn: true, 
-                      storeID: res.data._id, 
-                      email: res.data.email})
-                  let path = `/profilepage/${this.state.storeID}`;
-                  this.props.history.push(path)
+                  // this.setState({
+                  //     userLoggedIn: true, 
+                  //     storeID: res.data._id, 
+                  //     email: res.data.email,
+                  //     stockedItems: res.data.stockedItems})
+                  const newState  = {
+                    ...this.state.currentStore,
+                    ...res.data
+                }
+                this.setState(newState)
+                //console.log(this.state)
+                //console.log(this.state.storeID)
+                //console.log(this.state._id)
+                
+                let path = `/profilepage/${this.state._id}`;
+                this.props.history.push(path)
                 })
-             .catch(err=>console.log(err))
+             .catch(res=>console.log(res))
         })
         .catch(error => {console.log(error);});
       };
-
-  // componentWillMount() {
-  //   this.confirmCredentials();
-  // }
-
-  //confirmCredentials = () => {
-  // API.confirmCredentials()
-  //   .then(res =>
-  //     this.setState({ storeID: res.data, authenticated: "true" })
-  //   )
-  //   .catch(err => console.log(err));
-
-  //   console.log(this.props.history)
-  //   let storeID =(JSON.stringify(this.state.storeID)).slice(1, -1);
-  //   let path = `/profile/${storeID}`;
-  //   this.props.history.push(path);
-  //   console.log(this.props)
-  // };
 
 
   render() {
@@ -84,9 +76,10 @@ class Login extends Component {
             :  */}
         <div className="jumbotron-title">
           <Jumbotron>
-            <h1 className="h1-responsive display-4">Log In to InStock</h1>
+          <img src={Logo} />
+            <h1 className="h1-responsive display-4">Log In</h1>
             <hr className="my-4" />
-            <p className="lead">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>
+            <p className="lead text-grey">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>
 
 
           </Jumbotron>

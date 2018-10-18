@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 const db = require("../models");
 autoIncrement = require('mongoose-auto-increment');
 
-// This file empties the Books collection and inserts the books below
-
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/instock_devDB"
@@ -13,6 +11,7 @@ const storeSeed = [
   {
     storeName: "La Michoacana",
     storesAddress:"100 Muffin Lane",
+    email: 'storename@gmail.com',
     storeCity: "Houston",
     storeState: "TX",
     storeZip:"77074",
@@ -21,6 +20,7 @@ const storeSeed = [
   },
   {
     storeName: "H-Mart",
+    email: 'hotcheetos@gmail.com',
     storesAddress:"102 Parker St",
     storeCity: "Houston",
     storeState: "TX",
@@ -30,16 +30,12 @@ const storeSeed = [
   }
 ];
 
-db.Store
-  // .db.Store.collection.dropIndexes(function (err, results) {
-  //   console.log(err)})
-  .deleteMany({})
-  .then(() => db.Store.collection.insertMany(storeSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
+db.Store.deleteMany({})
+
+storeSeed.forEach(each => {
+    db.Store.create([ each ])
+    .then(each => {
+    console.log(each + " records inserted!")
   })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-});
+    .catch(err => console.log(err))
+})

@@ -5,34 +5,36 @@ import "./Profile.css";
 
 const StoreItemsTable = props => {
 
-    
-    let storeItems = props.storeItems;
-    let sortedItems = storeItems.sort();
+    //console.log(props)
+    //console.log(props.storeItems)
+    let storeItems = props.storeItems
     let storeItemsTable;
+    //console.log(storeItems)
+    //console.log(storeItems[1])
+    //console.log(storeItems.object)
 
 
     // if results are found from the db, create a row component for each item in the array
-    if (storeItems) {
+     if (storeItems) 
+        { storeItemsTable = storeItems.map(each => {
+             return (
+                 <tr key={each._id}>
+                     <td scope="row">{each.itemName}</td>
+                     <td>{each.price}</td>
+                     <td>{each.category}</td>
 
-        storeItemsTable = sortedItems.map(each => {
-            return (
-                <tr key={each._id}>
-                    <td scope="row">{each.itemName}</td>
-                    <td>{each.price}</td>
-                    <td>{each.category}</td>
-                    <td>{each.storeName}</td>
-                    <td>{each.storeAddress}</td>
-                    <td>
-                        <DeleteBtn onClick={() => props.deleteItem(each._id)} key={each._id} />
-                    </td>
-                </tr>
-            )
-        })
-    }
+                     <td>
+                         <DeleteBtn onClick={() => props.deleteItem(each._id)} key={each._id} />
+                     </td>
+                 </tr>
+             )
+         })
+     }
     return (
-        <tbody>
-            {storeItemsTable}
-        </tbody>
+         <tbody>
+             {storeItemsTable}
+         </tbody>
+       
     );
 }
 

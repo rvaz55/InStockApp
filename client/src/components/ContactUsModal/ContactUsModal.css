@@ -1,3 +1,22 @@
-.btn-deep-purple {
-    color: red;
+.modal-content {
+    border-radius: 10px;
 }
+
+.contact-modal-button {
+    color: white;
+    background-color: #1C2331;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.save-button {
+    background-color: #1C2331;
+}
+
+.primary-color {
+    background-color: #1C2331 !important;
+    border-radius: 10px;
+    text-align: center;
+}
+
+

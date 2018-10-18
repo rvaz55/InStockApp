@@ -9,8 +9,10 @@ class Home extends Component {
 
 
   render() {
-    console.log(this.props.history)
-    console.log(this.history)
+    //console.log("lshviugesivgsiuegvouysegouyfeuysfuysfuysfeuy")
+    //console.log(`this is the "this.props.history' object: `)
+    //console.log(this.props.history)
+    //console.log(`this is the "this.history' object: ${this.history}`)
     return (
 
         <div>

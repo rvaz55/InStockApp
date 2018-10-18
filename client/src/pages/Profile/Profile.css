@@ -33,3 +33,9 @@
 th {
     font-weight: bold;
 }
+
+.profile-logo {
+margin: auto;
+display: flex;
+}
+

@@ -1,14 +1,18 @@
 import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
-import { Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import "./AppNavbar.css";
 
-class AppNavbar extends React.Component {
-    state = {
-      collapse: false,
-      isWideEnough: false,
-    }
 
+class AppNavbar extends React.Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        collapse: false,
+        isWideEnough: false,
+      };
+  this.onClick = this.onClick.bind(this);
+}
   onClick() { 
     this.setState({
       collapse: !this.state.collapse,
@@ -16,14 +20,15 @@ class AppNavbar extends React.Component {
   }
 
   onClickLogout = (e) => {
-    console.log(this.props);
     e.preventDefault();
-    // console.log('')
     this.props.setUserLoggedIn(false)
+    console.log(this.props.history)
+    let path = `/login`;
+    this.props.history.push(path)
   }
 
   render() {
-    console.log(this.props)
+    
     return (
       <div id="nav">
         <header>          
@@ -72,7 +77,14 @@ class AppNavbar extends React.Component {
   }
 }
 
-export default AppNavbar;
+//Here the AppNavbar component was 'wrapped' with the 'withRouter' method of
+//the 'react-router-dom' package in order to allow this component to access the 'history' object
+//The AppNavbar component doesn't have direct access tot he 'history' object bc it
+//doesn't live inside the 'Switch' component that is declared within the 'App.js' file
+//Wrapping AppNavbar in this way allows the component to thus access the histroy object
+//and then change path to redirect to the 'login' page after selecting the 'logout' button
+
+export default withRouter(AppNavbar);
 
 
 

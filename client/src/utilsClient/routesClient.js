@@ -25,17 +25,20 @@ export default {
     return axios.get(`/api/items/store/${storeid}`);
   },
   // Saves a item to the database
-  saveItem: function(data) {
-    // return axios.post("/api/items/additem/", itemData)
-    return axios.post("/api/items/additem/",data);
+  saveItem: function(item) {
+    return axios.post(`/api/items/additem/${item}`);
+  },
+  // Saves a item to a STORE's inventory
+  saveItemToStoreInventory: function(_id, itemName, price, category) {
+    return axios.post(`/api/stores/additemtostoreinventory/${_id}/${itemName}/${price}/${category}`);
   },
   // Saves store sign up info
   saveStore: function(storeData) {
     return axios.post("/api/stores/", storeData);
   },
-  //Gets vendor data for profile using id
+  //Gets vendor data for profile by finding the email used to log-in
   getStore: function(email) {
-      return axios.get("/api/stores/login", email);
+      return axios.get(`/api/stores/login/${email}`);
   },
   
   //This route gets triggered AFTER being logged in and uses the store's ID (from the mongodDB) 

@@ -5,7 +5,10 @@ import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
 import Login from "../Login"
+import Logo from "../../Instock.png";
+
 import { Table, Col } from 'reactstrap';
+
 import "./Profile.css";
 //import { Input, FormBtn } from "../../components/Form";
 
@@ -18,38 +21,26 @@ function wait(delay = 0) {
 
 class Profile extends Component {
     state = {
-        // username: "",
-        // password: "",
-        storesid: "",
-        storeName: "",
-        storeAddress: "",
         modal: false,
         itemName: "",
-        price: 0,
-        category: "",
-        store: "",
-        address: "",
-        photo: "",
-        storeItems: []
+        stockedItems: [],
+        userLoggedIn: false,
+        price: null,
+        category:''
     };
 
     // This method grabs the store DATA from the store collection
     getStoreData = (storeId) => {
         API.getStoreData(storeId)
             .then(res => {
-                console.log(res.data)
-            //     this.setState(state => (
-            //         state.storeName = res.data.storeName,
-            //         state.storeAddress = res.data.storeAddress,
-            //         state.storesid = res.data._id, state
-            //     ))
-            // })
+                //console.log(res.data)
                 const newState  = {
                     ...this.state.currentStore,
-                    ...res.data
+                    ...res.data,
+                    userLoggedIn: true
                 }
                 this.setState(newState)
-                console.log(this.state)
+                //console.log(this.state.userLoggedIn)
             })
             .catch(err => console.log(err))
     }
@@ -61,15 +52,14 @@ class Profile extends Component {
                 this.setState({ storeItems: res.data })
             )
             .catch(err => console.log(err))
-        console.log(this.state.storeItems)
     }
 
     componentDidMount() {
-        console.log(this.props.storeID)
         this.props.setUserLoggedIn(true)
         this.getStoreData(this.props.storeID)
         this.getStoreItems(this.props.storeID)
-        // console.log(this.state)
+        //console.log(this.props
+        //console.log(this.state)
     };
 
     toggle = () => {
@@ -92,34 +82,25 @@ class Profile extends Component {
     
     onClickSubmit = (e) => {
         e.preventDefault();
-        // PhotoAPI.getPhoto(this.state.itemName)
-        // wait(10000)
-        // .then(res => {if(res.data.results[0]) {this.setState({
-        //     ...this.state,
-        //     photo: res.data.results[0].urls.regular
-        //     })
-        //     }
-        //     }
-        // );
-        const{ itemName, price, category, storeName, storesid, storeAddress, photo } = this.state;
-        API.saveItem({
-            itemName: itemName,
-            price: price,
-            category: category,
-            storeName: storeName, 
-            storesid: storesid, 
-            storeAddress: storeAddress,
-            photo: photo 
-        })
-        // wait(5000)
-            .then(res => {
-                console.log('res: ' + res)
+        //console.log(this.state)
+    
+        const{ itemName, price, category, _id } = this.state;
+
+         API.saveItemToStoreInventory( _id, itemName, price, category)
+         .then(res =>  {
+             //Here the 'this.thetStoreData()' method is called to grab the recently added 'item'
+             //After grabbing the new array of 'items', the page redirects to the profile page
+             //which then re-renders the 'items table', *including* the new 'item'
+             this.getStoreData(_id)
+             //this.getStoreItems(_id)
+             let path = `/profilepage/${this.state._id}`;
+             return this.props.history.push(path)
             })
-            .catch(err => console.log(err))
-            // Close modal
-            this.toggle();
-            console.log(this.state)
-            this.getStoreItems(this.state.storesid)
+         .catch(err => console.log(err))
+        
+         // Close modal
+        this.toggle();
+
     }
 
     //method for deleting items from db using item id
@@ -133,9 +114,18 @@ class Profile extends Component {
     };
 
     render() {
-        const thisStoresItems = this.state.storeItems;
+        //console.log(this.state.stockedItems);
+        //console.log(this.state)
         return (
+        
+        
+
             <div className="profile-content" id="itemModal">
+
+                      <img className="profile-logo"src={Logo} />
+
+            
+            <h1 className="display-4">Welcome {this.state.storeName}!</h1>
                 <AddItemBtn onClick={this.toggle} />
                 <AddItemModal
                     onChange={this.onChange}
@@ -144,10 +134,10 @@ class Profile extends Component {
                     onClick={this.onClickSubmit}
                 />
 
-                <p>Welcome {this.state.storeName}</p>
+                
 
                 <Col md={{ size: 8, offset: 2 }}>
-                    {this.state.storeItems.length ? (
+                    {this.state.stockedItems.length ? (
                         <Table striped>
                             <thead>
                                 <tr>
@@ -158,10 +148,11 @@ class Profile extends Component {
                                     <th>Address</th>
                                 </tr>
                             </thead>
-                            <StoreItemsTable storeItems={thisStoresItems} deleteItem={this.deleteItem} />
+                            <StoreItemsTable storeItems={this.state.stockedItems} deleteItem={this.deleteItem} />
                         </Table>
                     ) : (
-                            <h3>No Results to Display</h3>
+                            <h3>No items in your account</h3>
+
                         )}
                 </Col>
             </div>
