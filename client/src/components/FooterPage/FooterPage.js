@@ -14,7 +14,9 @@ class FooterPage extends React.Component {
                     <Col sm="4">
                         <div className ="col-4">                  
                             {/* <h6 className="title">Contact Us</h6> */}
+                            
                             <ContactUsModal />
+                            <h6 className="text-center">instockapp@instock.com</h6>
                         </div>  
                     </Col>
                     <Col sm="4">

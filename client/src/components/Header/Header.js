@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 import "./Header.css";
 import { Mask, View, Container } from 'mdbreact';
 import SearchBar from "../SearchBar";
 import SearchButton from "../SearchButton";
-import Logo from "../../Instock.png"
+import Logo from "../../Instock.png";
+import HeaderImg from "../../headerImg.jpg";
 
 
 class Header extends Component {
@@ -40,11 +42,11 @@ class Header extends Component {
   render() {
     return (
       // const Header = props => (
-      <div>
-        <View>
+      <div id="search-header">
+        <View src={HeaderImg}>
           <Mask overlay="purple-light" style={{ flexDirection: 'column' }} className="flex-center  text-white text-center">
             <img src={Logo} />
-            <h5>Helping you find unique pantry products in your area</h5>
+            <h5>Buying locally made easier</h5>
             <div className="input-group" id="searchHolder">
               <SearchBar onChange={this.handleInputChange} value={this.state.searchText} /> <SearchButton onClick={this.handleSubmit} />
             </div>
@@ -58,8 +60,8 @@ class Header extends Component {
 
             </div>
             <div className="col-10">
-              <h3 className="display-4">Find products near you in minutes.</h3>
-              <h3 className="h4-responsive bold-content">No more searching all over town.</h3>
+              <h3 className="display-4">Find unique products near you in minutes.</h3>
+              <h3 className="h4-responsive text-center font-weight-bold">No more searching all over town.</h3>
             </div>
             <div className="col-1">
 
@@ -74,7 +76,7 @@ class Header extends Component {
             <div className="col-1">
             </div>
             <div className="col-10">
-              <h2 className="h2-responsive font-weight-normal color-row">Are you a local business interested in increasing your customer base? </h2>
+              <h1 className="h2-responsive font-weight-normal color-row">Connecting communities with local businesses </h1>
             </div>
             <div className="col-1">
             </div>
@@ -96,23 +98,69 @@ class Header extends Component {
         <Container className="text-center my-5 instructions">
 
           <div className="row">
-            <div className="col-sm">
-              <i className="fa fa-2x fa-edit deep-purple-text"></i>
-              <h3 className="h3-responsive font-weight-bold">Sign Up</h3>
-              <h4 className="h4-responsive font-weight-normal">Create an account on InStock and add your store information</h4>
-            </div>
-            <div className="col-sm">
-              <i className="fa fa-2x fa-th-list deep-purple-text"></i>
-              <h3 className="h3-responsive font-weight-bold">Log In</h3>
 
-              <h4 className="h4-responsive font-weight-normal">Add the inventory of product(s) from your local business</h4>
-            </div>
-            <div className="col-sm">
-              <i className="fa fa-2x fa-search deep-purple-text"></i>
-              <h3 className="h3-responsive font-weight-bold">Search</h3>
+            <div className="col-md-4 mb-md-0 mb-5">
 
-              <h4 className="h4-responsive font-weight-normal"> Consumers will be able to easily search and buy items from you! </h4>
+              <div className="row">
+
+                <div className="col-lg-2 col-md-3 col-2">
+                  <i className="fa fa-2x fa-edit blue-text"></i>
+                </div>
+
+                <div className="col-lg-10 col-md-9 col-10">
+                  <h3 className="h3-responsive font-weight-bold">Sign Up</h3>
+                  <p className="h4-responsive">Are you a local business owner?</p>
+
+                  <p className="h4-responsive">Simply create an account </p>
+                  <Link to={"/signup"} activeClassName="active"><button className="btn btn-deep-purple">Sign Up</button></Link>
+
+                </div>
+
+              </div>
+
             </div>
+
+            <div className="col-md-4 mb-md-0 mb-5">
+
+              <div className="row">
+
+                <div className="col-lg-2 col-md-3 col-2">
+                  <i className="fa fa-2x fa-th-list pink-text"></i>
+                </div>
+
+                <div className="col-lg-10 col-md-9 col-10">
+                  <h3 className="h3-responsive font-weight-bold">Log In</h3>
+                  <p className="h4-responsive">Add products from your local business</p>
+                  <br></br>
+               
+                  <Link to={"/login"} activeClassName="active"><button className="btn btn-deep-purple">Log In</button></Link>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div className="col-md-4">
+
+              <div className="row">
+
+                <div className="col-lg-2 col-md-3 col-2">
+                  <i className="fa fa-2x fa-search purple-text"></i>
+                </div>
+
+                <div className="col-lg-10 col-md-9 col-10">
+                  <h3 className="h3-responsive font-weight-bold">Search</h3>
+                  <p className="h4-responsive "> Users will be able to easily search and find products from your business! </p>
+                  {/* <Link to={"/search"} href="#serach-header" activeClassName="active"><button className="btn btn-deep-purple">Search</button></Link> */}
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
         </Container>

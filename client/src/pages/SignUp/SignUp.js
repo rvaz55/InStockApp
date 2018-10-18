@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
 import  { auth, firebase }  from "../../firebase";
 import {Jumbotron, NavLink} from "mdbreact";
-import "./SignUp.css";
+import Logo from "../../Instock.png";
 import API from "../../utilsClient/routesClient";
+import "./SignUp.css";
+
 
 class SignUp extends Component {
     state = {
@@ -77,10 +79,13 @@ class SignUp extends Component {
 
     render() {
         return (
+            <div className="parent-container">
             <div className="signup-form"> 
              <div className="jumbotron-title">
           <Jumbotron>
-            <h1 className="h1-responsive display-4">Sign In to InStock</h1>
+          <img src={Logo} />
+
+            <h1 className="h1-responsive display-4">Sign Up</h1>
             <h5 className="h5-responsive">Share products from your local business</h5>
             <hr className="my-4" />
             <p className="lead">Already on InStock?<NavLink to="/login">Login</NavLink></p>
@@ -190,6 +195,7 @@ class SignUp extends Component {
               </div>
             </form>
             
+            </div>
             </div>
         );
     }
