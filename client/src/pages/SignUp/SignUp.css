@@ -7,7 +7,7 @@
 .signup-form{
     padding: 80px;
     margin-top: 30px;
-    width: 50%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 
@@ -21,4 +21,18 @@
 .signup-submit {
     display: flex;
     margin: 0 auto;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    .signup-form {
+        width: 50%;
+    }
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .signup-form {
+        width: 50%;
+    }
 }
