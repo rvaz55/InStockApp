@@ -4,7 +4,7 @@ import PhotoAPI from "../../utilsClient/photoAPI";
 import AddItemBtn from "../../components/addItemModal/addItemBtn";
 import AddItemModal from "../../components/addItemModal/addItem";
 import StoreItemsTable from "./storeItemsTable";
-import Login from "../Login"
+//import Login from "../Login"
 import Logo from "../../Instock.png";
 
 import { Table, Col } from 'reactstrap';
@@ -82,18 +82,21 @@ class Profile extends Component {
     
     onClickSubmit = (e) => {
         e.preventDefault();
-        //console.log(this.state)
+        console.log(this.state)
     
         const{ itemName, price, category, _id } = this.state;
-        console.log(`${itemName}, ${price}, ${category, _id}`)
+        console.log(`${itemName}, ${price}, ${category}, ${_id}`)
+        console.log(_id)
 
          API.saveItemToStoreInventory( _id, itemName, price, category)
          .then(res =>  {
              //Here the 'this.thetStoreData()' method is called to grab the recently added 'item'
              //After grabbing the new array of 'items', the page redirects to the profile page
              //which then re-renders the 'items table', *including* the new 'item'
+             
              this.getStoreData(_id)
-             //this.getStoreItems(_id)
+             this.getStoreItems(_id)
+             console.log(this.props.history)
              let path = `/profilepage/${this.state._id}`;
              return this.props.history.push(path)
             })
@@ -130,7 +133,7 @@ class Profile extends Component {
 
             <div className="profile-content" id="itemModal">
 
-                      <img className="profile-logo"src={Logo} />
+                      <img className="profile-logo"src={Logo} alt="InStock Logo"/>
 
             
             <h1 className="display-4">Welcome {this.state.storeName}!</h1>

@@ -9,7 +9,7 @@ import ResultsMap from "./ResultsMap";
 import InfoWindow from "./InfoWindow";
 import API from "../../utilsClient/routesClient";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
+import { Container, Row, Col, Form } from 'reactstrap';
 import Logo from "../../Instock.png";
 
 import "./SearchResults.css";
@@ -133,7 +133,7 @@ componentDidMount() {
     return (
       <div className="results">
         <Container fluid className="text-center text-md-left">
-        <img className="profile-logo"src={Logo} />
+        <img className="profile-logo"src={Logo} alt="InStock Logo" />
 
           <div className="search-form">
             <Form>

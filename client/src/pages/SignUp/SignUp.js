@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../../components/Form";
-import  { auth, firebase }  from "../../firebase";
+import  { auth }  from "../../firebase";
 import {Jumbotron, NavLink} from "mdbreact";
 import Logo from "../../Instock.png";
 import API from "../../utilsClient/routesClient";
@@ -83,7 +83,7 @@ class SignUp extends Component {
             <div className="signup-form"> 
              <div className="jumbotron-title">
           <Jumbotron>
-          <img src={Logo} />
+          <img src={Logo} alt="InStock Logo" />
 
             <h1 className="h1-responsive display-4">Sign Up</h1>
             <h5 className="h5-responsive">Share products from your local business</h5>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Input, Button, Fa, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
+import { Container, Row, Col, Input, Button, Fa, Modal, ModalBody, ModalFooter } from 'mdbreact';
 import "./ContactUsModal.css";
 
 class ContactUsModal extends React.Component  {

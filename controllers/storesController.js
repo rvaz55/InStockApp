@@ -33,26 +33,33 @@ module.exports = {
             //console.log(itemsModel); 
             //If after checking the Item collection and verifying that the item (in this case called the 'dbModel)
             //doesn't exist then the 'else' is triggered and the item is creted in the Items collection            
-            if (itemsModel.length ===0) {
-
+            if (itemsModel.length === 0) {
+              console.log("happens here")
+              console.log(req.params)
+              //console.log(req.params._id)
                 db.Item
-                  .create({itemName: req.params.itemName, category: req.params.category, carriedByStores:[req.params._id]})
+                  .create({itemName: req.params.itemName, category: req.params.category, carriedByStores:[{storeID: req.params._id}]})
                   .then(itemModel => { 
-                    //console.log(itemModel)
+                    //console.log("happens in the storesController.js")
+                    //console.log(itemModel._id)
+                    //console.log(req.params)
                         db.Store.findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                                     itemName:req.params.itemName, 
                                                                     price:req.params.price,
-                                                                    category: req.params.category
+                                                                    category: req.params.category,
+                                                                    itemID: itemModel._id
                                                                   }]} })
+                                .catch(err => res.status(422).json(err));
                   })
                   .then(dbModel => res.json(dbModel))
-                  .catch(err => res.status(422).json(err));
+                  
 
             } 
             else {
               console.log(itemsModel[0]._id)
+              console.log(req.params)
               db.Item
-                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [req.params.itemName]} })
+                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [{storeID: req.params._id}]} })
                 .then(itemModel => db.Store
                   .findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                               itemName:req.params.itemName, 
@@ -60,7 +67,10 @@ module.exports = {
                                                               category: req.params.category,
                                                               itemID: itemModel._id
                                                             }]} })
-                  .then(dbModel => res.json(dbModel)))
+                  //.then(dbModel => res.json(dbModel))
+                  .catch(err => res.status(422).json(err))
+                  )
+
             } 
 
             return res.json(itemsModel)
