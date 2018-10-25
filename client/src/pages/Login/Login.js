@@ -76,7 +76,7 @@ class Login extends Component {
             :  */}
         <div className="jumbotron-title">
           <Jumbotron>
-          <img src={Logo} />
+          <img src={Logo} alt="InStock Logo"/>
             <h1 className="h1-responsive display-4">Log In</h1>
             <hr className="my-4" />
             <p className="lead text-grey">New to InStock? <NavLink to="/signup">Sign Up</NavLink></p>

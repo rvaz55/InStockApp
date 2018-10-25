@@ -15,6 +15,7 @@ const storeSchema = new Schema({
     price: {type:Number, require: false},
     category: {type:String, require: false},
     itemID: { type: Schema.Types.ObjectId, ref:"Stores", required: false},
+    _id:false
   }]
 });
 

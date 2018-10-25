@@ -1,5 +1,5 @@
 
-import React, { Link } from 'react';
+import React, {  } from 'react';
 import { Button, Card, CardBody, CardImage, CardTitle, CardText, CardGroup,Jumbotron } from 'mdbreact';
 import "./About.css";
 import Sendy from "../../SendyPic.JPG";

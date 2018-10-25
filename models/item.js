@@ -9,7 +9,7 @@ const itemSchema = new Schema({
   //quantity: { type: Number, required: false},
   //weight: { type: String, required: false},
   //weightMeasuredIn: { type: String, required: false },
-  carriedByStores: [{ type: Schema.Types.ObjectId, ref:"Stores", required: false}],
+  carriedByStores: [{ storeID: {type: Schema.Types.ObjectId, ref:"Stores", required: false}, _id: false }],
   category: {type: String, required: false},
   //categories: [{ type: Number, required: false}],
   //date: { type: Date, default: Date.now, required: false },

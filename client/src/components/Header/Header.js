@@ -45,7 +45,7 @@ class Header extends Component {
       <div id="search-header">
         <View src={HeaderImg}>
           <Mask overlay="purple-light" style={{ flexDirection: 'column' }} className="flex-center  text-white text-center">
-            <img src={Logo} />
+            <img src={Logo} alt="InStock Logo"/>
             <h5>Buying locally made easier</h5>
             <div className="input-group" id="searchHolder">
               <SearchBar onChange={this.handleInputChange} value={this.state.searchText} /> <SearchButton onClick={this.handleSubmit} />
