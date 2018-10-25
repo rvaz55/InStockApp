@@ -19,12 +19,12 @@ const StoreItemsTable = props => {
         { storeItemsTable = storeItems.map(each => {
              return (
                  <tr key={each._id}>
-                     <td scope="row">{each.itemName}</td>
+                     <td scope="row" key={each._id}>{each.itemName}</td>
                      <td>{each.price}</td>
                      <td>{each.category}</td>
 
                      <td>
-                         <DeleteBtn onClick={() => props.deleteItem(each._id)} key={each._id} />
+                         <DeleteBtn onClick={() => props.deleteItem(each._id, each.key, each.itemID)} key={each._id} itemID={each._id} />
                      </td>
                  </tr>
              )

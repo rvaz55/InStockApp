@@ -25,7 +25,7 @@ class Profile extends Component {
         itemName: "",
         stockedItems: [],
         userLoggedIn: false,
-        price: null,
+        itemID: null,
         category:''
     };
 
@@ -85,6 +85,7 @@ class Profile extends Component {
         //console.log(this.state)
     
         const{ itemName, price, category, _id } = this.state;
+        console.log(`${itemName}, ${price}, ${category, _id}`)
 
          API.saveItemToStoreInventory( _id, itemName, price, category)
          .then(res =>  {
@@ -104,13 +105,20 @@ class Profile extends Component {
     }
 
     //method for deleting items from db using item id
-    deleteItem = itemId => {
-        API.deleteItem(itemId)
-            .then(res => {
-                console.log(res.data);
-                this.getStoreItems(this.state.storesid)
-            })
-            .catch(err => console.log(err));
+    deleteItem = (itemId, _id) => {
+        console.log('sudgfvue')
+        console.log(itemId)
+       
+       
+        const{ itemName, price, category} = this.state;
+        console.log(this.state)
+
+        //API.deleteFromStoreInventory(itemId)
+        //    .then(res => {
+        //        console.log(res.data);
+        //        this.getStoreItems(this.state.storesid)
+        //    })
+        //    .catch(err => console.log(err));
     };
 
     render() {

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-autoIncrement = require('mongoose-auto-increment');
 
 mongoose.connect(
   process.env.MONGODB_URI ||

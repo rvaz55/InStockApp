@@ -39,21 +39,20 @@ module.exports = {
                   .create({itemName: req.params.itemName, category: req.params.category, carriedByStores:[req.params._id]})
                   .then(itemModel => { 
                     //console.log(itemModel)
-                    db.Store
-                        .findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
+                        db.Store.findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                                     itemName:req.params.itemName, 
                                                                     price:req.params.price,
-                                                                    category: req.params.category,
-                                                                    itemID: itemModel._id
+                                                                    category: req.params.category
                                                                   }]} })
-                        .then(dbModel => res.json(dbModel))
                   })
+                  .then(dbModel => res.json(dbModel))
+                  .catch(err => res.status(422).json(err));
 
             } 
             else {
               console.log(itemsModel[0]._id)
               db.Item
-                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: req.params.itemName} })
+                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [req.params.itemName]} })
                 .then(itemModel => db.Store
                   .findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                               itemName:req.params.itemName, 
@@ -67,6 +66,22 @@ module.exports = {
             return res.json(itemsModel)
           })
           .catch(err => res.status(422).json(err));
+
+    },
+    deleteItemFromInventory: function(req, res) {
+
+      db.Store
+        .findByIdAndUpdate( req.params._id,
+          { $pull: { stockedItems: [req.params.itemName]}},
+          { 'new': true },
+          function(error, doc) {
+            console.log('Error: ' + error);
+            console.log(JSON.stringify(doc));
+            process.exit(0);
+          }
+          )
+        .then(itemModel => db.Store)
+        .catch(err => res.status(422).json(err));
 
     }
   }; 
