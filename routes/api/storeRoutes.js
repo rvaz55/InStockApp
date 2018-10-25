@@ -25,4 +25,10 @@ router
     .route('/additemtostoreinventory/:_id/:itemName/:price/:category')
     .post(storesController.addItemToInventory);
 
+// POST route to /api/stores/deletefromstoreinventory/:item that adds a 
+//new item to the store's inventory
+router
+    .route('/deletefromstoreinventory/:_id/:itemName')
+    .post(storesController.deleteItemFromInventory);
+
 module.exports = router;
