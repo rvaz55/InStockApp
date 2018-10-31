@@ -79,20 +79,26 @@ module.exports = {
 
     },
     deleteItemFromInventory: function(req, res) {
+      console.log("happpppens in the storesController")
       console.log(req.params)
 
-      //db.Store
-      //  .findByIdAndUpdate( req.params._id,
-      //    { $pull: { stockedItems: [{itemID: req.params.itemName}]}},
-      //    { 'new': true },
-      //    function(error, doc) {
-      //      console.log('Error: ' + error);
-      //      console.log(JSON.stringify(doc));
-      //      process.exit(0);
-      //    }
-      //    )
-      //  .then(itemModel => db.Store)
-      //  .catch(err => res.status(422).json(err));
+
+      //////////////
+      ////////////
+      ///////////The findoneandupdate needs to be replaced by Mongoose lingo like on line 7, 16 & 22
+      db.Store
+        .findOneAndUpdate( req.params.storeId,
+          { $pull: { stockedItems: [{itemID: req.params.itemId}]}},
+          { 'new': true }
+          //,
+          //function(error, doc) {
+          //  console.log('Error: ' + error);
+          //  //console.log(JSON.stringify(doc));
+          //  //process.exit(0);
+          //}
+          )
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
 
     }
   }; 
