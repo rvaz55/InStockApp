@@ -108,20 +108,22 @@ class Profile extends Component {
     }
 
     //method for deleting items from db using item id
-    deleteItem = (itemId, _id) => {
+    deleteItem = (itemId, itemName) => {
         console.log('sudgfvue')
         console.log(itemId)
+        console.log(itemName)
        
        
-        const{ itemName, price, category} = this.state;
-        console.log(this.state)
+        const storeId = this.state._id;
+        console.log(storeId)
 
-        //API.deleteFromStoreInventory(itemId)
-        //    .then(res => {
-        //        console.log(res.data);
-        //        this.getStoreItems(this.state.storesid)
-        //    })
-        //    .catch(err => console.log(err));
+        API.deleteFromStoreInventory(storeId, itemName,itemId)
+            .then(res => {
+                console.log("happens in the Profile.js")
+                console.log(res.data);
+                //this.getStoreItems(this.state.storesid)
+            })
+            .catch(err => console.log(err));
     };
 
     render() {

@@ -33,8 +33,8 @@ export default {
     return axios.post(`/api/stores/additemtostoreinventory/${_id}/${itemName}/${price}/${category}`);
   },
     // Saves a item to a STORE's inventory
-  deleteFromStoreInventory: function(_id, itemName) {
-    return axios.post(`/api/stores/deletefromstoreinventory/${_id}/${itemName}`);
+  deleteFromStoreInventory: function(storeId, itemName, itemId) {
+    return axios.post(`/api/stores/deletefromstoreinventory/${storeId}/${itemName}/${itemId}`);
   },
   // Saves store sign up info
   saveStore: function(storeData) {
