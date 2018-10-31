@@ -16,10 +16,11 @@ const StoreItemsTable = props => {
 
     // if results are found from the db, create a row component for each item in the array
      if (storeItems) 
+     console.log(storeItems)
         { storeItemsTable = storeItems.map(each => {
              return (
                  <tr key={each._id}>
-                     <td scope="row" key={each._id}>{each.itemName}</td>
+                     <td scope="row" data-itemID={each.itemID}>{each.itemName}</td>
                      <td>{each.price}</td>
                      <td>{each.category}</td>
 
