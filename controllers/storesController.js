@@ -34,8 +34,8 @@ module.exports = {
             //If after checking the Item collection and verifying that the item (in this case called the 'dbModel)
             //doesn't exist then the 'else' is triggered and the item is creted in the Items collection            
             if (itemsModel.length === 0) {
-              console.log("happens here")
-              console.log(req.params)
+              //console.log("happens here")
+              //console.log(req.params)
               //console.log(req.params._id)
                 db.Item
                   .create({itemName: req.params.itemName, category: req.params.category, carriedByStores:[{storeID: req.params._id}]})
@@ -79,19 +79,20 @@ module.exports = {
 
     },
     deleteItemFromInventory: function(req, res) {
+      console.log(req.params)
 
-      db.Store
-        .findByIdAndUpdate( req.params._id,
-          { $pull: { stockedItems: [req.params.itemName]}},
-          { 'new': true },
-          function(error, doc) {
-            console.log('Error: ' + error);
-            console.log(JSON.stringify(doc));
-            process.exit(0);
-          }
-          )
-        .then(itemModel => db.Store)
-        .catch(err => res.status(422).json(err));
+      //db.Store
+      //  .findByIdAndUpdate( req.params._id,
+      //    { $pull: { stockedItems: [{itemID: req.params.itemName}]}},
+      //    { 'new': true },
+      //    function(error, doc) {
+      //      console.log('Error: ' + error);
+      //      console.log(JSON.stringify(doc));
+      //      process.exit(0);
+      //    }
+      //    )
+      //  .then(itemModel => db.Store)
+      //  .catch(err => res.status(422).json(err));
 
     }
   }; 
