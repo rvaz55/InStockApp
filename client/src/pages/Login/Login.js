@@ -6,12 +6,17 @@ import { Jumbotron, NavLink } from 'mdbreact';
 import Logo from "../../Instock.png";
 import "./Login.css";
 
+const byPropKey = (propertyName, value) => () => ({
+  [propertyName]: value,
+});
+
 class Login extends Component {
 
     state = {
         email: '',
         storeID: '',
-        error: null,
+        error: '',
+        hasError: false,
         stockedItems:[]
     };
     
@@ -25,7 +30,7 @@ class Login extends Component {
           });
       };
 
-      handleFormSubmit = (event, data) => {
+    handleFormSubmit = (event, data) => {
         event.preventDefault();
         //console.log(data) 
         //console.log(this.props.history)
@@ -45,10 +50,11 @@ class Login extends Component {
                   //     storeID: res.data._id, 
                   //     email: res.data.email,
                   //     stockedItems: res.data.stockedItems})
-                  const newState  = {
+                  const newState = 
+                  {
                     ...this.state.currentStore,
                     ...res.data
-                }
+                  }
                 this.setState(newState)
                 //console.log(this.state)
                 //console.log(this.state.storeID)
@@ -57,13 +63,19 @@ class Login extends Component {
                 let path = `/profilepage/${this.state._id}`;
                 this.props.history.push(path)
                 })
-             .catch(res=>console.log(res))
+             .catch(res=>console.log('happpens in this part'))
         })
-        .catch(error => {console.log(error);});
-      };
-
+        .catch(error => {
+          this.setState(byPropKey('error', error))
+        });
+    };
+    
 
   render() {
+
+    const error = this.state.error.message
+    console.log(error)
+
     return (
 
       <div className="login-form">
@@ -111,9 +123,13 @@ class Login extends Component {
                 disabled={!(this.state.email && this.state.password)}
                 onClick={(e) => this.handleFormSubmit(e, this.state)}
               >
-            
               </FormBtn>
-              </div>
+              
+              </div> 
+              
+            {/* This error message needs to be styled */}
+              <p>{error}</p>
+
             </form>
           </div>
 

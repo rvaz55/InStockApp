@@ -38,14 +38,14 @@ module.exports = {
               //console.log(req.params)
               //console.log(req.params._id)
                 db.Item
-                  .create({itemName: req.params.itemName, category: req.params.category, carriedByStores:[{storeID: req.params._id}]})
+                  .create({itemName: req.params.itemName, category: req.params.category, carriedByStores:[{storeID: req.params._id, itemPrice: req.params.price }]})
                   .then(itemModel => { 
                     //console.log("happens in the storesController.js")
                     //console.log(itemModel._id)
                     //console.log(req.params)
                         db.Store.findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                                     itemName:req.params.itemName, 
-                                                                    price:req.params.price,
+                                                                    itemPrice:req.params.price,
                                                                     category: req.params.category,
                                                                     itemID: itemModel._id
                                                                   }]} })
