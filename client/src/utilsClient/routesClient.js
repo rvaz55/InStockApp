@@ -49,5 +49,9 @@ export default {
   //to retrieve the store information (ei- store name, address, and inventory)
   getStoreData: function(storeID) {
     return axios.get(`/api/stores/profilepage/${storeID}`);
+  },
+
+  deleteStoreFromItemList:function(storeId,itemName,itemId){
+    return axios.post(`/api/items/deleteStoreFromItemList/${storeId}/${itemName}/${itemId}`);
   }
 };

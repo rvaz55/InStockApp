@@ -11,7 +11,9 @@ import { Table, Col } from 'reactstrap';
 
 import "./Profile.css";
 //import { Input, FormBtn } from "../../components/Form";
-
+const byPropKey = (propertyName, value) => () => ({
+    [propertyName]: value,
+  });
 // Creating a promise wrapper for setTimeout
 function wait(delay = 0) {
     return new Promise((resolve, reject) => {
@@ -26,6 +28,7 @@ class Profile extends Component {
         stockedItems: [],
         userLoggedIn: false,
         itemID: null,
+        storeItems:[],
         category:''
     };
 
@@ -49,7 +52,7 @@ class Profile extends Component {
     getStoreItems = (storeId) => {
         API.getStoreItems(storeId)
             .then(res =>
-                this.setState({ storeItems: res.data })
+                {this.setState(byPropKey('storeItems', res.data));}
             )
             .catch(err => console.log(err))
     }
@@ -112,18 +115,25 @@ class Profile extends Component {
         console.log('sudgfvue')
         console.log(itemId)
         console.log(itemName)
-       
-       
-        const storeId = this.state._id;
-        console.log(storeId)
-
+       const storeId = this.state._id;
+       console.log(storeId)
         API.deleteFromStoreInventory(storeId, itemName,itemId)
             .then(res => {
                 console.log("happens in the Profile.js")
                 console.log(res.data);
-                //this.getStoreItems(this.state.storesid)
+                
             })
             .catch(err => console.log(err));
+        
+        
+        API.deleteStoreFromItemList(storeId,itemName,itemId)
+        .then(res=>{
+            console.log(res);
+            this.getStoreItems(storeId);
+        }).catch(err=>{console.log(err)});
+ 
+        
+
     };
 
     render() {
@@ -161,7 +171,7 @@ class Profile extends Component {
                                     <th>Address</th>
                                 </tr>
                             </thead>
-                            <StoreItemsTable storeItems={this.state.stockedItems} deleteItem={this.deleteItem} />
+                            <StoreItemsTable storeItems={this.state.stockedItems} storeID={this.props.storeID} deleteItem={this.deleteItem} />
                         </Table>
                     ) : (
                             <h3>No items in your account</h3>
