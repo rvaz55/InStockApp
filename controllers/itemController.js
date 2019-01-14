@@ -46,5 +46,40 @@ module.exports = {
             .sort({ itemName: 1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    deleteStoreFromItemList: function(req,res){
+        console.log('deletestorefromitemlist called');
+        db.Item.findById(req.params.itemId).then(response=>{
+            let check=false;
+            let index;
+           // console.log(response)
+            //console.log('itemController');
+            response.carriedByStores.forEach((element,i)=>{
+               // console.log(element);
+              if(element.storeID==req.params.storeId)
+              {
+                check=true;
+                index=i;
+              //  console.log('it was found');
+              }
+            });
+            if(check==true)
+            {
+              response.carriedByStores.splice(index,1);
+              console.log(response);
+              let newObj={
+                  _id:response._id,
+                  itemName:response.itemName,
+                  category:response.category,
+                  carriedByStores:response.carriedByStores
+              }
+              db.Item.update({_id:req.params.itemId},Update={$set:{carriedByStores:newObj.carriedByStores}},{'new':true}).then((response=>{
+                console.log(response)
+              })).catch(err=>{console.log(err)});
+            }else{
+               // console.log('not found')
+            }
+          }).catch(err=>{console.log(err)});
     }
+
 };

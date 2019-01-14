@@ -82,11 +82,54 @@ module.exports = {
       console.log("happpppens in the storesController")
       console.log(req.params)
 
-
-      //////////////
+      
+      /////////////
+      /////////////
       ////////////
       ///////////The findoneandupdate needs to be replaced by Mongoose lingo like on line 7, 16 & 22
-      db.Store
+      //////////
+      /////////
+      ////////
+      ///////
+      //////
+      /////
+      ////
+      ///
+      //
+
+      //grab existing document at storeID
+      //loop through items array until itemId is found
+      //remove that index with arr.splice(index,index)
+      //update the document with new database object.
+      //possible errors to catch: 
+      //if item id doesnt exist send back a message
+      //if store id doesnt exist send something back
+      db.Store.findById(req.params.storeId).then((response)=>{
+        let itemExists = false;
+        let index = 0;
+        console.log(req.params.itemId)
+        response.stockedItems.forEach((element,i) => {
+          if(element.itemID==req.params.itemId)
+          {
+            itemExists=true;
+            index=i;
+          }
+        })
+        if(itemExists)
+        {
+          response.stockedItems.splice(index,1);
+          console.log(response);
+          db.Store.findOneAndUpdate(req.params.storeId,response,{'new':true}).then((response=>{
+            console.log(response)
+            res.json(response)
+          })).catch(err=>{
+           console.log(err);
+            res.status(422).json(err);
+          });
+        }
+      })
+
+      /*db.Store
         .findOneAndUpdate( req.params.storeId,
           { $pull: { stockedItems: [{itemID: req.params.itemId}]}},
           { 'new': true }
@@ -98,7 +141,7 @@ module.exports = {
           //}
           )
         .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        .catch(err => res.status(422).json(err));*/
 
     }
   }; 

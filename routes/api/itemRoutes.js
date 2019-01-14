@@ -34,4 +34,8 @@ router
     .route('/search/:search')
     .get(itemController.findBySearch);
 
+router
+    .route('/deleteStoreFromItemList/:storeId/:itemName/:itemId')
+    .post(itemController.deleteStoreFromItemList)
+    
     module.exports = router;
