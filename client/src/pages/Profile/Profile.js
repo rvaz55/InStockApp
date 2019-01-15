@@ -52,7 +52,12 @@ class Profile extends Component {
     getStoreItems = (storeId) => {
         API.getStoreItems(storeId)
             .then(res =>
-                {this.setState(byPropKey('storeItems', res.data));}
+                {this.setState(byPropKey('storeItems', res.data),()=>{
+                    console.log("state after getStoreItems: "+JSON.stringify(this.state));
+                });
+
+                 console.log(res.data);
+                }
             )
             .catch(err => console.log(err))
     }
@@ -61,8 +66,7 @@ class Profile extends Component {
         this.props.setUserLoggedIn(true)
         this.getStoreData(this.props.storeID)
         this.getStoreItems(this.props.storeID)
-        //console.log(this.props
-        //console.log(this.state)
+
     };
 
     toggle = () => {
@@ -129,10 +133,11 @@ class Profile extends Component {
         API.deleteStoreFromItemList(storeId,itemName,itemId)
         .then(res=>{
             console.log(res);
-            this.getStoreItems(storeId);
+            
         }).catch(err=>{console.log(err)});
  
-        
+        this.getStoreData(storeId);
+        //this.getStoreItems(storeId);
 
     };
 
