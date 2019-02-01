@@ -29,7 +29,8 @@ class Profile extends Component {
         userLoggedIn: false,
         itemID: null,
         storeItems:[],
-        category:''
+        category:'',
+        price: ''
     };
 
     // This method grabs the store DATA from the store collection

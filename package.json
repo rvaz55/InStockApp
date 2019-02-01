@@ -29,6 +29,8 @@
     "mdbreact": "^4.8.6",
     "mongoose": "^5.0.17",
     "mongoose-auto-increment": "^5.0.1",
+    "mongoose-float": "^1.0.3",
+    "react-numeric-input": "^2.2.3",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
