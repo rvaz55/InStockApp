@@ -60,7 +60,7 @@ class App extends Component {
         category:''
       })
     }
-    console.log(this.state)
+    
     return (
       
       <div>
