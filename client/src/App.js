@@ -11,8 +11,14 @@ import NoMatch from "./pages/NoMatch";
 import SearchResults from "./pages/SearchResults";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const byPropKey = (propertyName, value) => () => ({
+  [propertyName]: value,
+});
+
+
 
 class App extends Component {
+  
   state = {
     userLoggedIn: false,
     storeID: '',
@@ -23,26 +29,40 @@ class App extends Component {
   }
 
   setUserLoggedIn = (loggedIn) => {
-    this.setState({
-      userLoggedIn: loggedIn
-    })
+    this.setState(byPropKey(
+      'userLoggedIn', loggedIn
+    ))
   }
 
   setStoreID = (storeID) => {
-    this.setState({
-      storeID: storeID
-    })
+    this.setState(byPropKey(
+      'storeID', storeID
+    ))
   }
 
   setEmail = (email) => {
-    this.setState({
-      email : email 
-    })
+    this.setState(byPropKey(
+      'email' , email 
+    ))
   }
 
   render() {
+    
+    if(localStorage.loggedIn=='true'&&this.state.userLoggedIn==false)
+    {
+      let loginData = JSON.parse(localStorage.loginData)
+      this.setState({
+        userLoggedIn: true,
+        storeID: loginData._id,
+        email: loginData.email, 
+        stockedItems: [],
+        price: null,
+        category:''
+      })
+    }
+    
     return (
-
+      
       <div>
 
 

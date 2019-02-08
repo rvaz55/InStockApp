@@ -138,7 +138,7 @@ class Profile extends Component {
         }).catch(err=>{console.log(err)});
  
         this.getStoreData(storeId);
-        //this.getStoreItems(storeId);
+        this.getStoreItems(storeId);
 
     };
 
