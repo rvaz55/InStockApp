@@ -6,6 +6,17 @@ import { Jumbotron, NavLink } from 'mdbreact';
 import Logo from "../../Instock.png";
 import "./Login.css";
 
+
+/*note by Austin Plumly: todo...
+create logic on the home page to detect if the user is logged in using local storage
+	if logged in display the correct info on the nav bar.
+	get the correct id of the user and store in state accordingly.
+
+remove the create account button if user is logged in. 
+
+ */
+
+
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
 });
@@ -56,6 +67,10 @@ class Login extends Component {
                     ...res.data
                   }
                 this.setState(newState)
+                localStorage.email=data.email
+                localStorage.password=data.password
+                localStorage.loggedIn=true;
+                localStorage.loginData=JSON.stringify(res.data);
                 //console.log(this.state)
                 //console.log(this.state.storeID)
                 //console.log(this.state._id)

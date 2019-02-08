@@ -25,10 +25,13 @@ class AppNavbar extends React.Component {
     console.log(this.props.history)
     let path = `/login`;
     this.props.history.push(path)
+    localStorage.clear();
+    localStorage.loggedIn=false;
   }
 
   render() {
-    
+    //get _id and pass into line 57. acp
+    let profilepage='/profilepage/'+localStorage.loginData._id;
     return (
       <div id="nav">
         <header>          
@@ -49,16 +52,19 @@ class AppNavbar extends React.Component {
                           </NavItem>
 
                           <NavItem>
+                            {/*note by austin plumly: replace logout with link to profile if logged in.*/}
                             {(this.props.userLoggedIn)
-                            ? <NavLink to="/login" onClick={this.onClickLogout}>Logout</NavLink>
+                            ? <NavLink to={profilepage}>My Items</NavLink>
                             : <NavLink to="/login">Vendor Login</NavLink>} 
                           </NavItem>
 
-                          
-      
-                          <NavItem >
+                            {/*note by austin plumly: add new logout button to the far right*/}
+                          {(this.props.userLoggedIn)? <NavLink to="/login" onClick={this.onClickLogout}>Logout</NavLink> : <p></p>}
+                            {(this.props.userLoggedIn) ? <p></p> :                         
+                            <NavItem >
                             <NavLink to="/signup" >Create Account</NavLink>
-                          </NavItem>
+                          </NavItem> }
+
                       
                     </NavbarNav>
                     
