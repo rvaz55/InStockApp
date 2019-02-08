@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
 import { withRouter } from 'react-router-dom';
 import "./AppNavbar.css";
+import { isNullOrUndefined } from 'util';
 
 
 class AppNavbar extends React.Component {
@@ -31,7 +32,15 @@ class AppNavbar extends React.Component {
 
   render() {
     //get _id and pass into line 57. acp
-    let profilepage='/profilepage/'+localStorage.loginData._id;
+    if(this.props.userLoggedIn==false&&localStorage.loggedIn=='true')
+      this.props.setUserLoggedIn(true);
+    let profilepage
+    
+    if(this.props.userLoggedIn){
+      let loginData= JSON.parse(localStorage.loginData);
+      profilepage='/profilepage/'+loginData._id;
+    }
+    
     return (
       <div id="nav">
         <header>          
