@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var Float = require('mongoose-float').loadType(mongoose);
 const Schema = mongoose.Schema;
 
 const storeSchema = new Schema({
@@ -12,7 +13,7 @@ const storeSchema = new Schema({
   storePhone: {type: Number, required: false},
   stockedItems: [{
     itemName: {type:String, require: false},
-    price: {type:Number, require: false},
+    price: {type: String, require: false},
     category: {type:String, require: false},
     itemID: { type: Schema.Types.ObjectId, ref:"Stores", required: false},
     _id:false

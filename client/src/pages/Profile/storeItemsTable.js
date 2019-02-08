@@ -19,7 +19,7 @@ const StoreItemsTable = props => {
      console.log(storeItems)
         { storeItemsTable = storeItems.map(each => {
              return (
-                 <tr key={each._id} data-itemID={each.itemID} data-itemName={each.itemName}>
+                 <tr key={each._id} data-itemID={each.itemID} data-itemName={each.itemName} price={each.price}>
                      <td scope="row" >{each.itemName}</td>
                      <td>{each.price}</td>
                      <td>{each.category}</td>

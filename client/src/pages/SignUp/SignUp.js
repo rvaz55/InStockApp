@@ -6,6 +6,9 @@ import Logo from "../../Instock.png";
 import API from "../../utilsClient/routesClient";
 import "./SignUp.css";
 
+const byPropKey = (propertyName, value) => () => ({
+    [propertyName]: value,
+  });  
 
 class SignUp extends Component {
     state = {
@@ -18,7 +21,8 @@ class SignUp extends Component {
         username: "",
         passwordOne: "",
         passwordTwo:"",
-        email: ""
+        email: "",
+        error:''
 
     };
 
@@ -61,14 +65,13 @@ class SignUp extends Component {
                     let path = `/login`;
                     this.props.history.push(path)
                   })
-                .catch(error => {console.log(error)} )
+                .catch(error => {
+                    console.log(error)     
+                    this.setState(byPropKey('error', error))
+ 
+                })
        
         } else {
-                           
-        //Here we need to put an else statemet that triggers 
-        //some errors to tell the vendor:
-        // A)The passwords don't match
-        // B) The username and/or email already exists
 
             console.log("error")
         }
@@ -78,6 +81,9 @@ class SignUp extends Component {
 
 
     render() {
+
+    const error = this.state.error.message
+
         return (
             <div className="parent-container">
             <div className="signup-form"> 
@@ -193,6 +199,13 @@ class SignUp extends Component {
                     Sign Up for InStock
               </FormBtn>
               </div>
+
+
+{/* //////////This is the error message that needs to be styled////////// */}
+              <p>{error}</p>
+{/* //////////^^^^^^^^^^This is the error message that needs to be styled////////// */}
+
+              
             </form>
             
             </div>

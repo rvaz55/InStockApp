@@ -30,14 +30,18 @@ const AddItemModal = (props) => {
                   placeholder="Add item"
                   onChange={props.onChange}
                 />
+                <br></br>
                 <Label for="price">Price</Label>
                 <Input
                   type="text"
                   name="price"
                   id="price"
                   placeholder="Price"
+                  pattern = "^[0-9]\d{0,9}(\.\d{1,3})?%?$"
                   onChange={props.onChange}
                 />
+
+                <br></br>
                 <Label for="category">Category</Label>
                 <DropdownInput onChange={props.onChange}/>
                 <Button onClick={onClick} color="dark" style={{ marginTop: '2rem' }} block>

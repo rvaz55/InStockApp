@@ -34,7 +34,7 @@ module.exports = {
             //If after checking the Item collection and verifying that the item (in this case called the 'dbModel)
             //doesn't exist then the 'else' is triggered and the item is creted in the Items collection            
             if (itemsModel.length === 0) {
-              //console.log("happens here")
+              console.log("happens here")
               //console.log(req.params)
               //console.log(req.params._id)
                 db.Item
@@ -42,10 +42,11 @@ module.exports = {
                   .then(itemModel => { 
                     //console.log("happens in the storesController.js")
                     //console.log(itemModel._id)
-                    //console.log(req.params)
+                    console.log(req.params)
+                    console.log(itemModel)
                         db.Store.findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                                     itemName:req.params.itemName, 
-                                                                    itemPrice:req.params.price,
+                                                                    price:req.params.price,
                                                                     category: req.params.category,
                                                                     itemID: itemModel._id
                                                                   }]} })
@@ -59,7 +60,7 @@ module.exports = {
               console.log(itemsModel[0]._id)
               console.log(req.params)
               db.Item
-                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [{storeID: req.params._id}]} })
+                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [{storeID: req.params._id , price: req.params.price}]} })
                 .then(itemModel => db.Store
                   .findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                               itemName:req.params.itemName, 
