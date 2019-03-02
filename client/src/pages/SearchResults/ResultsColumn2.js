@@ -11,7 +11,7 @@ const ResultsColumnTwo = props => {
         let resultItems = props.items;
         let col2Array = resultItems.filter((a, i) => (i % 2));
         let resultsItemsForCol2;
-
+        console.log(col2Array);
         // if results are found from the search, create a ResultItem component for each result in the array
         if (resultItems) {
             // Split results array into 2 separate array of odd indexes and even indexes to fill in 2 columns
