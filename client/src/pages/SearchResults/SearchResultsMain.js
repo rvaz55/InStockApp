@@ -19,12 +19,13 @@ class SearchResultsMain extends Component {
     searchText: "",
     items: [],
     categoryItems: [],
+    carriedByStores: [],
     selectedCategory: "condiments"
   }
 
 componentDidMount() {
    const item = (this.props.history.location.pathname.split("/search/")[1]).replace(/\+/g, ' ')
-   console.log(item)
+   //console.log(item)
    this.getSearchResults(item);
  }
 
@@ -49,7 +50,7 @@ componentDidMount() {
           console.log(search)
           API.saveItem(search)
           .then(res => {
-            console.log(res.data)
+           // console.log(res.data)
             alert("No store currently carry this item")
           })
           .catch(error => console.log(error))
@@ -57,9 +58,11 @@ componentDidMount() {
         } else {
           //If the item has a carriedByStores array that is quivalent to zero
           //then, the item isn't carried by any stores and the user must be alerted
-          console.log((res.data))
-          this.setState({ items: res.data })
+          //console.log((res.data))
+          //console.log((res.data[0].carriedByStores))
+          this.setState({ items: res.data, carriedByStores: res.data[0].carriedByStores})
           console.log(this.state.items)
+          console.log(this.state.items[0].carriedByStores)
         }
     }
   )
@@ -70,11 +73,11 @@ componentDidMount() {
   getCategoryResults = (category) => {
     API.getItemsByCategory(category)
       .then(res => {
-        console.log(res);
+       
         this.setState({ items: res.data })
       })
       .catch(err => console.log(err))
-    console.log((this.state.items))
+   
   }
 
   // update search box to show what is being typed
@@ -88,7 +91,7 @@ componentDidMount() {
     this.handleInputChangeOnSelect.bind(this);
     let selected = e.target.value;
     this.setState({ selectedCategory: selected });
-    console.log(this.state.selectedCategory)
+
   }
 
   // get the value that is typed in the box to use in the search 
@@ -101,7 +104,7 @@ componentDidMount() {
     if (this.state.searchText) {
       this.getSearchResults(newSearch);
     }
-    console.log(this.state.items)
+   
   }
 
   // get the value that is typed in the box to use in the search 
@@ -128,7 +131,10 @@ componentDidMount() {
 
   render() {
     let item = this.state.items;
+    let carriedByStores = this.state.carriedByStores;
 
+    //console.log(carriedByStores)
+    
     // const allItem = this.state.allItems;
     return (
       <div className="results">
@@ -165,7 +171,7 @@ componentDidMount() {
         <Container fluid className="text-center text-md-left">
           <Row>
             <Col size="sm-4">
-              <ResultsColumn1 items={item} />
+              <ResultsColumn1 items={item} carriedByStores = {carriedByStores} />
             </Col>
             <Col size="sm-4">
               <ResultsColumn2 items={item} />
