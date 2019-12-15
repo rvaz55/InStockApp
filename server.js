@@ -17,7 +17,9 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instock_devDB", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instock_devDB", { useUnifiedTopology: true ,useNewUrlParser: true, useCreateIndex: true });
+
+//mongoose.connect(process.env.test_db, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

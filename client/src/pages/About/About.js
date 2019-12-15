@@ -2,10 +2,12 @@
 import React, {  } from 'react';
 import { Button, Card, CardBody, CardImage, CardTitle, CardText, CardGroup,Jumbotron } from 'mdbreact';
 import "./About.css";
+//original: "./About.css"
 import Sendy from "../../SendyPic.JPG";
 import Melissa from "../../MelissaPic.JPG";
 import Jocelyn from "../../JocelynPic.JPG";
-import Raquel from "../../RaquelPic.JPG";
+import Raquel from ".././../../src/RaquelPic.JPG";
+//original: ../../RaquelPic.JPG
 
 
 

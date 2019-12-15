@@ -5,6 +5,7 @@ import { Mask, View, Container } from 'mdbreact';
 import SearchBar from "../SearchBar";
 import SearchButton from "../SearchButton";
 import Logo from "../../Instock.png";
+//original: import Logo from "../../Instock.png";
 import HeaderImg from "../../headerImg.jpg";
 
 

@@ -59,8 +59,9 @@ module.exports = {
             else {
               console.log(itemsModel[0]._id)
               console.log(req.params)
+              console.log("tracking an error when saving the price of an existing item")
               db.Item
-                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [{storeID: req.params._id , price: req.params.price}]} })
+                .findByIdAndUpdate( itemsModel[0]._id,{ $push: { carriedByStores: [{storeID: req.params._id , itemPrice: req.params.price}]} })
                 .then(itemModel => db.Store
                   .findByIdAndUpdate(req.params._id, {$push: {stockedItems:[{
                                                               itemName:req.params.itemName, 

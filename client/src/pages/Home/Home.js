@@ -9,14 +9,18 @@ class Home extends Component {
 
 
   render() {
-    //console.log("lshviugesivgsiuegvouysegouyfeuysfuysfuysfeuy")
-    //console.log(`this is the "this.props.history' object: `)
-    //console.log(this.props.history)
-    //console.log(`this is the "this.history' object: ${this.history}`)
+    /*
+    console.log("lshviugesivgsiuegvouysegouyfeuysfuysfuysfeuy")
+    console.log(`this is the "this.props.history' object: `)
+    console.log(this.props.history)
+    console.log(`this is the "this.history' object: ${this.history}`)
+    */
     return (
 
         <div>
             <Header history={this.props.history}/>
+
+          
         </div>
 
   // {/* Note: the 'history object' is located at the 'this.props.history' */}
