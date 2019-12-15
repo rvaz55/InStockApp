@@ -1,7 +1,9 @@
-import 'font-awesome/css/font-awesome.min.css';
+//import '/font-awesome/css/font-awesome.min.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import React from 'react';
+//import React from 'react';
+import React, {  } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
 import App from './App';

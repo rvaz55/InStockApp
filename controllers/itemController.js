@@ -5,9 +5,11 @@ module.exports = {
     findBySearch: function (req, res) {
         let name = req.params.search;
         db.Item
-            .find({ "itemName": { "$regex": name, "$options": "i"}})
+            .find({itemName: name})
+            //.find({ "itemName": { "$regex": name, "$options": "i"}})
             .sort({ itemName: 1 })
             .then(dbModel => res.json(dbModel))
+            //.then(dbModel => console.log(dbModel, "happens in the 'itemController.js"))
             .catch(err => res.status(422).json(err));
     },
     findByCategory: function (req, res) {
