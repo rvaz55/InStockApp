@@ -22,7 +22,7 @@
   "homepage": "https://github.com/rvaz55/InStockApp#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.4.1",
     "express": "^4.16.3",
