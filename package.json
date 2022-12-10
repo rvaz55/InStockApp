@@ -25,7 +25,7 @@
     "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.4.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "firebase": "^5.5.3",
     "if-env": "^1.0.4",
     "mdbreact": "^4.23.1",
